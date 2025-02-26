@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: ${MONGO_IMAGE}:${MONGO_VERSION}
+    container_name: ${BIN_DIR}_${MONGO_SERVICE_NAME}
+    restart: unless-stopped
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    volumes:
+      - mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
+    networks:
+      - project-network
+
+  mongodb-express:
+    image: ${MONGO_EXPRESS_IMAGE}:${MONGO_EXPRESS_VERSION}
+    container_name: ${BIN_DIR}_${MONGO_EXPRESS_SERVICE_NAME}
+    restart: always
+    ports:
+      - ${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}
+    environment:
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USER}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASS}
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_ROOT_USER}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_ROOT_PASS}
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USER}:${MONGO_ROOT_PASS}@${MONGO_SERVICE_NAME}:${MONGO_PORT}/
+      ## Só usar em conjunto com NGNIX
+      ME_CONFIG_SITE_BASEURL: /${MONGO_EXPRESS_URL}
+      ME_CONFIG_HEALTH_CHECK_PATH: /${MONGO_EXPRESS_URL}/health
+    depends_on:
+      - mongodb
+    networks:
+      - project-network
+
+volumes:
+  mongo:
+    name: mongo
+
+networks:
+  project-network:
+    name: ${PROJECT_NAME}
+    driver: bridge
