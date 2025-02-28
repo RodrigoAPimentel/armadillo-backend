@@ -3,7 +3,7 @@ version: '3.7'
 services:
   mongodb:
     image: ${MONGO_IMAGE}:${MONGO_VERSION}
-    container_name: ${BIN_DIR}_${MONGO_SERVICE_NAME}
+    container_name: ${SERVICE_DOCKER_NAME}_${MONGO_SERVICE_NAME}
     restart: unless-stopped
     ports:
       - ${MONGO_PORT}:${MONGO_PORT}
@@ -17,7 +17,7 @@ services:
 
   mongodb-express:
     image: ${MONGO_EXPRESS_IMAGE}:${MONGO_EXPRESS_VERSION}
-    container_name: ${BIN_DIR}_${MONGO_EXPRESS_SERVICE_NAME}
+    container_name: ${SERVICE_DOCKER_NAME}_${MONGO_EXPRESS_SERVICE_NAME}
     restart: always
     ports:
       - ${MONGO_EXPRESS_PORT}:${MONGO_EXPRESS_PORT}

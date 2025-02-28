@@ -105,11 +105,14 @@ prompt_user() {
 }
 
 execute_action() {
-    echo -e "\n🎯 $2 ${3^^} ..."
+    SRV_DOCKER_NAME="$(basename $3)"
+    echo -e "\n🎯 $2 ${SRV_DOCKER_NAME^^} ..."
      
     if [[ -f $1 ]]; then
-        export BIN_DIR=$3
-        check_container_running $3 $ACTION || docker-compose -f $1 --project-name $PROJECT_NAME --project-directory $PROJECT_ROOT $ACTION_COMMAND
+        export SERVICE_FOLDER_PATH=$3
+        export SERVICE_DOCKER_NAME=$SRV_DOCKER_NAME
+        
+        check_container_running $SRV_DOCKER_NAME $ACTION || docker-compose -f $1 --project-name $PROJECT_NAME --project-directory $PROJECT_ROOT $ACTION_COMMAND
     else
         echo "    ❌  File $1 not found."
     fi
@@ -121,8 +124,8 @@ run () {
     params_configurations $1 $2 $3
 
     if [[ $ALL_CONTAINERS == true ]]; then
-        for dir in $PROJECT_ROOT/bin/*/; do        
-            execute_action ""$dir"docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$(basename $dir)"
+        for dir in $PROJECT_ROOT/bin/*/; do
+            execute_action ""$dir"docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$dir"
         done
 
         if [[ $ACTION == "down" && $DOCKER_PRUNE == true ]]; then
