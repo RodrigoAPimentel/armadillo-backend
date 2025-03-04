@@ -1,16 +1,23 @@
 #!/bin/bash
 
-PROJECT_NAME="$(. ./.env && echo ${PROJECT_NAME})"
-PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo "$(pwd)")
-TEMPORARY_FILE=/tmp/selected_services.txt
+# This script is a project controller for managing Docker containers.
+# It provides commands to start and stop Docker containers, with options to apply actions to all containers and prune the system.
+# It sources the project name from the .env file and determines the project root directory.
+# It also initializes several variables for handling actions, temporary files, and Docker options.
 
-ACTION=""
-ACTION_COMMAND=""
-ACTION_DESCRIPTION=""
-ACTION_DESCRIPTION_ALL=""
-ALL_CONTAINERS=false
-DOCKER_PRUNE=false
+# Variables:
+PROJECT_NAME="$(. ./.env && echo ${PROJECT_NAME})" # The name of the project, sourced from the .env file.
+PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo "$(pwd)") # The root directory of the project, determined using git or the current working directory.
+TEMPORARY_FILE=/tmp/selected_services.txt # Path to a temporary file used for storing selected services.
 
+ACTION="" # Placeholder for the action to be executed.
+ACTION_COMMAND="" # Placeholder for the command associated with the action.
+ACTION_DESCRIPTION="" # Placeholder for the description of the action.
+ACTION_DESCRIPTION_ALL="" # Placeholder for the description of the action when applied to all containers.
+ALL_CONTAINERS=false # Boolean flag indicating whether the action should be applied to all containers.
+DOCKER_PRUNE=false # Boolean flag indicating whether Docker prune should be executed.
+
+# Prints the banner with project information.
 banner () {
     printf "**************************************************************************\n"
     printf "*************************** PROJECT CONTROLLER ***************************\n"
@@ -18,6 +25,7 @@ banner () {
     printf "*** 📜 Developed By: Rodrigo Pimentel ************************************\n\n"
 }
 
+# Displays project information such as project name and root directory.
 informations () {
     echo -e "📜  Information:"
     echo -e "   📦  Project Name: ${PROJECT_NAME}"
@@ -25,6 +33,28 @@ informations () {
     echo ""
 }
 
+# Shows the help message with usage instructions and examples.
+show_help() {
+    echo "Usage: $0 {up|down} [--all] [--prune]"
+    echo ""
+    echo "Commands:"
+    echo "  up           Start Docker containers."
+    echo "  down         Stop Docker containers."
+    echo ""
+    echo "Options:"
+    echo "  --all        Apply the action to all containers."
+    echo "  --prune      Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes. Can only be used with 'down --all'."
+    echo ""
+    echo "Examples:"
+    echo "  $0 up                Start Docker containers interactively."
+    echo "  $0 down              Stop Docker containers interactively."
+    echo "  $0 up --all          Start all Docker containers."
+    echo "  $0 down --all        Stop all Docker containers."
+    echo "  $0 down --all --prune Stop all Docker containers and prune the system."
+    exit 0
+}
+
+# Configures parameters based on the provided command and options.
 params_configurations () {
     case "$1" in
         up)
@@ -62,6 +92,10 @@ params_configurations () {
     fi
 }
 
+# Checks if a Docker container is running.
+# Arguments:
+#   $1 - Container name
+#   $2 - Action (up or down)
 check_container_running() {
     echo -e "   🔍 Checking if it is running ..."
     if [[ $(docker ps --filter "name=${1}" --filter "status=running" -q) ]]; then
@@ -79,6 +113,9 @@ check_container_running() {
     fi
 }
 
+# Prompts the user to confirm an action on a container.
+# Arguments:
+#   $1 - Service directory
 prompt_user() {
     local attempts=0
     local srv=$(basename $1)
@@ -104,6 +141,11 @@ prompt_user() {
     done
 }
 
+# Executes the specified action on a Docker container.
+# Arguments:
+#   $1 - Docker Compose file path
+#   $2 - Action description
+#   $3 - Service directory
 execute_action() {
     SRV_DOCKER_NAME="$(basename $3)"
     echo -e "\n🎯 $2 ${SRV_DOCKER_NAME^^} ..."
@@ -118,36 +160,46 @@ execute_action() {
     fi
 }
 
+# Main function to run the script.
+# Arguments:
+#   $1 - Command (up or down)
+#   $2 - Option (--all or --prune)
+#   $3 - Additional option (--prune)
 run () {
-    banner
-    informations
-    params_configurations $1 $2 $3
-
-    if [[ $ALL_CONTAINERS == true ]]; then
-        for dir in $PROJECT_ROOT/bin/*/; do
-            execute_action ""$dir"docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$dir"
-        done
-
-        if [[ $ACTION == "down" && $DOCKER_PRUNE == true ]]; then
-            echo -e "\n>>>>> 🧹  Cleaning up Docker system ..."
-
-            docker system prune -a --volumes -f
-        fi
+    if [[ "$1" == "--help" ]]; then
+        show_help
     else
-        > $TEMPORARY_FILE
-        for dir in $PROJECT_ROOT/bin/*/; do
-            prompt_user $dir
-        done
+        banner
+        informations
 
-        [[ -s $TEMPORARY_FILE ]] && echo -e "\n🚀🚀🚀 Starting actions ..."
+        params_configurations $1 $2 $3
 
-        while IFS='|' read -r compose_file action_desc container_name; do
-            execute_action "$compose_file" "$action_desc" "$container_name"
-        done < $TEMPORARY_FILE
-        rm $TEMPORARY_FILE
-    fi
-    
-    echo -e "\n👋👋👋 Exiting ...";
+        if [[ $ALL_CONTAINERS == true ]]; then
+            for dir in $PROJECT_ROOT/bin/*/; do
+                execute_action ""$dir"docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$dir"
+            done
+
+            if [[ $ACTION == "down" && $DOCKER_PRUNE == true ]]; then
+                echo -e "\n>>>>> 🧹  Cleaning up Docker system ..."
+
+                docker system prune -a --volumes -f
+            fi
+        else
+            > $TEMPORARY_FILE
+            for dir in $PROJECT_ROOT/bin/*/; do
+                prompt_user $dir
+            done
+
+            [[ -s $TEMPORARY_FILE ]] && echo -e "\n🚀🚀🚀 Starting actions ..."
+
+            while IFS='|' read -r compose_file action_desc container_name; do
+                execute_action "$compose_file" "$action_desc" "$container_name"
+            done < $TEMPORARY_FILE
+            rm $TEMPORARY_FILE
+        fi
+        
+        echo -e "\n👋👋👋 Exiting ...";
+    fi    
 }
 
 ########################################
