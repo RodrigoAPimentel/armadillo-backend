@@ -97,16 +97,16 @@ params_configurations () {
 #   $1 - Container name
 #   $2 - Action (up or down)
 check_container_running() {
-    echo -e "   🔍 Checking if it is running ..."
+    echo -e "   🔍 Checking if ${1} is running ..."
     if [[ $(docker ps --filter "name=${1}" --filter "status=running" -q) ]]; then
         if [[ "$2" == "up" ]]; then
-            echo "      ❌  The service is already running."
+            echo "      ❌  ${1} is already running"
             return 0
         fi
         return 1
     else
         if [[ "$2" == "down" ]]; then
-            echo "      ❌  The service is not running."
+            echo "      ❌  ${1} is not running"
             return 0
         fi
         return 1
@@ -178,16 +178,23 @@ run () {
         params_configurations $1 $2 $3
 
         if [[ $ALL_CONTAINERS == true ]]; then
+            # Ensure proxy service is executed first
+            if [[ -d "$PROJECT_ROOT/bin/proxy/" ]]; then
+                execute_action "$PROJECT_ROOT/bin/proxy/docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$PROJECT_ROOT/bin/proxy/"
+            fi
+
             for dir in $PROJECT_ROOT/bin/*/; do
+                [[ "$dir" == "$PROJECT_ROOT/bin/proxy/" ]] && continue
                 execute_action ""$dir"docker-compose.yml" "$ACTION_DESCRIPTION_ALL" "$dir"
             done
 
             if [[ $ACTION == "down" && $DOCKER_PRUNE == true ]]; then
                 echo -e "\n>>>>> 🧹  Cleaning up Docker system ..."
 
-                docker system prune -a --volumes -f 
-                echo "Deleted Volumes:"
+                echo -e "\nDeleted Volumes:"
                 docker volume rm $(docker volume ls -q)
+                
+                docker system prune -a --volumes -f 
             fi
         else
             > $TEMPORARY_FILE

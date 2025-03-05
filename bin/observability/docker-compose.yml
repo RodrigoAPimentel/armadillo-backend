@@ -34,10 +34,8 @@ services:
       - ${ELK_KIBANA_PORT}:${ELK_KIBANA_PORT}
     networks:
       - project-network
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
     healthcheck:
+      start_period: 1m
       interval: 10s
       retries: 20
       test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://${ELK_KIBANA_HOST}/api/status
@@ -140,8 +138,9 @@ services:
       kibana:
         condition: service_healthy
     healthcheck:
-      interval: 20s
-      retries: 20
+      interval: 30s
+      retries: 5
+      start_period: 1m
       test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://${ELK_APM_HOST}/
 
   heartbeat:
