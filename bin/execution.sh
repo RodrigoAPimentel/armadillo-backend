@@ -100,13 +100,13 @@ check_container_running() {
     echo -e "   🔍 Checking if it is running ..."
     if [[ $(docker ps --filter "name=${1}" --filter "status=running" -q) ]]; then
         if [[ "$2" == "up" ]]; then
-            echo "      ⚠️  The service is already running."
+            echo "      ❌  The service is already running."
             return 0
         fi
         return 1
     else
         if [[ "$2" == "down" ]]; then
-            echo "      ⚠️  The service is not running."
+            echo "      ❌  The service is not running."
             return 0
         fi
         return 1
@@ -128,7 +128,7 @@ prompt_user() {
             if check_container_running $srv $ACTION; then
                 break
             else
-                echo ""$1"docker-compose.yml|$ACTION_DESCRIPTION_ALL|$srv" >> $TEMPORARY_FILE
+                echo ""$1"docker-compose.yml|$ACTION_DESCRIPTION_ALL|$1" >> $TEMPORARY_FILE
                 break
             fi
         elif [[ ${response,,} =~ ^[n]$ ]]; then
@@ -152,7 +152,10 @@ execute_action() {
      
     if [[ -f $1 ]]; then
         export SERVICE_FOLDER_PATH=$3
-        export SERVICE_DOCKER_NAME=$SRV_DOCKER_NAME
+        export DOCKER_CONTAINER_PREFIX_NAME=$SRV_DOCKER_NAME
+
+        echo -e "   📜 Service Foder Path: $SERVICE_FOLDER_PATH"
+        echo -e "   📜 Docker Container Prefix Name: $DOCKER_CONTAINER_PREFIX_NAME"
         
         check_container_running $SRV_DOCKER_NAME $ACTION || docker-compose -f $1 --project-name $PROJECT_NAME --project-directory $PROJECT_ROOT $ACTION_COMMAND
     else
@@ -182,7 +185,9 @@ run () {
             if [[ $ACTION == "down" && $DOCKER_PRUNE == true ]]; then
                 echo -e "\n>>>>> 🧹  Cleaning up Docker system ..."
 
-                docker system prune -a --volumes -f
+                docker system prune -a --volumes -f 
+                echo "Deleted Volumes:"
+                docker volume rm $(docker volume ls -q)
             fi
         else
             > $TEMPORARY_FILE
