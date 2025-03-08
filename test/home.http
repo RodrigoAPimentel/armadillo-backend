@@ -1,0 +1,9 @@
+@path = 
+
+### Get home page
+GET {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+
+### Get status page
+GET {{baseUrl}}/status
+Authorization: Bearer {{token}}

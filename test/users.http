@@ -1,0 +1,34 @@
+@path = users
+
+########## CREATE
+POST {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Rodrigo Pimentel",
+  "role": "administration",
+  "email": "pimentelmsn@hotmail.com",
+  "password": "12345"
+}
+
+########## GET ALL
+GET {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+
+########## GET BY ID
+GET {{baseUrl}}/{{path}}/67cb04eecfb092fc042de33d
+Authorization: Bearer {{token}}
+
+########## UPDATE
+PUT {{baseUrl}}/{{path}}/67cb04eecfb092fc042de33d
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Rodrigo Pimentel - 2"
+}
+
+########## DELETE
+DELETE {{baseUrl}}/{{path}}/67cb04eecfb092fc042de33d
+Authorization: Bearer {{token}}

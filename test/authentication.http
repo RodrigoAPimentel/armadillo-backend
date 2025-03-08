@@ -1,0 +1,15 @@
+@path = auth/signin
+
+## Signin
+POST {{baseUrl}}/{{path}}
+Content-Type: application/json
+
+# {
+#   "email": "master",
+#   "password": "master"
+# }
+
+{
+  "email": "pimentelmsn@hotmail.com",
+  "password": "12345"
+}

@@ -20,8 +20,16 @@ server {
     access_log ${NGINX_LOGS_DIR}/nginx-access.log nginx-log;
     error_log ${NGINX_LOGS_DIR}/nginx-error.log;
 
-    location /${PROJECT_BACKEND_STATUS_URL}/ {
+    location /${PROJECT_BACKEND_URL}/ {
         set $_host ${PROJECT_BACKEND_HOST};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://$_host/;        
+        proxy_intercept_errors on;
+    }
+    
+    location /${PROJECT_BACKEND_STATUS_URL}/ {
+        set $_host ${PROJECT_BACKEND_HOST}/status;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_pass http://$_host/;        

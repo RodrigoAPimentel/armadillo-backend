@@ -26,11 +26,11 @@ services:
       start_period: 40s
     ports:
       - '${PROJECT_BACKEND_PORT}:${PROJECT_BACKEND_PORT}'
-    environment:
-      - ELASTIC_APM_SERVICE_NAME=${PROJECT_NAME}
-      - ELASTIC_APM_SERVER_URL=http://${ELK_APM_HOST}
-      - ELASTIC_APM_ENVIRONMENT=${NODE_ENV}
-      - ELASTIC_APM_LOG_LEVEL=${ELK_APM_LOG_LEVEL}
+    # environment:
+    #   - ELASTIC_APM_SERVICE_NAME=${PROJECT_BACKEND_NAME}
+    #   - ELASTIC_APM_SERVER_URL=http://${ELK_APM_HOST}
+    #   - ELASTIC_APM_ENVIRONMENT=${NODE_ENV}
+    #   - ELASTIC_APM_LOG_LEVEL=${ELK_APM_LOG_LEVEL}
     volumes:
       - .:/home/node/app
       - ${PROJECT_BACKEND_LOGS_DIR}:${PROJECT_BACKEND_LOGS_DIR}

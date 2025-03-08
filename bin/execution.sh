@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Usage:
+# ./execution.sh {up|down} [--all] [--prune]
+# 
+# Examples:
+# ./execution.sh up                # Start Docker containers interactively.
+# ./execution.sh down              # Stop Docker containers interactively.
+# ./execution.sh up --all          # Start all Docker containers.
+# ./execution.sh down --all        # Stop all Docker containers.
+# ./execution.sh down --all --prune # Stop all Docker containers and prune the system.
+
 # This script is a project controller for managing Docker containers.
 # It provides commands to start and stop Docker containers, with options to apply actions to all containers and prune the system.
 # It sources the project name from the .env file and determines the project root directory.

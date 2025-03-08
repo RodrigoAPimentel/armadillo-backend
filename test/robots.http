@@ -1,0 +1,98 @@
+@path = robots
+
+########## CREATE
+POST {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  // nome do robô
+  "name": "Robô 4", 
+  // tempo em que o robô ficará ativo. Tempo em milisegundos. 0 para indefinido
+  "operatingTime": "120000", 
+  // Mercado em que o robô irá atuar. cryptocurrencies, financial, sports. Pegar da variável market no BD
+  "updateInterval": "10000", 
+  "market": "cryptocurrencies", 
+  // Capital Inicial que o robô usara para operar em R$
+  "initialCapital": "1000", 
+  // % do capital inicial (initalCapital) de parada do robô por percas. 0 para desativado
+  "stopLoss": "5", 
+  // % do capital inicial (initalCapital) de parada do robô por ganhos. 0 para desativado
+  "stopGain": "0", 
+  // ID do Broker
+  "brokerID": "67bc8543e956e02e35f87245", 
+  // Lista com os ID das Estrategias de Trade que o Robô deve usar para operar. Estratégias de Trade são criadas no módulo de Estratégias e serão pegas de lá ao criar o robô
+  "tradeStrategyId": [ 
+    "67bc8519e956e02e35f87240",
+    "67bcae581395f7776679b009"
+  ],
+  // Sigla da Moeda que o robô utilizará
+  "currencySymbol": "BTCUSDT", 
+  // Demais parâmetros para livre configuração    
+  "otherParams": [ 
+    {
+      "name": "limit",
+      "key": "limit",
+      "type": "string",
+      "description": "",
+      "value": "100"
+    },
+    {
+      "name": "interval",
+      "key": "interval",
+      "type": "string",
+      "description": "",
+      "value": "15m"
+    }
+  ],
+  // Modo de uso do robô. Pode ser em Produção ou simulação. TRUE para produção, FALSE para simulação
+  "operatingProductionMode": false,
+  "isRunning": false,
+  "isOpened": {
+    "opened": false,
+    "lastUpdate": "-"
+  },
+  "isRunning": {
+    "running": false,
+    "started": "-",
+    "ended": "-"
+  },
+  "stopRobot": false
+}
+
+########## GET ALL
+GET {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+
+########## GET BY ID
+GET {{baseUrl}}/{{path}}/67b0aeeaa71a179c88a17cb6
+Authorization: Bearer {{token}}
+
+########## UPDATE
+PUT {{baseUrl}}/{{path}}/67bc8557e956e02e35f87249
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "tradeStrategyId": [ 
+    "67bc8519e956e02e35f87240",
+    "67bcae581395f7776679b009"
+  ]
+}
+
+########## DELETE
+DELETE {{baseUrl}}/{{path}}/67b0ad58d30d5e764b2ae398
+Authorization: Bearer {{token}}
+
+###################################################################################
+##### ACTIONS #####################################################################
+###################################################################################
+########## START
+PUT {{baseUrl}}/{{path}}/67bc8557e956e02e35f87249/startRobot
+Authorization: Bearer {{token}}
+########## STOP
+PUT {{baseUrl}}/{{path}}/67bc8557e956e02e35f87249/stopRobot
+Authorization: Bearer {{token}}
+########## KILL
+PUT {{baseUrl}}/{{path}}/67bc8557e956e02e35f87249/killRobot
+Authorization: Bearer {{token}}
