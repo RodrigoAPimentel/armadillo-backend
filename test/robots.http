@@ -6,29 +6,19 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  // nome do robô
-  "name": "Robô 4", 
-  // tempo em que o robô ficará ativo. Tempo em milisegundos. 0 para indefinido
-  "operatingTime": "120000", 
-  // Mercado em que o robô irá atuar. cryptocurrencies, financial, sports. Pegar da variável market no BD
-  "updateInterval": "10000", 
-  "market": "cryptocurrencies", 
-  // Capital Inicial que o robô usara para operar em R$
+  "name": "Robô 412", 
+  "lifetime": "120000", 
+  "operationCycleTime": "10000", 
+  "tradeMarket": "cryptocurrencies", 
   "initialCapital": "1000", 
-  // % do capital inicial (initalCapital) de parada do robô por percas. 0 para desativado
   "stopLoss": "5", 
-  // % do capital inicial (initalCapital) de parada do robô por ganhos. 0 para desativado
   "stopGain": "0", 
-  // ID do Broker
-  "brokerID": "67bc8543e956e02e35f87245", 
-  // Lista com os ID das Estrategias de Trade que o Robô deve usar para operar. Estratégias de Trade são criadas no módulo de Estratégias e serão pegas de lá ao criar o robô
+  "brokerId": "67bc8543e956e02e35f87245", 
   "tradeStrategyId": [ 
     "67bc8519e956e02e35f87240",
     "67bcae581395f7776679b009"
   ],
-  // Sigla da Moeda que o robô utilizará
   "currencySymbol": "BTCUSDT", 
-  // Demais parâmetros para livre configuração    
   "otherParams": [ 
     {
       "name": "limit",
@@ -45,19 +35,7 @@ Content-Type: application/json
       "value": "15m"
     }
   ],
-  // Modo de uso do robô. Pode ser em Produção ou simulação. TRUE para produção, FALSE para simulação
-  "operatingProductionMode": false,
-  "isRunning": false,
-  "isOpened": {
-    "opened": false,
-    "lastUpdate": "-"
-  },
-  "isRunning": {
-    "running": false,
-    "started": "-",
-    "ended": "-"
-  },
-  "stopRobot": false
+  "simulationMode": false
 }
 
 ########## GET ALL

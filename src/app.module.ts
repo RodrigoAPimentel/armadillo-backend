@@ -11,6 +11,7 @@ import { GlobalInterceptor } from './interceptors/global.interceptor';
 import { winstonConfig } from './logger/winston.config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { RobotsModule } from './robots/robots.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AuthModule } from './auth/auth.module';
 
     AuthModule,
     UsersModule,
+    RobotsModule,
   ],
   controllers: [AppController],
   providers: [

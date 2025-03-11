@@ -10,12 +10,8 @@ export interface Interface {
   initialCapital: number;
   stopLoss: number;
   stopGain: number;
-
-  // broker: Broker;
-  // tradeStrategy: Strategy[];
-  broker: string;
-  tradeStrategy: string[];
-
+  brokerId: string;
+  tradeStrategyId: string[];
   currencySymbol: CurrencySymbol;
   otherParams?: [
     {
@@ -70,11 +66,11 @@ export const EntitySchema = new Schema<Interface>({
     type: Number,
     required: [true, 'stopGain is required!'],
   },
-  broker: {
+  brokerId: {
     type: String,
-    required: [true, 'broker is Broker!'],
+    required: [true, 'brokerId is Broker!'],
   },
-  tradeStrategy: [
+  tradeStrategyId: [
     {
       type: String,
     },

@@ -9,39 +9,27 @@ import {
   UseGuards,
 } from '@nestjs/common';
 
-import { Interface as User } from './users';
-import { UsersService } from './users.service';
+import { Interface as IRobot } from './robots';
+import { RobotsService } from './robots.service';
 import { JWTAuthGuard } from '../auth/jwt/jwt-auth.guard';
 import Logger from 'src/logger/Logger';
 
-/**
- * UsersController handles CRUD operations for user entities.
- */
 @UseGuards(JWTAuthGuard)
-@Controller('users')
-export class UsersController {
+@Controller('robots')
+export class RobotsController {
   constructor(
-    private readonly service: UsersService,
+    private readonly service: RobotsService,
     private logger: Logger,
   ) {}
 
-  /**
-   * Creates a new user entity.
-   * @param entity - The user entity to create.
-   * @returns The newly created user entity.
-   */
   @Post()
-  async create(@Body() entity: User) {
+  async create(@Body() entity: IRobot) {
     this.logger.functionCaller({ entity }, 'info');
     const newEntity = await this.service.create(entity);
     this.logger.functionResult(newEntity, 'info');
     return newEntity;
   }
 
-  /**
-   * Retrieves all user entities.
-   * @returns An array of all user entities.
-   */
   @Get()
   async getAll() {
     this.logger.functionCaller({}, 'info');
@@ -50,11 +38,6 @@ export class UsersController {
     return allEntities;
   }
 
-  /**
-   * Retrieves a user entity by its ID.
-   * @param id - The ID of the user entity to retrieve.
-   * @returns The user entity with the specified ID.
-   */
   @Get(':id')
   async getById(@Param('id') id: string) {
     this.logger.functionCaller({ id }, 'info');
@@ -63,12 +46,6 @@ export class UsersController {
     return entity;
   }
 
-  /**
-   * Updates a user entity by its ID.
-   * @param id - The ID of the user entity to update.
-   * @param entity - The updated user entity data.
-   * @returns The updated user entity.
-   */
   @Put(':id')
   async update(@Param('id') id: string, @Body() entity) {
     this.logger.functionCaller({ id, entity }, 'info');
@@ -77,11 +54,6 @@ export class UsersController {
     return updated;
   }
 
-  /**
-   * Deletes a user entity by its ID.
-   * @param id - The ID of the user entity to delete.
-   * @returns A message indicating the result of the deletion.
-   */
   @Delete(':id')
   async delete(@Param('id') id: string) {
     this.logger.functionCaller({ id }, 'info');
