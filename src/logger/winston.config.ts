@@ -129,7 +129,7 @@ const fileConfigHandlers = (logFileLevel: string, maxFiles: string) => {
  */
 export const winstonConfig: WinstonModuleOptions = {
   levels: customLevels.levels,
-  level: 'info',
+  level: 'debug',
   transports: [
     new transports.Console({
       format: format.combine(

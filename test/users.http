@@ -6,9 +6,9 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "name": "Rodrigo Pimentel",
+  "name": "Rodrigo Pimentel 2",
   "role": "administration",
-  "email": "pimentelmsn@hotmail.com",
+  "email": "pimentelmsn2@hotmail.com",
   "password": "12345"
 }
 

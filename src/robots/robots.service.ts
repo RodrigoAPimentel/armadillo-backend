@@ -40,6 +40,11 @@ export class RobotsService {
         },
         stopRobot: false,
         active: true,
+        otherParams: Array.isArray(newEntity.otherParams)
+          ? newEntity.otherParams
+          : typeof newEntity.otherParams === 'string'
+            ? JSON.parse(newEntity.otherParams)
+            : [],
       },
     };
 

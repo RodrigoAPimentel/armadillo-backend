@@ -6,7 +6,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "name": "Robô 412", 
+  "name": "Robô 4125", 
   "lifetime": "120000", 
   "operationCycleTime": "10000", 
   "tradeMarket": "cryptocurrencies", 
@@ -43,7 +43,7 @@ GET {{baseUrl}}/{{path}}
 Authorization: Bearer {{token}}
 
 ########## GET BY ID
-GET {{baseUrl}}/{{path}}/67b0aeeaa71a179c88a17cb6
+GET {{baseUrl}}/{{path}}/67d0c11d895b4f4dfd995e2f
 Authorization: Bearer {{token}}
 
 ########## UPDATE
