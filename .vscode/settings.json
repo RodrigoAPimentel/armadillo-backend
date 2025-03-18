@@ -2,7 +2,7 @@
     "rest-client.environmentVariables": {
         "local": {
             "baseUrl": "http://localhost:5000",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY3Y2IwNWI0Y2ZiMDkyZmMwNDJkZTM0ZCIsIm5hbWUiOiJSb2RyaWdvIFBpbWVudGVsIiwicm9sZSI6ImFkbWluaXN0cmF0aW9uIiwiZW1haWwiOiJwaW1lbnRlbG1zbkBob3RtYWlsLmNvbSIsInBhc3N3b3JkIjoiKioqKioqKioqKioqIiwiYWN0aXZlIjp0cnVlLCJfX3YiOjB9LCJpYXQiOjE3NDEzNTg1NDAsImV4cCI6MTc0MTk2MzM0MH0.rDnEU121yA6PnmmXY73gtxPWBxItXEbTRDg9jwocBwc"
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY3Y2IwNWI0Y2ZiMDkyZmMwNDJkZTM0ZCIsIm5hbWUiOiJSb2RyaWdvIFBpbWVudGVsIiwicm9sZSI6ImFkbWluaXN0cmF0aW9uIiwiZW1haWwiOiJwaW1lbnRlbG1zbkBob3RtYWlsLmNvbSIsInBhc3N3b3JkIjoiKioqKioqKioqKioqIiwiYWN0aXZlIjp0cnVlLCJfX3YiOjB9LCJpYXQiOjE3NDIyNTEwMDksImV4cCI6MTc0Mjg1NTgwOX0.ZuqF4atKf4Uu9jpBDtgBLM9nKJvCSWTtLFLlW98CTqs"
         }
     },
     "cSpell.words": [

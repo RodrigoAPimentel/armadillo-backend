@@ -43,7 +43,7 @@ GET {{baseUrl}}/{{path}}
 Authorization: Bearer {{token}}
 
 ########## GET BY ID
-GET {{baseUrl}}/{{path}}/67d0c11d895b4f4dfd995e2f
+GET {{baseUrl}}/{{path}}/67d0c54d895b4f4dfd995e6a
 Authorization: Bearer {{token}}
 
 ########## UPDATE
