@@ -68,6 +68,19 @@
     .submit-rbt-updt-btn:hover {
         background: #0056b3;
     }
+    .submit-rbt-del-btn {
+        background: #fc2929;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-rbt-del-btn:hover {
+        background:  #ff0000;
+    }
     .parameter-rbt-updt-item {
         display: flex;
         flex-direction: column;
@@ -138,7 +151,7 @@
 <form id="form-rbt-updt" class="form-rbt-updt-container">
     <div class="form-rbt-updt-group form-rbt-updt-group-destac full-width">
         <label>Select Robot:</label>
-        <select id="robotId-rbt-updt" style="width: 100%; font-style: italic; font-weight: bold;" required></select>
+        <select id="select-rbt-rbt-updt" style="width: 100%; font-style: italic; font-weight: bold;" required></select>
     </div>
     <hr style="grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;">
     <div class="form-rbt-updt-group">
@@ -193,14 +206,15 @@
         <label>Manter dados após envio: <input type="checkbox" id="manterDados-rbt-updt"></label>
     </div>
 
-    <button id="submitBtn-rbt-updt" type="button" class="form-rbt-updt-group submit-rbt-updt-btn full-width" onclick="submitFormRobotUpdate()">Atualizar</button>
+    <button id="submitBtn-rbt-del" type="button" class="form-rbt-updt-group submit-rbt-del-btn">Delete</button>
+    <button id="submitBtn-rbt-updt" type="button" class="form-rbt-updt-group submit-rbt-updt-btn">Update</button>
 </form>
 
 <script>
     (function(scope) {
         function populateDropdownsRobotUpdate(inputs) {
             if (inputs.robots && inputs.robots.options) {
-                var dropdownRobots = document.getElementById("robotId-rbt-updt");
+                var dropdownRobots = document.getElementById("select-rbt-rbt-updt");
                 dropdownRobots.innerHTML = '<option value="">Select a robot to update</option>';
                 inputs.robots.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -346,7 +360,9 @@
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        document.getElementById("robotId-rbt-updt").addEventListener("change", function() {
+        document.getElementById("select-rbt-rbt-updt").addEventListener("change", loadRobots);
+        
+        function loadRobots() {            
             var robotId = this.value;
             if (robotId) {
                 var loadingElement = document.getElementById("loading-rbt-updt");
@@ -372,17 +388,21 @@
                     }
                 });
             }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadRobots.call(document.getElementById("select-rbt-rbt-updt"));
         });
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
         document.getElementById("submitBtn-rbt-updt").addEventListener("click", submitFormRobotUpdate);
-
+        
         function submitFormRobotUpdate() {
             var form = document.getElementById("form-rbt-updt");
             var requiredFields = form.querySelectorAll("[required]");
             var missingFields = [];
-
+            
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
                     missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
@@ -415,7 +435,7 @@
                     formData[key] = value;
                 }
             });
-
+            
             var selectedTradeStrategies = getSelectedTradeStrategiesRobotUpdate();
             if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeStrategyId || [])) {
                 formData.tradeStrategyId = selectedTradeStrategies;
@@ -429,18 +449,58 @@
                     param.type !== originalData.otherParams[index]?.type ||
                     param.description !== originalData.otherParams[index]?.description ||
                     param.value !== originalData.otherParams[index]?.value)) {
-                formData.otherParams = parameters;
-            }
+                        formData.otherParams = parameters;
+                    }
+                    
+                    if (Object.keys(formData).length === 0) {
+                        alert("Nenhuma modificação foi detectada no formulário.");
+                        return;
+                    }
+                    
+                    scope.send({ 
+                        robot_id: originalData._id,
+                        body: formData,
+                        is_delete: false
+                    });
+                    
+                    if (!document.getElementById("manterDados-rbt-updt").checked) {
+                        form.reset();
+                        document.getElementById("parameterContainer-rbt-updt").innerHTML = '';
+                    }
+        }
 
-            if (Object.keys(formData).length === 0) {
-                alert("Nenhuma modificação foi detectada no formulário.");
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        document.getElementById("submitBtn-rbt-del").addEventListener("click", submitFormRobotDelete);
+        
+        function submitFormRobotDelete() {
+            var form = document.getElementById("form-rbt-updt");
+            var requiredFields = document.getElementById("select-rbt-rbt-updt");
+            var missingFields = [];
+
+            if (!requiredFields.value.trim()) {
+                missingFields.push(requiredFields.previousElementSibling?.textContent || "Campo obrigatório");
+            } 
+            if (missingFields.length > 0) {
+                alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
                 return;
             }
 
-            if (!document.getElementById("manterDados-rbt-updt").checked) {
-                form.reset();
-                document.getElementById("parameterContainer-rbt-updt").innerHTML = '';
+            if (!confirm(`Tem certeza de que deseja deletar o robô "${scope.msg.payload.robot.name}"?`)) {
+                return;
             }
+
+            scope.send({ 
+                robot_id: scope.msg.payload.robot._id, 
+                is_delete: true 
+            });
+
+            var dropdownRobots = document.getElementById("select-rbt-rbt-updt");
+            var selectedOption = dropdownRobots.querySelector(`option[value="${scope.msg.payload.robot._id}"]`);
+            if (selectedOption) selectedOption.remove();
+
+            form.reset();
+            document.getElementById("parameterContainer-rbt-updt").innerHTML = '';
         }
         
         scope.$watch('msg.payload', function(msg) {

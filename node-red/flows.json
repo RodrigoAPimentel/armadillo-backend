@@ -236,7 +236,7 @@
     {
         "id": "6a5055627c1fcc05",
         "type": "ui_group",
-        "name": "Update",
+        "name": "Update / Delete",
         "tab": "74452ef95184deeb",
         "order": 2,
         "disp": true,
@@ -614,8 +614,8 @@
         "className": "",
         "topic": "",
         "name": "Notification",
-        "x": 1130,
-        "y": 340,
+        "x": 1350,
+        "y": 240,
         "wires": []
     },
     {
@@ -627,7 +627,7 @@
         "order": 2,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    .form-rbt-updt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-updt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-updt-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n\n    .form-rbt-updt-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n\n    .form-rbt-updt-group.full-width {\n        grid-column: span 2;\n    }\n\n    .form-rbt-updt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-rbt-updt-group input,\n    .form-rbt-updt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .form-rbt-updt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n\n    .form-rbt-updt-group input[type=\"range\"] {\n        width: 100%;\n    }\n\n    .form-rbt-updt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n\n    .submit-rbt-updt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-rbt-updt-btn:hover {\n        background: #0056b3;\n    }\n\n    .parameter-rbt-updt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n\n    .parameter-rbt-updt-item input,\n    .parameter-rbt-updt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .remove-rbt-updt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n\n    .add-btn-rbt-updt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-rbt-updt\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-rbt-updt\" class=\"form-rbt-updt-container\">\n    <div class=\"form-rbt-updt-group form-rbt-updt-group-destac full-width\">\n        <label>Select Robot:</label>\n        <select id=\"robotId-rbt-updt\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-rbt-updt-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-updt\" placeholder=\"Name of the robot\" required disabled>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime-rbt-updt\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime-rbt-updt\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-rbt-updt\"></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital-rbt-updt\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss-rbt-updt\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain-rbt-updt\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId-rbt-updt\" size=\"2\" multiple required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group full-width\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer-rbt-updt\"></div>\n        <button type=\"button\" class=\"add-btn-rbt-updt\" onclick=\"addParameterRobotUpdate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Simulation Mode: <input type=\"checkbox\" id=\"simulationMode-rbt-updt\"></label>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-rbt-updt\"></label>\n    </div>\n\n    <button id=\"submitBtn-rbt-updt\" type=\"button\" class=\"form-rbt-updt-group submit-rbt-updt-btn full-width\" onclick=\"submitFormRobotUpdate()\">Atualizar</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotUpdate(inputs) {\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"robotId-rbt-updt\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket-rbt-updt\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId-rbt-updt\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol-rbt-updt\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n        function getSelectedTradeStrategiesRobotUpdate() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId-rbt-updt\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n        function addParameterRobotUpdate() {\n            var container = document.getElementById(\"parameterContainer-rbt-updt\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-rbt-updt-item\");\n            \n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" required>\n                <select class=\"param-rbt-updt-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" required>\n                <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n            `;\n            container.appendChild(div);\n        }\n        window.addParameterRobotUpdate = addParameterRobotUpdate;\n        function removeParameterRobotUpdate(button) {\n            button.parentElement.remove();\n        }\n        window.removeParameterRobotUpdate = removeParameterRobotUpdate;\n        function getParametersRobotUpdate() {\n            var params = [];\n            document.querySelectorAll(\".parameter-rbt-updt-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-rbt-updt-name\").value,\n                    key: item.querySelector(\".param-rbt-updt-key\").value,\n                    type: item.querySelector(\".param-rbt-updt-type\").value,\n                    description: item.querySelector(\".param-rbt-updt-description\").value || undefined,\n                    value: item.querySelector(\".param-rbt-updt-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n        function populateForm(robot) {\n            document.getElementById(\"name-rbt-updt\").value = robot.name || '';\n            document.getElementById(\"lifetime-rbt-updt\").value = robot.lifetime || '';\n            document.getElementById(\"operationCycleTime-rbt-updt\").value = robot.operationCycleTime || '';\n            document.getElementById(\"tradeMarket-rbt-updt\").value = robot.tradeMarket || '';\n            document.getElementById(\"initialCapital-rbt-updt\").value = robot.initialCapital || '';\n            document.getElementById(\"stopLoss-rbt-updt\").value = robot.stopLoss || '';\n            document.getElementById(\"stopGain-rbt-updt\").value = robot.stopGain || '';\n            document.getElementById(\"brokerId-rbt-updt\").value = robot.brokerId || '';\n            document.getElementById(\"currencySymbol-rbt-updt\").value = robot.currencySymbol || '';\n            document.getElementById(\"simulationMode-rbt-updt\").checked = robot.simulationMode || false;\n\n            var parameterContainer = document.getElementById(\"parameterContainer-rbt-updt\");\n            parameterContainer.innerHTML = '';\n            if (robot.otherParams) {\n                robot.otherParams.forEach(param => {\n                    var div = document.createElement(\"div\");\n                    div.classList.add(\"parameter-rbt-updt-item\");\n                    // div.innerHTML = `\n                    //     <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" value=\"${param.name}\" required>\n                    //     <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" value=\"${param.key}\" required>\n                    //     <select class=\"param-rbt-updt-type\">\n                    //         <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                    //         <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                    //     </select>\n                    //     <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\" value=\"${param.description || ''}\">\n                    //     <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" value=\"${param.value}\" required>\n                    //     <button type=\"button\" class=\"remove-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n                    // `;\n\n                    div.innerHTML = `\n                        <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" value=\"${param.name}\" required>\n                        <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" value=\"${param.key}\" required>\n                        <select class=\"param-rbt-updt-type\">\n                            <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                            <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                        </select>\n                        <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\" value=\"${param.description || ''}\">\n                        <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" value=\"${param.value}\" required>\n                        <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n                    `;\n                    parameterContainer.appendChild(div);\n                });\n            }\n            var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n            dropdownTradeStrategies.querySelectorAll(\"option\").forEach(option => option.selected = false);\n            if (robot.tradeStrategyId) {\n                robot.tradeStrategyId.forEach((strategy) => {\n                    let option = dropdownTradeStrategies.querySelector(`option[value=\"${strategy}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"robotId-rbt-updt\").addEventListener(\"change\", function() {\n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading-rbt-updt\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    scope.msg.payload.robot = data;\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        });\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n        document.getElementById(\"submitBtn-rbt-updt\").addEventListener(\"click\", submitFormRobotUpdate);\n\n        function submitFormRobotUpdate() {\n            var form = document.getElementById(\"form-rbt-updt\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }            \n\n            var originalData = scope.msg.payload.robot || {}; // Dados originais do robô\n            var formData = {};\n            var fieldsToCheck = {\n                name: \"name-rbt-updt\",\n                lifetime: \"lifetime-rbt-updt\",\n                operationCycleTime: \"operationCycleTime-rbt-updt\",\n                tradeMarket: \"tradeMarket-rbt-updt\",\n                initialCapital: \"initialCapital-rbt-updt\",\n                stopLoss: \"stopLoss-rbt-updt\",\n                stopGain: \"stopGain-rbt-updt\",\n                brokerId: \"brokerId-rbt-updt\",\n                currencySymbol: \"currencySymbol-rbt-updt\",\n                simulationMode: \"simulationMode-rbt-updt\"\n            };\n\n            Object.keys(fieldsToCheck).forEach(key => {\n                var element = document.getElementById(fieldsToCheck[key]);\n                var value = element.type === \"checkbox\" ? element.checked : element.value;\n                if (value != originalData[key]) { // Comparar com os dados originais\n                    formData[key] = value;\n                }\n            });\n\n            var selectedTradeStrategies = getSelectedTradeStrategiesRobotUpdate();\n            if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeStrategyId || [])) {\n                formData.tradeStrategyId = selectedTradeStrategies;\n            }\n\n            var parameters = getParametersRobotUpdate();\n            if (!originalData.otherParams || parameters.length !== originalData.otherParams.length || \n                parameters.some((param, index) => \n                    param.name !== originalData.otherParams[index]?.name ||\n                    param.key !== originalData.otherParams[index]?.key ||\n                    param.type !== originalData.otherParams[index]?.type ||\n                    param.description !== originalData.otherParams[index]?.description ||\n                    param.value !== originalData.otherParams[index]?.value)) {\n                formData.otherParams = parameters;\n            }\n\n            if (Object.keys(formData).length === 0) {\n                alert(\"Nenhuma modificação foi detectada no formulário.\");\n                return;\n            }\n\n            // scope.send({ \n            //     payload: {\n            //         robot_id: originalData._id,\n            //         body: formData\n            //     } \n            // });\n            scope.send({ \n                robot_id: originalData._id,\n                body: formData\n            });\n\n            // 🚀 Input Parameters:\n            // --> id: \"67d9c9581fc3244c8c033a64\";\n            // -----------------\n            // --> entity: {\n            // \"robot_id\": \"67d9c9581fc3244c8c033a64\",\n            // \"formData\": {\n            //     \"tradeStrategyId\": [\n            //     \"67cb05b4cfb092fc042de34d\",\n            //     \"67d08fab735cb1c700914d94\"\n            //     ]\n            // }\n            // } \n\n            // 🚀 Input Parameters:\n            // --> id: \"67d9c9581fc3244c8c033a64\";\n            // -----------------\n            // --> entity: {\n            // \"tradeStrategyId\": [\n            //     \"67cb05b4cfb092fc042de34d\",\n            //     \"67d08fab735cb1c700914d94\"\n            // ]\n            // }\n\n            if (!document.getElementById(\"manterDados-rbt-updt\").checked) {\n                form.reset();\n                document.getElementById(\"parameterContainer-rbt-updt\").innerHTML = '';\n            }\n        }\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotUpdate(msg);\n        });\n    })(scope);\n</script>",
+        "format": "<style>\n    .form-rbt-updt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-rbt-updt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-rbt-updt-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n    .form-rbt-updt-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n    .form-rbt-updt-group.full-width {\n        grid-column: span 2;\n    }\n    .form-rbt-updt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-rbt-updt-group input, \n    .form-rbt-updt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-rbt-updt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-rbt-updt-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-rbt-updt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-rbt-updt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-rbt-updt-btn:hover {\n        background: #0056b3;\n    }\n    .submit-rbt-del-btn {\n        background: #fc2929;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-rbt-del-btn:hover {\n        background:  #ff0000;\n    }\n    .parameter-rbt-updt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n    .parameter-rbt-updt-item input, .parameter-rbt-updt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .remove-rbt-updt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n    .add-btn-rbt-updt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-rbt-updt\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-rbt-updt\" class=\"form-rbt-updt-container\">\n    <div class=\"form-rbt-updt-group form-rbt-updt-group-destac full-width\">\n        <label>Select Robot:</label>\n        <select id=\"select-rbt-rbt-updt\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-rbt-updt-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-updt\" placeholder=\"Name of the robot\" required disabled>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime-rbt-updt\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>    \n    <div class=\"form-rbt-updt-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime-rbt-updt\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>    \n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-rbt-updt\"></select>\n    </div>    \n    <div class=\"form-rbt-updt-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital-rbt-updt\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss-rbt-updt\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain-rbt-updt\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId-rbt-updt\" size=\"2\" multiple required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group full-width\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer-rbt-updt\"></div>\n        <button type=\"button\" class=\"add-btn-rbt-updt\" onclick=\"addParameterRobotUpdate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Simulation Mode: <input type=\"checkbox\" id=\"simulationMode-rbt-updt\"></label>        \n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-rbt-updt\"></label>\n    </div>\n\n    <button id=\"submitBtn-rbt-del\" type=\"button\" class=\"form-rbt-updt-group submit-rbt-del-btn\">Delete</button>\n    <button id=\"submitBtn-rbt-updt\" type=\"button\" class=\"form-rbt-updt-group submit-rbt-updt-btn\">Update</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotUpdate(inputs) {\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"select-rbt-rbt-updt\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket-rbt-updt\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId-rbt-updt\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol-rbt-updt\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n        function getSelectedTradeStrategiesRobotUpdate() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId-rbt-updt\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n        function addParameterRobotUpdate() {\n            var container = document.getElementById(\"parameterContainer-rbt-updt\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-rbt-updt-item\");\n            \n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" required>\n                <select class=\"param-rbt-updt-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" required>\n                <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n            `;\n            container.appendChild(div);\n        }\n        window.addParameterRobotUpdate = addParameterRobotUpdate;\n        function removeParameterRobotUpdate(button) {\n            button.parentElement.remove();\n        }\n        window.removeParameterRobotUpdate = removeParameterRobotUpdate;\n        function getParametersRobotUpdate() {\n            var params = [];\n            document.querySelectorAll(\".parameter-rbt-updt-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-rbt-updt-name\").value,\n                    key: item.querySelector(\".param-rbt-updt-key\").value,\n                    type: item.querySelector(\".param-rbt-updt-type\").value,\n                    description: item.querySelector(\".param-rbt-updt-description\").value || undefined,\n                    value: item.querySelector(\".param-rbt-updt-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n        function populateForm(robot) {\n            document.getElementById(\"name-rbt-updt\").value = robot.name || '';\n            document.getElementById(\"lifetime-rbt-updt\").value = robot.lifetime || '';\n            document.getElementById(\"operationCycleTime-rbt-updt\").value = robot.operationCycleTime || '';\n            document.getElementById(\"tradeMarket-rbt-updt\").value = robot.tradeMarket || '';\n            document.getElementById(\"initialCapital-rbt-updt\").value = robot.initialCapital || '';\n            document.getElementById(\"stopLoss-rbt-updt\").value = robot.stopLoss || '';\n            document.getElementById(\"stopGain-rbt-updt\").value = robot.stopGain || '';\n            document.getElementById(\"brokerId-rbt-updt\").value = robot.brokerId || '';\n            document.getElementById(\"currencySymbol-rbt-updt\").value = robot.currencySymbol || '';\n            document.getElementById(\"simulationMode-rbt-updt\").checked = robot.simulationMode || false;\n\n            var parameterContainer = document.getElementById(\"parameterContainer-rbt-updt\");\n            parameterContainer.innerHTML = '';\n            if (robot.otherParams) {\n                robot.otherParams.forEach(param => {\n                    var div = document.createElement(\"div\");\n                    div.classList.add(\"parameter-rbt-updt-item\");\n                    div.innerHTML = `\n                        <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" value=\"${param.name}\" required>\n                        <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" value=\"${param.key}\" required>\n                        <select class=\"param-rbt-updt-type\">\n                            <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                            <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                        </select>\n                        <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\" value=\"${param.description || ''}\">\n                        <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" value=\"${param.value}\" required>\n                        <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n                    `;\n                    parameterContainer.appendChild(div);\n                });\n            }\n            var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n            dropdownTradeStrategies.querySelectorAll(\"option\").forEach(option => option.selected = false);\n            if (robot.tradeStrategyId) {\n                robot.tradeStrategyId.forEach((strategy) => {\n                    let option = dropdownTradeStrategies.querySelector(`option[value=\"${strategy}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"select-rbt-rbt-updt\").addEventListener(\"change\", loadRobots);\n        \n        function loadRobots() {            \n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading-rbt-updt\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    scope.msg.payload.robot = data;\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        }\n\n        document.addEventListener(\"DOMContentLoaded\", function() {\n            loadRobots.call(document.getElementById(\"select-rbt-rbt-updt\"));\n        });\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                \n\n        document.getElementById(\"submitBtn-rbt-updt\").addEventListener(\"click\", submitFormRobotUpdate);\n        \n        function submitFormRobotUpdate() {\n            var form = document.getElementById(\"form-rbt-updt\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n            \n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }            \n\n            var originalData = scope.msg.payload.robot || {}; // Dados originais do robô\n            var formData = {};\n            var fieldsToCheck = {\n                name: \"name-rbt-updt\",\n                lifetime: \"lifetime-rbt-updt\",\n                operationCycleTime: \"operationCycleTime-rbt-updt\",\n                tradeMarket: \"tradeMarket-rbt-updt\",\n                initialCapital: \"initialCapital-rbt-updt\",\n                stopLoss: \"stopLoss-rbt-updt\",\n                stopGain: \"stopGain-rbt-updt\",\n                brokerId: \"brokerId-rbt-updt\",\n                currencySymbol: \"currencySymbol-rbt-updt\",\n                simulationMode: \"simulationMode-rbt-updt\"\n            };\n\n            Object.keys(fieldsToCheck).forEach(key => {\n                var element = document.getElementById(fieldsToCheck[key]);\n                var value = element.type === \"checkbox\" ? element.checked : element.value;\n                if (value != originalData[key]) { // Comparar com os dados originais\n                    formData[key] = value;\n                }\n            });\n            \n            var selectedTradeStrategies = getSelectedTradeStrategiesRobotUpdate();\n            if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeStrategyId || [])) {\n                formData.tradeStrategyId = selectedTradeStrategies;\n            }\n\n            var parameters = getParametersRobotUpdate();\n            if (!originalData.otherParams || parameters.length !== originalData.otherParams.length || \n                parameters.some((param, index) => \n                    param.name !== originalData.otherParams[index]?.name ||\n                    param.key !== originalData.otherParams[index]?.key ||\n                    param.type !== originalData.otherParams[index]?.type ||\n                    param.description !== originalData.otherParams[index]?.description ||\n                    param.value !== originalData.otherParams[index]?.value)) {\n                        formData.otherParams = parameters;\n                    }\n                    \n                    if (Object.keys(formData).length === 0) {\n                        alert(\"Nenhuma modificação foi detectada no formulário.\");\n                        return;\n                    }\n                    \n                    scope.send({ \n                        robot_id: originalData._id,\n                        body: formData,\n                        is_delete: false\n                    });\n                    \n                    if (!document.getElementById(\"manterDados-rbt-updt\").checked) {\n                        form.reset();\n                        document.getElementById(\"parameterContainer-rbt-updt\").innerHTML = '';\n                    }\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"submitBtn-rbt-del\").addEventListener(\"click\", submitFormRobotDelete);\n        \n        function submitFormRobotDelete() {\n            var form = document.getElementById(\"form-rbt-updt\");\n            var requiredFields = document.getElementById(\"select-rbt-rbt-updt\");\n            var missingFields = [];\n\n            if (!requiredFields.value.trim()) {\n                missingFields.push(requiredFields.previousElementSibling?.textContent || \"Campo obrigatório\");\n            } \n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            if (!confirm(`Tem certeza de que deseja deletar o robô \"${scope.msg.payload.robot.name}\"?`)) {\n                return;\n            }\n\n            scope.send({ \n                robot_id: scope.msg.payload.robot._id, \n                is_delete: true \n            });\n\n            var dropdownRobots = document.getElementById(\"select-rbt-rbt-updt\");\n            var selectedOption = dropdownRobots.querySelector(`option[value=\"${scope.msg.payload.robot._id}\"]`);\n            if (selectedOption) selectedOption.remove();\n\n            form.reset();\n            document.getElementById(\"parameterContainer-rbt-updt\").innerHTML = '';\n        }\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotUpdate(msg);\n        });\n    })(scope);\n</script>",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -638,7 +638,7 @@
         "wires": [
             [
                 "0efab88822f6f914",
-                "3c3f5d97bf097edc"
+                "b34cd63ff94318d3"
             ]
         ]
     },
@@ -699,7 +699,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
+        "x": 740,
         "y": 560,
         "wires": []
     },
@@ -748,8 +748,7 @@
                 "7a3e2909c0d918d6",
                 "015bc4236859233c",
                 "267ad5ddfc8746f6",
-                "2259bde25409c582",
-                "29a0473e6c549305"
+                "2259bde25409c582"
             ]
         ]
     },
@@ -813,12 +812,12 @@
         "authType": "bearer",
         "senderr": false,
         "headers": [],
-        "x": 1140,
-        "y": 520,
+        "x": 1400,
+        "y": 560,
         "wires": [
             [
                 "2f381c376b386bd7",
-                "a20f77603f651fda"
+                "46f223c48f745b37"
             ]
         ]
     },
@@ -835,15 +834,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1180,
-        "y": 560,
+        "x": 1400,
+        "y": 600,
         "wires": []
     },
     {
         "id": "3c3f5d97bf097edc",
         "type": "function",
         "z": "96a964c84114dfed",
-        "name": "format put request",
+        "name": "format update request",
         "func": "msg.payload = msg.body\nmsg.robot_id = msg.robot_id;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -851,8 +850,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 930,
-        "y": 520,
+        "x": 1160,
+        "y": 560,
         "wires": [
             [
                 "b7fcb82d26c96073"
@@ -873,40 +872,49 @@
         "raw": false,
         "className": "",
         "topic": "",
-        "name": "",
-        "x": 1370,
-        "y": 640,
+        "name": "Notification",
+        "x": 1830,
+        "y": 520,
         "wires": []
     },
     {
-        "id": "a20f77603f651fda",
-        "type": "function",
+        "id": "b34cd63ff94318d3",
+        "type": "switch",
         "z": "96a964c84114dfed",
-        "name": "Process Response",
-        "func": "msg.topic = 'Robot Update'\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = 'Robot Update successfully!'\n} else {\n    msg.payload = 'Failed to update robot: ' + msg.payload.message\n}\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1150,
-        "y": 640,
+        "name": "delete | update",
+        "property": "is_delete",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 920,
+        "y": 520,
         "wires": [
             [
-                "c713d4e5dfcb370f"
+                "f23f60526644eff2"
+            ],
+            [
+                "3c3f5d97bf097edc"
             ]
         ]
     },
     {
-        "id": "29a0473e6c549305",
+        "id": "f23f60526644eff2",
         "type": "http request",
         "z": "96a964c84114dfed",
-        "name": "GET Robots",
-        "method": "GET",
+        "name": "DELETE robots/id",
+        "method": "DELETE",
         "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/robots",
+        "paytoqs": "body",
+        "url": "localhost:5000/robots/{{{robot_id}}}",
         "tls": "",
         "persist": true,
         "proxy": "",
@@ -914,157 +922,32 @@
         "authType": "bearer",
         "senderr": false,
         "headers": [],
-        "x": 310,
-        "y": 880,
+        "x": 1150,
+        "y": 480,
         "wires": [
             [
-                "d523b9781bd750f3"
+                "46f223c48f745b37"
             ]
         ]
     },
     {
-        "id": "d4a7832c23df5a72",
-        "type": "ui_template",
-        "z": "96a964c84114dfed",
-        "group": "e505f16897b6fcf4",
-        "name": "Update Form",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "format": "<style>\n    .form-rbt-del-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-del-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-del-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n\n    .form-rbt-del-group.full-width {\n        grid-column: span 2;\n    }\n\n    .form-rbt-del-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-rbt-del-group input,\n    .form-rbt-del-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .submit-rbt-del-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-rbt-del-btn:hover {\n        background: #0056b3;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-rbt-del\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-rbt-del\" class=\"form-rbt-del-container\">\n    <div class=\"form-rbt-del-group form-rbt-del-group-destac full-width\">\n        <label>Select Robot:</label>\n        <select id=\"robotId-rbt-del\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-rbt-del-group full-width\">\n        <label>Id:</label>\n        <input type=\"text\" id=\"id-rbt-del\" placeholder=\"Id of the robot\" disabled>\n    </div>\n    <div class=\"form-rbt-del-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-del\" placeholder=\"Name of the robot\" disabled>\n    </div>\n\n    <button id=\"submitBtn-rbt-del\" type=\"button\" class=\"form-rbt-del-group submit-rbt-del-btn full-width\" onclick=\"submitFormRobotDelete()\">Delete</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotDelete(inputs) {\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"robotId-rbt-del\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n        }        \n\n        function populateForm(robot) {\n            document.getElementById(\"id-rbt-del\").value = robot._id || '';\n            document.getElementById(\"name-rbt-del\").value = robot.name || '';\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"robotId-rbt-del\").addEventListener(\"change\", function() {\n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading-rbt-del\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    scope.msg.payload.robot = data;\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        });\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n        document.getElementById(\"submitBtn-rbt-del\").addEventListener(\"click\", submitFormRobotDelete);\n\n        function submitFormRobotDelete() {\n            var form = document.getElementById(\"form-rbt-del\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            var formData = {\n                id: document.getElementById(\"id-rbt-del\").value,\n                name: document.getElementById(\"name-rbt-del\").value\n            };\n\n            scope.send({ payload: formData });\n            \n            // form.reset();\n        }\n\n        window.submitFormRobotDelete = submitFormRobotDelete;\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotDelete(msg);\n        });\n    })(scope);\n</script>",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 730,
-        "y": 880,
-        "wires": [
-            [
-                "7c0a33c063469858",
-                "82aa0cc7a6508c1d"
-            ]
-        ]
-    },
-    {
-        "id": "d523b9781bd750f3",
+        "id": "46f223c48f745b37",
         "type": "function",
         "z": "96a964c84114dfed",
-        "name": "Updt Robots",
-        "func": "msg.payload = {\n    robots: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n    }\n};\n\nreturn msg;",
+        "name": "Process Response 2",
+        "func": "if (msg.is_delete) {\n    msg.topic = 'Robot Delete'\n} else {\n    msg.topic = 'Robot Update'\n}\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = msg.topic + ' successfully!'\n} else {\n    msg.payload = 'Failed to ' + msg.topic + ' the robot: ' + msg.payload.message\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 510,
-        "y": 880,
+        "x": 1620,
+        "y": 520,
         "wires": [
             [
-                "d4a7832c23df5a72"
+                "c713d4e5dfcb370f"
             ]
-        ]
-    },
-    {
-        "id": "7c0a33c063469858",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "82aa0cc7a6508c1d",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "name": "Process delete form",
-        "func": "msg.topic = 'Robot Delete'\nmsg.payload = 'Tem certeza que deseja deletar o Robô ' + msg.payload.name\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 980,
-        "y": 880,
-        "wires": [
-            [
-                "1e0489ebe31c6f7b"
-            ]
-        ]
-    },
-    {
-        "id": "1e0489ebe31c6f7b",
-        "type": "ui_toast",
-        "z": "96a964c84114dfed",
-        "position": "prompt",
-        "displayTime": "3",
-        "highlight": "",
-        "sendall": true,
-        "outputs": 1,
-        "ok": "OK",
-        "cancel": "Cancel",
-        "raw": false,
-        "className": "",
-        "topic": "",
-        "name": "",
-        "x": 1230,
-        "y": 880,
-        "wires": [
-            [
-                "db606de9a10b7a06",
-                "f9aa11612da9ba7a"
-            ]
-        ]
-    },
-    {
-        "id": "db606de9a10b7a06",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1160,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "f9aa11612da9ba7a",
-        "type": "switch",
-        "z": "96a964c84114dfed",
-        "name": "",
-        "property": "payload",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 430,
-        "y": 1040,
-        "wires": [
-            []
         ]
     },
     {
