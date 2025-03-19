@@ -8,16 +8,18 @@
         "env": []
     },
     {
+        "id": "efbbf7c6caf47bc4",
+        "type": "tab",
+        "label": "User",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "b79e2d000ad57cc5",
         "type": "global-config",
         "name": "global-config",
-        "env": [
-            {
-                "name": "token",
-                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY3Y2IwNWI0Y2ZiMDkyZmMwNDJkZTM0ZCIsIm5hbWUiOiJSb2RyaWdvIFBpbWVudGVsIiwicm9sZSI6ImFkbWluaXN0cmF0aW9uIiwiZW1haWwiOiJwaW1lbnRlbG1zbkBob3RtYWlsLmNvbSIsInBhc3N3b3JkIjoiKioqKioqKioqKioqIiwiYWN0aXZlIjp0cnVlLCJfX3YiOjB9LCJpYXQiOjE3NDEzNTg1NDAsImV4cCI6MTc0MTk2MzM0MH0.rDnEU121yA6PnmmXY73gtxPWBxItXEbTRDg9jwocBwc",
-                "type": "str"
-            }
-        ]
+        "env": []
     },
     {
         "id": "07847beb957feba9",
@@ -101,7 +103,7 @@
             "name": "Armadillo",
             "hideToolbar": "false",
             "allowSwipe": "true",
-            "lockMenu": "true",
+            "lockMenu": "false",
             "allowTempTheme": "none",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
@@ -208,7 +210,7 @@
         "id": "74452ef95184deeb",
         "type": "ui_tab",
         "name": "Robot",
-        "icon": "dashboard",
+        "icon": "https://cdn-icons-png.flaticon.com/512/6134/6134346.png",
         "order": 1,
         "disabled": false,
         "hidden": false
@@ -227,7 +229,7 @@
         "tab": "74452ef95184deeb",
         "order": 1,
         "disp": true,
-        "width": "10",
+        "width": "15",
         "collapse": true,
         "className": ""
     },
@@ -238,7 +240,79 @@
         "tab": "74452ef95184deeb",
         "order": 2,
         "disp": true,
-        "width": "10",
+        "width": "15",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "a39c3c2e51ec99ce",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "4b26b578635f0731",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "4f2f2e39757eaae5",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 3
+    },
+    {
+        "id": "9d8bfd7e0d216779",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#15617e",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "0fe97ec4631a4c92",
+        "type": "ui-page",
+        "name": "Notification",
+        "ui": "ac3809d36e164af0",
+        "path": "/notification",
+        "icon": "bell-badge-outline",
+        "layout": "notebook",
+        "theme": "9d8bfd7e0d216779",
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "9508bb8465b1b1e5",
+        "type": "ui-group",
+        "name": "Default Notification",
+        "page": "0fe97ec4631a4c92",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "e505f16897b6fcf4",
+        "type": "ui_group",
+        "name": "Delete",
+        "tab": "74452ef95184deeb",
+        "order": 3,
+        "disp": true,
+        "width": "15",
         "collapse": true,
         "className": ""
     },
@@ -251,7 +325,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    .form-container {\n        display: flex;\n        flex-direction: column;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-group input,\n    .form-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .form-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n\n    .form-group input[type=\"range\"] {\n        width: 100%;\n    }\n\n    .form-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n\n    .submit-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-btn:hover {\n        background: #0056b3;\n    }\n\n    .parameter-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n\n    .parameter-item input,\n    .parameter-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .remove-btn {\n        background: red;\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n    }\n</style>\n\n<form id=\"formulario\" class=\"form-container\">\n    <div class=\"form-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name\" placeholder=\"Name of the robot\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket\"></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId\" required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId\" multiple required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol\" required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Simulation Mode:</label>\n        <input type=\"checkbox\" id=\"simulationMode\">\n    </div>\n    <div class=\"form-group\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer\"></div>\n        <button type=\"button\" class=\"add-btn\" onclick=\"addParameter()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-group\">\n        <label><input type=\"checkbox\" id=\"manterDados\"> Manter dados após envio</label>\n    </div>\n\n    <button id=\"submitBtn\" type=\"button\" class=\"submit-btn\" onclick=\"submitForm()\">Enviar</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdowns(inputs) {\n            console.log('--- INPUTS', inputs);\n\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n        function getSelectedTradeStrategies() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n\n\n        function addParameter() {\n            var container = document.getElementById(\"parameterContainer\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-item\");\n\n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-key\" required>\n                <select class=\"param-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-value\" required>\n                <button type=\"button\" class=\"remove-btn\" onclick=\"removeParameter(this)\">❌</button>\n            `;\n\n            container.appendChild(div);\n        }\n        function removeParameter(button) {\n            button.parentElement.remove();\n        }\n        function getParameters() {\n            var params = [];\n            document.querySelectorAll(\".parameter-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-name\").value,\n                    key: item.querySelector(\".param-key\").value,\n                    type: item.querySelector(\".param-type\").value,\n                    description: item.querySelector(\".param-description\").value || undefined,\n                    value: item.querySelector(\".param-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n\n        function submitForm() {\n            var form = document.getElementById(\"formulario\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            var formData = {                \n                name: document.getElementById(\"name\").value,\n                lifetime: document.getElementById(\"lifetime\").value,\n                operationCycleTime: document.getElementById(\"operationCycleTime\").value,\n                tradeMarket: document.getElementById(\"tradeMarket\").value,\n                initialCapital: document.getElementById(\"initialCapital\").value,\n                stopLoss: document.getElementById(\"stopLoss\").value,\n                stopGain: document.getElementById(\"stopGain\").value,\n                brokerId: document.getElementById(\"brokerId\").value,\n                tradeStrategyId: getSelectedTradeStrategies(),\n                currencySymbol: document.getElementById(\"currencySymbol\").value,\n                simulationMode: document.getElementById(\"simulationMode\").checked ,\n                otherParams: getParameters()\n            };\n\n            scope.send({ payload: formData });\n\n            if (!document.getElementById(\"manterDados\").checked) {\n                form.reset();\n            }\n        }\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdowns(msg);\n        });\n\n        document.getElementById(\"submitBtn\").addEventListener(\"click\", submitForm);\n    })(scope);\n</script>",
+        "format": "<style>\n    .form-rbt-crt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-crt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-crt-group.full-width {\n        grid-column: span 2;\n    }\n\n    .form-rbt-crt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-rbt-crt-group input,\n    .form-rbt-crt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .form-rbt-crt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n\n    .form-rbt-crt-group input[type=\"range\"] {\n        width: 100%;\n    }\n\n    .form-rbt-crt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n\n    .submit-rbt-crt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-rbt-crt-btn:hover {\n        background: #0056b3;\n    }\n\n    .parameter-rbt-crt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n\n    .parameter-rbt-crt-item input,\n    .parameter-rbt-crt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .remove-rbt-crt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n\n    .add-btn-rbt-crt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n</style>\n\n<form id=\"form-rbt-crt\" class=\"form-rbt-crt-container\">\n    <div class=\"form-rbt-crt-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-crt\" placeholder=\"Name of the robot\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime-rbt-crt\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime-rbt-crt\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-rbt-crt\"></select>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital-rbt-crt\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss-rbt-crt\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain-rbt-crt\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId-rbt-crt\" required></select>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId-rbt-crt\" size=\"2\" multiple required></select>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol-rbt-crt\" required></select>\n    </div>\n    <div class=\"form-rbt-crt-group full-width\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer-rbt-crt\"></div>\n        <button type=\"button\" class=\"add-btn-rbt-crt\" onclick=\"addParameterRobotCreate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Simulation Mode: <input type=\"checkbox\" id=\"simulationMode-rbt-crt\"></label>\n\n    </div>\n    <div class=\"form-rbt-crt-group\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-rbt-crt\"></label>\n    </div>\n\n    <button id=\"submitBtn-rbt-crt\" type=\"button\" class=\"form-rbt-crt-group submit-rbt-crt-btn full-width\" onclick=\"submitFormRobotCreate()\">Enviar</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotCreate(inputs) {\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket-rbt-crt\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId-rbt-crt\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-crt\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol-rbt-crt\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n        function getSelectedTradeStrategiesRobotCreate() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId-rbt-crt\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n        function addParameterRobotCreate() {\n            var container = document.getElementById(\"parameterContainer-rbt-crt\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-rbt-crt-item\");\n            \n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-crt-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-crt-key\" required>\n                <select class=\"param-rbt-crt-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-crt-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-crt-value\" required>\n                <button type=\"button\" class=\"remove-rbt-crt-btn\" onclick=\"removeParameterRobotCreate(this)\">❌</button>\n            `;\n            container.appendChild(div);\n        }\n        window.addParameterRobotCreate = addParameterRobotCreate;\n        function removeParameterRobotCreate(button) {\n            button.parentElement.remove();\n        }\n        window.removeParameterRobotCreate = removeParameterRobotCreate;\n        function getParametersRobotCreate() {\n            var params = [];\n            document.querySelectorAll(\".parameter-rbt-crt-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-rbt-crt-name\").value,\n                    key: item.querySelector(\".param-rbt-crt-key\").value,\n                    type: item.querySelector(\".param-rbt-crt-type\").value,\n                    description: item.querySelector(\".param-rbt-crt-description\").value || undefined,\n                    value: item.querySelector(\".param-rbt-crt-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n        document.getElementById(\"submitBtn-rbt-crt\").addEventListener(\"click\", submitFormRobotCreate);\n\n        function submitFormRobotCreate() {\n            var form = document.getElementById(\"form-rbt-crt\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            var formData = {\n                name: document.getElementById(\"name-rbt-crt\").value,\n                lifetime: document.getElementById(\"lifetime-rbt-crt\").value,\n                operationCycleTime: document.getElementById(\"operationCycleTime-rbt-crt\").value,\n                tradeMarket: document.getElementById(\"tradeMarket-rbt-crt\").value,\n                initialCapital: document.getElementById(\"initialCapital-rbt-crt\").value,\n                stopLoss: document.getElementById(\"stopLoss-rbt-crt\").value,\n                stopGain: document.getElementById(\"stopGain-rbt-crt\").value,\n                brokerId: document.getElementById(\"brokerId-rbt-crt\").value,\n                tradeStrategyId: getSelectedTradeStrategiesRobotCreate(),\n                currencySymbol: document.getElementById(\"currencySymbol-rbt-crt\").value,\n                simulationMode: document.getElementById(\"simulationMode-rbt-crt\").checked ,\n                otherParams: getParametersRobotCreate()\n            };\n\n            scope.send({ payload: formData });\n\n            if (!document.getElementById(\"manterDados-rbt-crt\").checked) {\n                form.reset();\n            }\n        }\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotCreate(msg);\n        });\n    })(scope);\n</script>",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -279,8 +353,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1130,
-        "y": 180,
+        "x": 930,
+        "y": 280,
         "wires": []
     },
     {
@@ -312,7 +386,7 @@
         "type": "function",
         "z": "96a964c84114dfed",
         "name": "Markets",
-        "func": "msg.payload = {\n    tradeMarkets: {\n        options: msg.payload.tradeMarkets.map(entry => ({ label: entry, value: entry })),\n        // selected: msg.payload.tradeMarkets.includes(\"sports\") ? \"sports\" : msg.payload[0] || \"\" // Define \"sports\" se existir, senão o primeiro item ou vazio\n    }\n};\n\nreturn msg;",
+        "func": "msg.payload = {\n    tradeMarkets: {\n        options: msg.payload.tradeMarkets.map(entry => ({ label: entry, value: entry })),\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -323,7 +397,8 @@
         "y": 140,
         "wires": [
             [
-                "a8b4170e47b31601"
+                "a8b4170e47b31601",
+                "40adde3cbc88365e"
             ]
         ]
     },
@@ -356,7 +431,7 @@
         "type": "function",
         "z": "96a964c84114dfed",
         "name": "Strategies",
-        "func": "msg.payload = {\n    tradeStrategies: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n        // selected: msg.payload.includes(\"Rodrigo Pimentel\") ? \"Rodrigo Pimentel\" : msg.payload[0] || \"\" // Define \"sports\" se existir, senão o primeiro item ou vazio\n    }\n};\n\nreturn msg;",
+        "func": "msg.payload = {\n    tradeStrategies: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -367,7 +442,8 @@
         "y": 200,
         "wires": [
             [
-                "a8b4170e47b31601"
+                "a8b4170e47b31601",
+                "40adde3cbc88365e"
             ]
         ]
     },
@@ -400,7 +476,7 @@
         "type": "function",
         "z": "96a964c84114dfed",
         "name": "Brokers",
-        "func": "msg.payload = {\n    brokers: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n        // selected: msg.payload.includes(\"Rodrigo Pimentel\") ? \"Rodrigo Pimentel\" : msg.payload[0] || \"\" // Define \"sports\" se existir, senão o primeiro item ou vazio\n    }\n};\n\nreturn msg;",
+        "func": "msg.payload = {\n    brokers: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -411,7 +487,8 @@
         "y": 280,
         "wires": [
             [
-                "a8b4170e47b31601"
+                "a8b4170e47b31601",
+                "40adde3cbc88365e"
             ]
         ]
     },
@@ -444,7 +521,7 @@
         "type": "function",
         "z": "96a964c84114dfed",
         "name": "Currency",
-        "func": "msg.payload = {\n    currencySymbol: {\n        options: msg.payload.currencySymbols.map(entry => ({ label: entry, value: entry })),\n        // selected: msg.payload.currencySymbols.includes(\"sports\") ? \"sports\" : msg.payload[0] || \"\" // Define \"sports\" se existir, senão o primeiro item ou vazio\n    }\n};\n\nreturn msg;",
+        "func": "msg.payload = {\n    currencySymbol: {\n        options: msg.payload.currencySymbols.map(entry => ({ label: entry, value: entry })),\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -455,7 +532,8 @@
         "y": 340,
         "wires": [
             [
-                "a8b4170e47b31601"
+                "a8b4170e47b31601",
+                "40adde3cbc88365e"
             ]
         ]
     },
@@ -497,8 +575,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 180,
+        "x": 730,
+        "y": 280,
         "wires": []
     },
     {
@@ -506,7 +584,7 @@
         "type": "function",
         "z": "96a964c84114dfed",
         "name": "Process Response",
-        "func": "if (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = {\n        message: 'Robot created successfully!',\n        type: 'success'\n    };\n} else {\n    msg.payload = {\n        message: 'Failed to create robot: ' + msg.payload.error,\n        type: 'error'\n    };\n}\nreturn msg;",
+        "func": "msg.topic = 'Robot Create'\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = 'Robot Create successfully!'\n} else {\n    msg.payload = 'Failed to create robot: ' + msg.payload.message\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
@@ -537,7 +615,7 @@
         "topic": "",
         "name": "Notification",
         "x": 1130,
-        "y": 300,
+        "y": 340,
         "wires": []
     },
     {
@@ -546,20 +624,21 @@
         "z": "96a964c84114dfed",
         "group": "6a5055627c1fcc05",
         "name": "Update Form",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    .form-container {\n        display: flex;\n        flex-direction: column;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-group input,\n    .form-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .form-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n\n    .form-group input[type=\"range\"] {\n        width: 100%;\n    }\n\n    .form-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n\n    .submit-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-btn:hover {\n        background: #0056b3;\n    }\n\n    .parameter-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n\n    .parameter-item input,\n    .parameter-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .remove-btn {\n        background: red;\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n</style>\n\n<div id=\"loading\" class=\"loading\">Carregando...</div>\n\n<form id=\"formulario_update\" class=\"form-container\">\n    <div class=\"form-group\">\n        <label>Select Robot:</label>\n        <select id=\"robotId\" required></select>\n    </div>\n\n    <div class=\"form-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket\"></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId\" required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId\" multiple required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol\" required></select>\n    </div>\n    <div class=\"form-group\">\n        <label>Simulation Mode:</label>\n        <input type=\"checkbox\" id=\"simulationMode\">\n    </div>\n    <div class=\"form-group\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer\"></div>\n        <button type=\"button\" class=\"add-btn\" onclick=\"addParameter()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-group\">\n        <label><input type=\"checkbox\" id=\"manterDados\"> Manter dados após envio</label>\n    </div>\n\n    <button id=\"submitBtn\" type=\"button\" class=\"submit-btn\" onclick=\"submitForm()\">Atualizar</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdowns(inputs) {\n            console.log('--- INPUTS', inputs);\n\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"robotId\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n\n        function populateForm(robot) {\n            console.log('Populando formulário com os dados do robô:', robot);\n\n            document.querySelector(\"#formulario_update #name\").value = robot.name || '';\n            document.querySelector(\"#formulario_update #lifetime\").value = robot.lifetime || '';\n            document.querySelector(\"#formulario_update #operationCycleTime\").value = robot.operationCycleTime || '';\n            document.querySelector(\"#formulario_update #tradeMarket\").value = robot.tradeMarket || '';\n            document.querySelector(\"#formulario_update #initialCapital\").value = robot.initialCapital || '';\n            document.querySelector(\"#formulario_update #stopLoss\").value = robot.stopLoss || '';\n            document.querySelector(\"#formulario_update #stopGain\").value = robot.stopGain || '';\n            document.querySelector(\"#formulario_update #brokerId\").value = robot.brokerId || '';\n            document.querySelector(\"#formulario_update #currencySymbol\").value = robot.currencySymbol || '';\n            document.querySelector(\"#formulario_update #simulationMode\").checked = robot.simulationMode || false;\n\n            // Popula os parâmetros adicionais\n            // var parameterContainer = document.getElementById(\"parameterContainer\");\n            var parameterContainer =document.querySelector(\"#formulario_update #parameterContainer\");\n            parameterContainer.innerHTML = '';\n            if (robot.otherParams) {\n                robot.otherParams.forEach(param => {\n                    var div = document.createElement(\"div\");\n                    div.classList.add(\"parameter-item\");\n\n                    div.innerHTML = `\n                        <input type=\"text\" placeholder=\"Name\" class=\"param-name\" value=\"${param.name}\" required>\n                        <input type=\"text\" placeholder=\"Key\" class=\"param-key\" value=\"${param.key}\" required>\n                        <select class=\"param-type\">\n                            <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                            <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                        </select>\n                        <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-description\" value=\"${param.description || ''}\">\n                        <input type=\"text\" placeholder=\"Value\" class=\"param-value\" value=\"${param.value}\" required>\n                        <button type=\"button\" class=\"remove-btn\" onclick=\"removeParameter(this)\">❌</button>\n                    `;\n\n                    parameterContainer.appendChild(div);\n                });\n            }\n        }\n\n        function getSelectedTradeStrategies() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n\n        function addParameter() {\n            var container = document.getElementById(\"parameterContainer\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-item\");\n\n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-key\" required>\n                <select class=\"param-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-value\" required>\n                <button type=\"button\" class=\"remove-btn\" onclick=\"removeParameter(this)\">❌</button>\n            `;\n\n            container.appendChild(div);\n        }\n\n        function removeParameter(button) {\n            button.parentElement.remove();\n        }\n\n        function getParameters() {\n            var params = [];\n            document.querySelectorAll(\".parameter-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-name\").value,\n                    key: item.querySelector(\".param-key\").value,\n                    type: item.querySelector(\".param-type\").value,\n                    description: item.querySelector(\".param-description\").value || undefined,\n                    value: item.querySelector(\".param-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n        function submitForm() {\n            var form = document.getElementById(\"formulario_update\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            var formData = {                \n                id: document.getElementById(\"robotId\").value,\n                name: document.getElementById(\"name\").value,\n                lifetime: document.getElementById(\"lifetime\").value,\n                operationCycleTime: document.getElementById(\"operationCycleTime\").value,\n                tradeMarket: document.getElementById(\"tradeMarket\").value,\n                initialCapital: document.getElementById(\"initialCapital\").value,\n                stopLoss: document.getElementById(\"stopLoss\").value,\n                stopGain: document.getElementById(\"stopGain\").value,\n                brokerId: document.getElementById(\"brokerId\").value,\n                tradeStrategyId: getSelectedTradeStrategies(),\n                currencySymbol: document.getElementById(\"currencySymbol\").value,\n                simulationMode: document.getElementById(\"simulationMode\").checked ,\n                otherParams: getParameters()\n            };\n\n            scope.send({ payload: formData });\n\n            if (!document.getElementById(\"manterDados\").checked) {\n                form.reset();\n            }\n        }\n\n        document.getElementById(\"robotId\").addEventListener(\"change\", function() {\n            console.log('--- Robot ID:', this.value);\n            \n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        });\n\n        scope.$watch('msg.payload', function(msg) {\n            populateDropdowns(msg);\n        });\n\n        document.getElementById(\"submitBtn\").addEventListener(\"click\", submitForm);\n    })(scope);\n</script>",
+        "format": "<style>\n    .form-rbt-updt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-updt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-updt-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n\n    .form-rbt-updt-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n\n    .form-rbt-updt-group.full-width {\n        grid-column: span 2;\n    }\n\n    .form-rbt-updt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-rbt-updt-group input,\n    .form-rbt-updt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .form-rbt-updt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n\n    .form-rbt-updt-group input[type=\"range\"] {\n        width: 100%;\n    }\n\n    .form-rbt-updt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n\n    .submit-rbt-updt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-rbt-updt-btn:hover {\n        background: #0056b3;\n    }\n\n    .parameter-rbt-updt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n\n    .parameter-rbt-updt-item input,\n    .parameter-rbt-updt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .remove-rbt-updt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n\n    .add-btn-rbt-updt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-rbt-updt\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-rbt-updt\" class=\"form-rbt-updt-container\">\n    <div class=\"form-rbt-updt-group form-rbt-updt-group-destac full-width\">\n        <label>Select Robot:</label>\n        <select id=\"robotId-rbt-updt\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-rbt-updt-group\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-updt\" placeholder=\"Name of the robot\" required disabled>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime-rbt-updt\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime-rbt-updt\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-rbt-updt\"></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital-rbt-updt\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss-rbt-updt\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain-rbt-updt\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId-rbt-updt\" size=\"2\" multiple required></select>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol-rbt-updt\" required></select>\n    </div>\n    <div class=\"form-rbt-updt-group full-width\">\n        <label>Additional Parameters:</label>\n        <div id=\"parameterContainer-rbt-updt\"></div>\n        <button type=\"button\" class=\"add-btn-rbt-updt\" onclick=\"addParameterRobotUpdate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Simulation Mode: <input type=\"checkbox\" id=\"simulationMode-rbt-updt\"></label>\n    </div>\n    <div class=\"form-rbt-updt-group\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-rbt-updt\"></label>\n    </div>\n\n    <button id=\"submitBtn-rbt-updt\" type=\"button\" class=\"form-rbt-updt-group submit-rbt-updt-btn full-width\" onclick=\"submitFormRobotUpdate()\">Atualizar</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotUpdate(inputs) {\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"robotId-rbt-updt\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n            if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n                var dropdownTradeMarket = document.getElementById(\"tradeMarket-rbt-updt\");\n                dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n                inputs.tradeMarkets.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeMarket.appendChild(opt);\n                });\n                if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n            }\n            if (inputs.brokers && inputs.brokers.options) {\n                var dropdownBrokers = document.getElementById(\"brokerId-rbt-updt\");\n                dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n                inputs.brokers.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownBrokers.appendChild(opt);\n                });\n                if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n            }\n            if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n                var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n                dropdownTradeStrategies.innerHTML = '';\n                inputs.tradeStrategies.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownTradeStrategies.appendChild(opt);\n                });\n                if (inputs.tradeStrategies.selected) {\n                    inputs.tradeStrategies.selected.forEach(selectedValue => {\n                        let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                        if (option) option.selected = true;\n                    });\n                }\n            }\n            if (inputs.currencySymbol && inputs.currencySymbol.options) {\n                var dropdownCurrencySymbol = document.getElementById(\"currencySymbol-rbt-updt\");\n                dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n                inputs.currencySymbol.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownCurrencySymbol.appendChild(opt);\n                });\n                if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n            }\n        }\n        function getSelectedTradeStrategiesRobotUpdate() {\n            let selectedOptions = document.getElementById(\"tradeStrategyId-rbt-updt\").selectedOptions;\n            return Array.from(selectedOptions).map(option => option.value);\n        }\n        function addParameterRobotUpdate() {\n            var container = document.getElementById(\"parameterContainer-rbt-updt\");\n\n            var div = document.createElement(\"div\");\n            div.classList.add(\"parameter-rbt-updt-item\");\n            \n            div.innerHTML = `\n                <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" required>\n                <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" required>\n                <select class=\"param-rbt-updt-type\">\n                    <option value=\"string\">String</option>\n                    <option value=\"number\">Number</option>\n                </select>\n                <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\">\n                <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" required>\n                <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n            `;\n            container.appendChild(div);\n        }\n        window.addParameterRobotUpdate = addParameterRobotUpdate;\n        function removeParameterRobotUpdate(button) {\n            button.parentElement.remove();\n        }\n        window.removeParameterRobotUpdate = removeParameterRobotUpdate;\n        function getParametersRobotUpdate() {\n            var params = [];\n            document.querySelectorAll(\".parameter-rbt-updt-item\").forEach(item => {\n                var param = {\n                    name: item.querySelector(\".param-rbt-updt-name\").value,\n                    key: item.querySelector(\".param-rbt-updt-key\").value,\n                    type: item.querySelector(\".param-rbt-updt-type\").value,\n                    description: item.querySelector(\".param-rbt-updt-description\").value || undefined,\n                    value: item.querySelector(\".param-rbt-updt-value\").value\n                };\n                params.push(param);\n            });\n            return params;\n        }\n\n        function populateForm(robot) {\n            document.getElementById(\"name-rbt-updt\").value = robot.name || '';\n            document.getElementById(\"lifetime-rbt-updt\").value = robot.lifetime || '';\n            document.getElementById(\"operationCycleTime-rbt-updt\").value = robot.operationCycleTime || '';\n            document.getElementById(\"tradeMarket-rbt-updt\").value = robot.tradeMarket || '';\n            document.getElementById(\"initialCapital-rbt-updt\").value = robot.initialCapital || '';\n            document.getElementById(\"stopLoss-rbt-updt\").value = robot.stopLoss || '';\n            document.getElementById(\"stopGain-rbt-updt\").value = robot.stopGain || '';\n            document.getElementById(\"brokerId-rbt-updt\").value = robot.brokerId || '';\n            document.getElementById(\"currencySymbol-rbt-updt\").value = robot.currencySymbol || '';\n            document.getElementById(\"simulationMode-rbt-updt\").checked = robot.simulationMode || false;\n\n            var parameterContainer = document.getElementById(\"parameterContainer-rbt-updt\");\n            parameterContainer.innerHTML = '';\n            if (robot.otherParams) {\n                robot.otherParams.forEach(param => {\n                    var div = document.createElement(\"div\");\n                    div.classList.add(\"parameter-rbt-updt-item\");\n                    // div.innerHTML = `\n                    //     <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" value=\"${param.name}\" required>\n                    //     <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" value=\"${param.key}\" required>\n                    //     <select class=\"param-rbt-updt-type\">\n                    //         <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                    //         <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                    //     </select>\n                    //     <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\" value=\"${param.description || ''}\">\n                    //     <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" value=\"${param.value}\" required>\n                    //     <button type=\"button\" class=\"remove-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n                    // `;\n\n                    div.innerHTML = `\n                        <input type=\"text\" placeholder=\"Name\" class=\"param-rbt-updt-name\" value=\"${param.name}\" required>\n                        <input type=\"text\" placeholder=\"Key\" class=\"param-rbt-updt-key\" value=\"${param.key}\" required>\n                        <select class=\"param-rbt-updt-type\">\n                            <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                            <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                        </select>\n                        <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-rbt-updt-description\" value=\"${param.description || ''}\">\n                        <input type=\"text\" placeholder=\"Value\" class=\"param-rbt-updt-value\" value=\"${param.value}\" required>\n                        <button type=\"button\" class=\"remove-rbt-updt-btn\" onclick=\"removeParameterRobotUpdate(this)\">❌</button>\n                    `;\n                    parameterContainer.appendChild(div);\n                });\n            }\n            var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-rbt-updt\");\n            dropdownTradeStrategies.querySelectorAll(\"option\").forEach(option => option.selected = false);\n            if (robot.tradeStrategyId) {\n                robot.tradeStrategyId.forEach((strategy) => {\n                    let option = dropdownTradeStrategies.querySelector(`option[value=\"${strategy}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"robotId-rbt-updt\").addEventListener(\"change\", function() {\n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading-rbt-updt\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    scope.msg.payload.robot = data;\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        });\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n        document.getElementById(\"submitBtn-rbt-updt\").addEventListener(\"click\", submitFormRobotUpdate);\n\n        function submitFormRobotUpdate() {\n            var form = document.getElementById(\"form-rbt-updt\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }            \n\n            var originalData = scope.msg.payload.robot || {}; // Dados originais do robô\n            var formData = {};\n            var fieldsToCheck = {\n                name: \"name-rbt-updt\",\n                lifetime: \"lifetime-rbt-updt\",\n                operationCycleTime: \"operationCycleTime-rbt-updt\",\n                tradeMarket: \"tradeMarket-rbt-updt\",\n                initialCapital: \"initialCapital-rbt-updt\",\n                stopLoss: \"stopLoss-rbt-updt\",\n                stopGain: \"stopGain-rbt-updt\",\n                brokerId: \"brokerId-rbt-updt\",\n                currencySymbol: \"currencySymbol-rbt-updt\",\n                simulationMode: \"simulationMode-rbt-updt\"\n            };\n\n            Object.keys(fieldsToCheck).forEach(key => {\n                var element = document.getElementById(fieldsToCheck[key]);\n                var value = element.type === \"checkbox\" ? element.checked : element.value;\n                if (value != originalData[key]) { // Comparar com os dados originais\n                    formData[key] = value;\n                }\n            });\n\n            var selectedTradeStrategies = getSelectedTradeStrategiesRobotUpdate();\n            if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeStrategyId || [])) {\n                formData.tradeStrategyId = selectedTradeStrategies;\n            }\n\n            var parameters = getParametersRobotUpdate();\n            if (!originalData.otherParams || parameters.length !== originalData.otherParams.length || \n                parameters.some((param, index) => \n                    param.name !== originalData.otherParams[index]?.name ||\n                    param.key !== originalData.otherParams[index]?.key ||\n                    param.type !== originalData.otherParams[index]?.type ||\n                    param.description !== originalData.otherParams[index]?.description ||\n                    param.value !== originalData.otherParams[index]?.value)) {\n                formData.otherParams = parameters;\n            }\n\n            if (Object.keys(formData).length === 0) {\n                alert(\"Nenhuma modificação foi detectada no formulário.\");\n                return;\n            }\n\n            // scope.send({ \n            //     payload: {\n            //         robot_id: originalData._id,\n            //         body: formData\n            //     } \n            // });\n            scope.send({ \n                robot_id: originalData._id,\n                body: formData\n            });\n\n            // 🚀 Input Parameters:\n            // --> id: \"67d9c9581fc3244c8c033a64\";\n            // -----------------\n            // --> entity: {\n            // \"robot_id\": \"67d9c9581fc3244c8c033a64\",\n            // \"formData\": {\n            //     \"tradeStrategyId\": [\n            //     \"67cb05b4cfb092fc042de34d\",\n            //     \"67d08fab735cb1c700914d94\"\n            //     ]\n            // }\n            // } \n\n            // 🚀 Input Parameters:\n            // --> id: \"67d9c9581fc3244c8c033a64\";\n            // -----------------\n            // --> entity: {\n            // \"tradeStrategyId\": [\n            //     \"67cb05b4cfb092fc042de34d\",\n            //     \"67d08fab735cb1c700914d94\"\n            // ]\n            // }\n\n            if (!document.getElementById(\"manterDados-rbt-updt\").checked) {\n                form.reset();\n                document.getElementById(\"parameterContainer-rbt-updt\").innerHTML = '';\n            }\n        }\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotUpdate(msg);\n        });\n    })(scope);\n</script>",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
         "x": 730,
-        "y": 600,
+        "y": 520,
         "wires": [
             [
-                "0efab88822f6f914"
+                "0efab88822f6f914",
+                "3c3f5d97bf097edc"
             ]
         ]
     },
@@ -580,1175 +659,48 @@
         "senderr": false,
         "headers": [],
         "x": 310,
-        "y": 600,
+        "y": 520,
         "wires": [
             [
-                "a2823492c21f43b2",
                 "8f690999b9677af3"
             ]
         ]
     },
     {
-        "id": "a2823492c21f43b2",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 360,
-        "y": 640,
-        "wires": []
-    },
-    {
         "id": "8f690999b9677af3",
         "type": "function",
         "z": "96a964c84114dfed",
-        "name": "Updt Brokers",
-        "func": "// msg.options = msg.payload.map(obj => {\n//     return { [obj.name]: obj._id };\n// });\n\n// return msg;\n\nmsg.payload = {\n    robots: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n        // selected: msg.payload.includes(\"Rodrigo Pimentel\") ? \"Rodrigo Pimentel\" : msg.payload[0] || \"\" // Define \"sports\" se existir, senão o primeiro item ou vazio\n    }\n};\n\nreturn msg;",
+        "name": "Updt Robots",
+        "func": "msg.payload = {\n    robots: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 600,
+        "x": 510,
+        "y": 520,
         "wires": [
             [
-                "903b62ca9aafcccb",
                 "40adde3cbc88365e"
             ]
-        ]
-    },
-    {
-        "id": "903b62ca9aafcccb",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "name": "debug 2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 540,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "7641778db9351d26",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair 'name'",
-        "func": "msg.options = msg.payload.map(obj => {\n    return { [obj.name]: obj._id };\n});\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 1460,
-        "wires": [
-            [
-                "baea61c645ee026e"
-            ]
-        ]
-    },
-    {
-        "id": "5c6a90e688877cac",
-        "type": "ui_template",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "group": "6aa53a94a4e4993a",
-        "name": "Carrega Dropdowns",
-        "order": 0,
-        "width": "6",
-        "height": "2",
-        "format": "<script>\n// Ao carregar a página, enviar mensagem para iniciar a requisição\n(function(scope) {\n    scope.$watch('msg', function(msg) {\n        // Não faz nada se a mensagem já existir\n    });\n    // Dispara uma mensagem assim que a página é carregada\n    setTimeout(function() {\n        scope.send({topic: 'getNames'});\n    }, 1000);\n})(scope);\n</script>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 200,
-        "y": 1460,
-        "wires": [
-            [
-                "fc83948924fec6ae",
-                "34ecee8553123c2e"
-            ]
-        ]
-    },
-    {
-        "id": "fc83948924fec6ae",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Robots",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/robots",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 450,
-        "y": 1460,
-        "wires": [
-            [
-                "7641778db9351d26"
-            ]
-        ]
-    },
-    {
-        "id": "baea61c645ee026e",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Robot:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6a5055627c1fcc05",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 890,
-        "y": 1460,
-        "wires": [
-            [
-                "0e524d171cc1654c"
-            ]
-        ]
-    },
-    {
-        "id": "0e524d171cc1654c",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET robots/id",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "body",
-        "url": "localhost:5000/robots/{{{payload}}}",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 180,
-        "y": 1540,
-        "wires": [
-            [
-                "0207136c0bfd90a4",
-                "8159f84614f78ad7",
-                "0ce66b80766d8143"
-            ]
-        ]
-    },
-    {
-        "id": "0207136c0bfd90a4",
-        "type": "ui_form",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "",
-        "group": "6a5055627c1fcc05",
-        "order": 7,
-        "width": "0",
-        "height": "0",
-        "options": [
-            {
-                "label": "Name:",
-                "value": "name",
-                "type": "text",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Lifetime:",
-                "value": "lifetime",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Operation Cycle Time:",
-                "value": "operationCycleTime",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Initial Capital:",
-                "value": "initialCapital",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Stop Loss:",
-                "value": "stopLoss",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Stop Gain:",
-                "value": "stopGain",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Simulation Mode:",
-                "value": "simulationMode",
-                "type": "switch",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Other Params:",
-                "value": "otherParams",
-                "type": "multiline",
-                "required": false,
-                "rows": 3
-            }
-        ],
-        "formValue": {
-            "name": "",
-            "lifetime": "",
-            "operationCycleTime": "",
-            "initialCapital": "",
-            "stopLoss": "",
-            "stopGain": "",
-            "simulationMode": false,
-            "otherParams": ""
-        },
-        "payload": "",
-        "submit": "submit",
-        "cancel": "cancel",
-        "topic": "topic",
-        "topicType": "msg",
-        "splitLayout": "",
-        "className": "",
-        "x": 430,
-        "y": 1540,
-        "wires": [
-            [
-                "eec43c64136f3021"
-            ]
-        ]
-    },
-    {
-        "id": "eec43c64136f3021",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "PUT robots/id",
-        "method": "PUT",
-        "ret": "obj",
-        "paytoqs": "body",
-        "url": "localhost:5000/robots/{{{payload}}}",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 680,
-        "y": 1540,
-        "wires": [
-            [
-                "7140988ebd81f36f"
-            ]
-        ]
-    },
-    {
-        "id": "7140988ebd81f36f",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "debug 5",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
-        "y": 1540,
-        "wires": []
-    },
-    {
-        "id": "0850c1ec74a63ac3",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Trade Startegy:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6a5055627c1fcc05",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": true,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 460,
-        "y": 1920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d4032af3a5d8cf31",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Trade Market:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6a5055627c1fcc05",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 460,
-        "y": 1980,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "589cca902a193145",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Currency Symbol:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6a5055627c1fcc05",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 470,
-        "y": 2040,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8159f84614f78ad7",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 180,
-        "y": 1620,
-        "wires": []
-    },
-    {
-        "id": "0ce66b80766d8143",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair 'brokerId'",
-        "func": "// Supondo que msg.payload seja o objeto com o brokerId\nlet result = [];\n\n// Verifica se a chave 'brokerId' existe no objeto\nif (msg.payload.hasOwnProperty('brokerId')) {\n    // Adiciona o valor de brokerId à lista de opções para o dropdown\n    result.push({ [msg.payload.brokerId]: msg.payload.brokerId });\n}\n\n// Verifique se o valor existe e envie para o dropdown\nif (result.length > 0) {\n    msg.options = result; // Formato esperado pelo ui_dropdown\n} else {\n    msg.options = []; // Caso não haja brokerId, retorna uma lista vazia\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 460,
-        "y": 1620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "34ecee8553123c2e",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Brokers",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/robots",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 450,
-        "y": 1660,
-        "wires": [
-            [
-                "0d0b99a372a0790b"
-            ]
-        ]
-    },
-    {
-        "id": "0d0b99a372a0790b",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair 'name'",
-        "func": "// Supondo que msg.payload seja o array retornado pela API\nmsg.options = msg.payload.map(obj => {\n    return { [obj.name]: obj._id };\n});\n\n\n// msg.options = [\n//   \"João\" ,\n//   { label: \"Maria\", value: \"Maria\" }\n// ];\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 680,
-        "y": 1660,
-        "wires": [
-            [
-                "9f807c90c7e058c9"
-            ]
-        ]
-    },
-    {
-        "id": "9f807c90c7e058c9",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Broker:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6a5055627c1fcc05",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 900,
-        "y": 1620,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c1d0d1d94afd1221",
-        "type": "ui_toast",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "position": "top left",
-        "displayTime": "5",
-        "highlight": "",
-        "sendall": true,
-        "outputs": 0,
-        "ok": "OK",
-        "cancel": "",
-        "raw": false,
-        "className": "",
-        "topic": "",
-        "name": "",
-        "x": 1070,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "c8720efbb3144833",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Store dropdown broker",
-        "func": "// msg.payload contém o valor selecionado no Dropdown 1\nflow.set('brokerId', msg.payload);\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1060,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "03e404b430186f80",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Broker:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6aa53a94a4e4993a",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 820,
-        "y": 1020,
-        "wires": [
-            [
-                "c8720efbb3144833",
-                "fe47e2752bf298a3"
-            ]
-        ]
-    },
-    {
-        "id": "eae8a4c0cbd4caa7",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair 'name'",
-        "func": "// Supondo que msg.payload seja o array retornado pela API\nmsg.options = msg.payload.map(obj => {\n    return { [obj.name]: obj._id };\n});\n\n\n// msg.options = [\n//   \"João\" ,\n//   { label: \"Maria\", value: \"Maria\" }\n// ];\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 1020,
-        "wires": [
-            [
-                "03e404b430186f80"
-            ]
-        ]
-    },
-    {
-        "id": "dadb24177eb840aa",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Brokers",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/robots",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 370,
-        "y": 1020,
-        "wires": [
-            [
-                "eae8a4c0cbd4caa7"
-            ]
-        ]
-    },
-    {
-        "id": "10f95cde0261f7c0",
-        "type": "ui_form",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "",
-        "group": "6aa53a94a4e4993a",
-        "order": 0,
-        "width": "0",
-        "height": "0",
-        "options": [
-            {
-                "label": "Name:",
-                "value": "name",
-                "type": "text",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Lifetime:",
-                "value": "lifetime",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Operation Cycle Time:",
-                "value": "operationCycleTime",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Initial Capital:",
-                "value": "initialCapital",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Stop Loss:",
-                "value": "stopLoss",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Stop Gain:",
-                "value": "stopGain",
-                "type": "number",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Simulation Mode:",
-                "value": "simulationMode",
-                "type": "switch",
-                "required": true,
-                "rows": null
-            },
-            {
-                "label": "Other Params:",
-                "value": "otherParams",
-                "type": "multiline",
-                "required": false,
-                "rows": 3
-            }
-        ],
-        "formValue": {
-            "name": "",
-            "lifetime": "",
-            "operationCycleTime": "",
-            "initialCapital": "",
-            "stopLoss": "",
-            "stopGain": "",
-            "simulationMode": false,
-            "otherParams": ""
-        },
-        "payload": "",
-        "submit": "submit",
-        "cancel": "cancel",
-        "topic": "topic",
-        "topicType": "msg",
-        "splitLayout": "",
-        "className": "",
-        "x": 150,
-        "y": 1340,
-        "wires": [
-            [
-                "4779157cc4088607"
-            ]
-        ]
-    },
-    {
-        "id": "e37b6181160bbb28",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Trade Startegy:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6aa53a94a4e4993a",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": true,
-        "options": [
-            {
-                "label": "",
-                "value": "",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 840,
-        "y": 1080,
-        "wires": [
-            [
-                "19d1b4e1b271e2ab",
-                "fe47e2752bf298a3"
-            ]
-        ]
-    },
-    {
-        "id": "0e390f2d08a753e1",
-        "type": "ui_template",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "group": "6aa53a94a4e4993a",
-        "name": "Carrega Dropdowns",
-        "order": 0,
-        "width": "6",
-        "height": "2",
-        "format": "<script>\n// Ao carregar a página, enviar mensagem para iniciar a requisição\n(function(scope) {\n    scope.$watch('msg', function(msg) {\n        // Não faz nada se a mensagem já existir\n    });\n    // Dispara uma mensagem assim que a página é carregada\n    setTimeout(function() {\n        scope.send({topic: 'getNames'});\n    }, 1000);\n})(scope);\n</script>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 120,
-        "y": 1140,
-        "wires": [
-            [
-                "dadb24177eb840aa",
-                "bd58baf3e133f9cc",
-                "73d5e904b7e141ef",
-                "8e6333ac861618d2"
-            ]
-        ]
-    },
-    {
-        "id": "bd58baf3e133f9cc",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Startegies",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/users",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 380,
-        "y": 1080,
-        "wires": [
-            [
-                "eb21802e017654f9"
-            ]
-        ]
-    },
-    {
-        "id": "eb21802e017654f9",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair 'name'",
-        "func": "// Supondo que msg.payload seja o array retornado pela API\nmsg.options = msg.payload.map(obj => {\n    return { [obj.name]: obj._id };\n});\n\n\n// msg.options = [\n//   \"João\" ,\n//   { label: \"Maria\", value: \"Maria\" }\n// ];\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 600,
-        "y": 1080,
-        "wires": [
-            [
-                "e37b6181160bbb28"
-            ]
-        ]
-    },
-    {
-        "id": "e0fd737cb2179885",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Create Robot POST",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "4779157cc4088607",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Combine form + dropdowns",
-        "func": "// Combinar com dados do form\nvar formData = msg.payload; // ex: { nome: '...', email: '...' }\n\nformData.brokerId = flow.get('brokerId');\nformData.tradeStrategyId = flow.get('tradeStrategyId');\nformData.currencySymbol = flow.get('currencySymbol');\nformData.tradeMarket = flow.get('tradeMarket');\n\n// Garantir que otherParams seja um array vazio se estiver como string vazia\nif (formData.otherParams === \"\") {\n    formData.otherParams = [];\n}\n\n// Retornar no msg.payload ou msg.data\nmsg.payload = formData;\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 380,
-        "y": 1340,
-        "wires": [
-            [
-                "e0fd737cb2179885",
-                "93beec2fcf3cd2a3"
-            ]
-        ]
-    },
-    {
-        "id": "19d1b4e1b271e2ab",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Store dropdown tradeStrategy",
-        "func": "// msg.payload contém o valor selecionado no Dropdown 1\nflow.set('tradeStrategyId', msg.payload);\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1090,
-        "y": 1080,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fe47e2752bf298a3",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "dropdowns result",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 1140,
-        "wires": []
-    },
-    {
-        "id": "93beec2fcf3cd2a3",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "method": "POST",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/robots",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 710,
-        "y": 1340,
-        "wires": [
-            [
-                "b340b416efe29042",
-                "c1d0d1d94afd1221"
-            ]
-        ]
-    },
-    {
-        "id": "b340b416efe29042",
-        "type": "debug",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Create Robot Response",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1090,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "73d5e904b7e141ef",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Trade Markets",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/types",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 390,
-        "y": 1200,
-        "wires": [
-            [
-                "b921ed0073ddb74f"
-            ]
-        ]
-    },
-    {
-        "id": "b921ed0073ddb74f",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair trademarket",
-        "func": "// Pegando os dados da requisição\nvar data = msg.payload;\n\n// Selecionando o item que será usado no dropdown\nvar selectedItem = data.tradeMarkets;  // <-- Alterar conforme necessário\n\n// Formatando os dados para o dropdown\nmsg.options = selectedItem.map(entry => ({[entry]:entry}));\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 1200,
-        "wires": [
-            [
-                "f23d6f8264393614"
-            ]
-        ]
-    },
-    {
-        "id": "f23d6f8264393614",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Trade Market:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6aa53a94a4e4993a",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 840,
-        "y": 1200,
-        "wires": [
-            [
-                "fe47e2752bf298a3",
-                "322c50137760fab5"
-            ]
-        ]
-    },
-    {
-        "id": "322c50137760fab5",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Store dropdown tradeMarket",
-        "func": "// msg.payload contém o valor selecionado no Dropdown 1\nflow.set('tradeMarket', msg.payload);\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1080,
-        "y": 1200,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8e6333ac861618d2",
-        "type": "http request",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "GET Currency Symbol",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "localhost:5000/types",
-        "tls": "",
-        "persist": true,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "bearer",
-        "senderr": false,
-        "headers": [],
-        "x": 400,
-        "y": 1260,
-        "wires": [
-            [
-                "2a221b3d460c484b"
-            ]
-        ]
-    },
-    {
-        "id": "2a221b3d460c484b",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Extrair currencySymbols",
-        "func": "// Pegando os dados da requisição\nvar data = msg.payload;\n\n// Selecionando o item que será usado no dropdown\nvar selectedItem = data.currencySymbols;  // <-- Alterar conforme necessário\n\n// Formatando os dados para o dropdown\nmsg.options = selectedItem.map(entry => ({[entry]:entry}));\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 630,
-        "y": 1260,
-        "wires": [
-            [
-                "236eba9862a811ce"
-            ]
-        ]
-    },
-    {
-        "id": "236eba9862a811ce",
-        "type": "ui_dropdown",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "",
-        "label": "Currency Symbol:",
-        "tooltip": "",
-        "place": "-",
-        "group": "6aa53a94a4e4993a",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 850,
-        "y": 1260,
-        "wires": [
-            [
-                "fe47e2752bf298a3",
-                "bc04bbb693bd56d6"
-            ]
-        ]
-    },
-    {
-        "id": "bc04bbb693bd56d6",
-        "type": "function",
-        "z": "96a964c84114dfed",
-        "d": true,
-        "name": "Store dropdown currencySymbol",
-        "func": "// msg.payload contém o valor selecionado no Dropdown 1\nflow.set('currencySymbol', msg.payload);\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1090,
-        "y": 1260,
-        "wires": [
-            []
         ]
     },
     {
         "id": "0efab88822f6f914",
         "type": "debug",
         "z": "96a964c84114dfed",
-        "name": "debug 3",
+        "name": "Updates",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 600,
+        "x": 760,
+        "y": 560,
         "wires": []
     },
     {
@@ -1796,7 +748,8 @@
                 "7a3e2909c0d918d6",
                 "015bc4236859233c",
                 "267ad5ddfc8746f6",
-                "2259bde25409c582"
+                "2259bde25409c582",
+                "29a0473e6c549305"
             ]
         ]
     },
@@ -1842,6 +795,302 @@
             [
                 "4b5ce905b94f4f97"
             ]
+        ]
+    },
+    {
+        "id": "b7fcb82d26c96073",
+        "type": "http request",
+        "z": "96a964c84114dfed",
+        "name": "PUT robots/id",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "localhost:5000/robots/{{{robot_id}}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1140,
+        "y": 520,
+        "wires": [
+            [
+                "2f381c376b386bd7",
+                "a20f77603f651fda"
+            ]
+        ]
+    },
+    {
+        "id": "2f381c376b386bd7",
+        "type": "debug",
+        "z": "96a964c84114dfed",
+        "name": "PUT Response",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "3c3f5d97bf097edc",
+        "type": "function",
+        "z": "96a964c84114dfed",
+        "name": "format put request",
+        "func": "msg.payload = msg.body\nmsg.robot_id = msg.robot_id;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 520,
+        "wires": [
+            [
+                "b7fcb82d26c96073"
+            ]
+        ]
+    },
+    {
+        "id": "c713d4e5dfcb370f",
+        "type": "ui_toast",
+        "z": "96a964c84114dfed",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1370,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a20f77603f651fda",
+        "type": "function",
+        "z": "96a964c84114dfed",
+        "name": "Process Response",
+        "func": "msg.topic = 'Robot Update'\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = 'Robot Update successfully!'\n} else {\n    msg.payload = 'Failed to update robot: ' + msg.payload.message\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 640,
+        "wires": [
+            [
+                "c713d4e5dfcb370f"
+            ]
+        ]
+    },
+    {
+        "id": "29a0473e6c549305",
+        "type": "http request",
+        "z": "96a964c84114dfed",
+        "name": "GET Robots",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/robots",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 310,
+        "y": 880,
+        "wires": [
+            [
+                "d523b9781bd750f3"
+            ]
+        ]
+    },
+    {
+        "id": "d4a7832c23df5a72",
+        "type": "ui_template",
+        "z": "96a964c84114dfed",
+        "group": "e505f16897b6fcf4",
+        "name": "Update Form",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    .form-rbt-del-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-del-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n\n    .form-rbt-del-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n\n    .form-rbt-del-group.full-width {\n        grid-column: span 2;\n    }\n\n    .form-rbt-del-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n\n    .form-rbt-del-group input,\n    .form-rbt-del-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n\n    .submit-rbt-del-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .submit-rbt-del-btn:hover {\n        background: #0056b3;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-rbt-del\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-rbt-del\" class=\"form-rbt-del-container\">\n    <div class=\"form-rbt-del-group form-rbt-del-group-destac full-width\">\n        <label>Select Robot:</label>\n        <select id=\"robotId-rbt-del\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-rbt-del-group full-width\">\n        <label>Id:</label>\n        <input type=\"text\" id=\"id-rbt-del\" placeholder=\"Id of the robot\" disabled>\n    </div>\n    <div class=\"form-rbt-del-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-rbt-del\" placeholder=\"Name of the robot\" disabled>\n    </div>\n\n    <button id=\"submitBtn-rbt-del\" type=\"button\" class=\"form-rbt-del-group submit-rbt-del-btn full-width\" onclick=\"submitFormRobotDelete()\">Delete</button>\n</form>\n\n<script>\n    (function(scope) {\n        function populateDropdownsRobotDelete(inputs) {\n            if (inputs.robots && inputs.robots.options) {\n                var dropdownRobots = document.getElementById(\"robotId-rbt-del\");\n                dropdownRobots.innerHTML = '<option value=\"\">Select a robot to update</option>';\n                inputs.robots.options.forEach((option) => {\n                    var opt = document.createElement(\"option\");\n                    opt.value = option.value;\n                    opt.textContent = option.label;\n                    dropdownRobots.appendChild(opt);\n                });\n            }\n        }        \n\n        function populateForm(robot) {\n            document.getElementById(\"id-rbt-del\").value = robot._id || '';\n            document.getElementById(\"name-rbt-del\").value = robot.name || '';\n        }\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n        \n        document.getElementById(\"robotId-rbt-del\").addEventListener(\"change\", function() {\n            var robotId = this.value;\n            if (robotId) {\n                var loadingElement = document.getElementById(\"loading-rbt-del\");\n                loadingElement.style.display = 'block';\n                fetch(`http://192.168.99.21:5000/robots/${robotId}`, {\n                    method: 'GET',\n                    headers: {\n                        'Authorization': 'Bearer ' + localStorage.getItem('token')\n                    }\n                })\n                .then(response => response.json())\n                .then(data => {\n                    console.log('Dados recebidos do servidor:', data);\n                    populateForm(data);\n                    scope.msg.payload.robot = data;\n                    loadingElement.style.display = 'none';\n                })\n                .catch(error => {\n                    console.error('Error fetching robot data:', error);\n                    loadingElement.style.display = 'none';\n                    if (error.message.includes('Failed to fetch')) {\n                        alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                    }\n                });\n            }\n        });\n\n        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n        document.getElementById(\"submitBtn-rbt-del\").addEventListener(\"click\", submitFormRobotDelete);\n\n        function submitFormRobotDelete() {\n            var form = document.getElementById(\"form-rbt-del\");\n            var requiredFields = form.querySelectorAll(\"[required]\");\n            var missingFields = [];\n\n            requiredFields.forEach(field => {\n                if (!field.value.trim()) {\n                    missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n                }\n            });\n            if (missingFields.length > 0) {\n                alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n                return;\n            }\n\n            var formData = {\n                id: document.getElementById(\"id-rbt-del\").value,\n                name: document.getElementById(\"name-rbt-del\").value\n            };\n\n            scope.send({ payload: formData });\n            \n            // form.reset();\n        }\n\n        window.submitFormRobotDelete = submitFormRobotDelete;\n        \n        scope.$watch('msg.payload', function(msg) {\n            populateDropdownsRobotDelete(msg);\n        });\n    })(scope);\n</script>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 730,
+        "y": 880,
+        "wires": [
+            [
+                "7c0a33c063469858",
+                "82aa0cc7a6508c1d"
+            ]
+        ]
+    },
+    {
+        "id": "d523b9781bd750f3",
+        "type": "function",
+        "z": "96a964c84114dfed",
+        "name": "Updt Robots",
+        "func": "msg.payload = {\n    robots: {\n        options: msg.payload.map(entry => ({ label: entry.name, value: entry._id })),\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 880,
+        "wires": [
+            [
+                "d4a7832c23df5a72"
+            ]
+        ]
+    },
+    {
+        "id": "7c0a33c063469858",
+        "type": "debug",
+        "z": "96a964c84114dfed",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "82aa0cc7a6508c1d",
+        "type": "function",
+        "z": "96a964c84114dfed",
+        "name": "Process delete form",
+        "func": "msg.topic = 'Robot Delete'\nmsg.payload = 'Tem certeza que deseja deletar o Robô ' + msg.payload.name\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 880,
+        "wires": [
+            [
+                "1e0489ebe31c6f7b"
+            ]
+        ]
+    },
+    {
+        "id": "1e0489ebe31c6f7b",
+        "type": "ui_toast",
+        "z": "96a964c84114dfed",
+        "position": "prompt",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1230,
+        "y": 880,
+        "wires": [
+            [
+                "db606de9a10b7a06",
+                "f9aa11612da9ba7a"
+            ]
+        ]
+    },
+    {
+        "id": "db606de9a10b7a06",
+        "type": "debug",
+        "z": "96a964c84114dfed",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "f9aa11612da9ba7a",
+        "type": "switch",
+        "z": "96a964c84114dfed",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 430,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fd893ad944eb326b",
+        "type": "ui_button",
+        "z": "efbbf7c6caf47bc4",
+        "name": "",
+        "group": "a39c3c2e51ec99ce",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 710,
+        "y": 200,
+        "wires": [
+            []
         ]
     }
 ]

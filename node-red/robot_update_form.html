@@ -1,14 +1,14 @@
 <style>
-    .form-container {
-        display: flex;
-        flex-direction: column;
+    .form-rbt-updt-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 12px;
         background: #f4f4f4;
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
-    .form-group {
+    .form-rbt-updt-group {
         display: flex;
         flex-direction: column;
         background: white;
@@ -16,30 +16,46 @@
         border-radius: 5px;
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
     }
-    .form-group label {
+    .form-rbt-updt-group-destac {
+        background: rgb(233, 232, 232);
+        width: 93%;
+        margin: 0 auto;
+        display: block;
+        border: 2px solid #007bff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .form-rbt-updt-group-destac-font {
+        font-style: italic;
+        font-weight: bold;
+    }
+    .form-rbt-updt-group.full-width {
+        grid-column: span 2;
+    }
+    .form-rbt-updt-group label {
         font-weight: bold;
         margin-bottom: 5px;
         font-size: 14px;
     }
-    .form-group input, 
-    .form-group select {
+    .form-rbt-updt-group input, 
+    .form-rbt-updt-group select {
         padding: 8px;
         font-size: 14px;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
-    .form-group input[type="checkbox"] {
+    .form-rbt-updt-group input[type="checkbox"] {
         width: 16px;
         height: 16px;
         margin-top: 5px;
     }
-    .form-group input[type="range"] {
+    .form-rbt-updt-group input[type="range"] {
         width: 100%;
     }
-    .form-group input[type="radio"] {
+    .form-rbt-updt-group input[type="radio"] {
         margin-right: 5px;
     }
-    .submit-btn {
+    .submit-rbt-updt-btn {
         background: #007bff;
         color: white;
         font-size: 16px;
@@ -49,29 +65,43 @@
         cursor: pointer;
         transition: background 0.3s ease;
     }
-    .submit-btn:hover {
+    .submit-rbt-updt-btn:hover {
         background: #0056b3;
     }
-    .parameter-item {
+    .parameter-rbt-updt-item {
         display: flex;
         flex-direction: column;
         gap: 8px;
         margin-bottom: 8px;
     }
-    .parameter-item input, .parameter-item select {
+    .parameter-rbt-updt-item input, .parameter-rbt-updt-item select {
         padding: 5px;
         font-size: 14px;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
-    .remove-btn {
-        background: red;
+    .remove-rbt-updt-btn {
+        background: rgba(255, 91, 91, 0.637);
         color: white;
         border: none;
         cursor: pointer;
         padding: 5px;
         border-radius: 4px;
+        width: 50%;
+        margin: 0 auto;
+        display: block;
     }
+    .add-btn-rbt-updt {
+        background: #61b6d8;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
     .loading {
         display: none;
         position: fixed;
@@ -81,79 +111,96 @@
         font-size: 24px;
         color: #007bff;
     }
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        display: block;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>
 
-<div id="loading" class="loading">Carregando...</div>
+<div id="loading-rbt-updt" class="loading">
+    <div class="spinner"></div>
+</div>
 
-<form id="formulario_update" class="form-container">
-    <div class="form-group">
+<form id="form-rbt-updt" class="form-rbt-updt-container">
+    <div class="form-rbt-updt-group form-rbt-updt-group-destac full-width">
         <label>Select Robot:</label>
-        <select id="robotId" required></select>
+        <select id="robotId-rbt-updt" style="width: 100%; font-style: italic; font-weight: bold;" required></select>
     </div>
-
-    <div class="form-group">
+    <hr style="grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;">
+    <div class="form-rbt-updt-group">
         <label>Name:</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name-rbt-updt" placeholder="Name of the robot" required disabled>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Lifetime:</label>
-        <input type="number" id="lifetime" min="0" placeholder="Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime" required>
+        <input type="number" id="lifetime-rbt-updt" min="0" placeholder="Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime" required>
     </div>    
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Operation Cycle Time:</label>
-        <input type="number" id="operationCycleTime" min="0" placeholder="Operation cycle time of the robot in milliseconds" required>
+        <input type="number" id="operationCycleTime-rbt-updt" min="0" placeholder="Operation cycle time of the robot in milliseconds" required>
     </div>    
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Trade Market:</label>
-        <select id="tradeMarket"></select>
+        <select id="tradeMarket-rbt-updt"></select>
     </div>    
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Initial Capital:</label>
-        <input type="number" id="initialCapital" min="0" placeholder="Initial capital allocated to the robot" required>
+        <input type="number" id="initialCapital-rbt-updt" min="0" placeholder="Initial capital allocated to the robot" required>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Stop Loss:</label>
-        <input type="number" id="stopLoss" min="0" placeholder="Stop loss threshold for the robot. A value 0 indicates no stop loss" required>
+        <input type="number" id="stopLoss-rbt-updt" min="0" placeholder="Stop loss threshold for the robot. A value 0 indicates no stop loss" required>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Stop Gain:</label>
-        <input type="number" id="stopGain" min="0" placeholder="Stop gain threshold for the robot. A value 0 indicates no stop loss." required>
+        <input type="number" id="stopGain-rbt-updt" min="0" placeholder="Stop gain threshold for the robot. A value 0 indicates no stop loss." required>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Broker:</label>
-        <select id="brokerId" required></select>
+        <select id="brokerId-rbt-updt" required></select>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Trade Strategies:</label>
-        <select id="tradeStrategyId" multiple required></select>
+        <select id="tradeStrategyId-rbt-updt" size="2" multiple required></select>
     </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group">
         <label>Currency Symbol:</label>
-        <select id="currencySymbol" required></select>
+        <select id="currencySymbol-rbt-updt" required></select>
     </div>
-    <div class="form-group">
-        <label>Simulation Mode:</label>
-        <input type="checkbox" id="simulationMode">
-    </div>
-    <div class="form-group">
+    <div class="form-rbt-updt-group full-width">
         <label>Additional Parameters:</label>
-        <div id="parameterContainer"></div>
-        <button type="button" class="add-btn" onclick="addParameter()">+ Add Parameter</button>
+        <div id="parameterContainer-rbt-updt"></div>
+        <button type="button" class="add-btn-rbt-updt" onclick="addParameterRobotUpdate()">+ Add Parameter</button>
     </div>
-    <div class="form-group">
-        <label><input type="checkbox" id="manterDados"> Manter dados após envio</label>
+    <div class="form-rbt-updt-group">
+        <label>Simulation Mode: <input type="checkbox" id="simulationMode-rbt-updt"></label>        
+    </div>
+    <div class="form-rbt-updt-group">
+        <label>Manter dados após envio: <input type="checkbox" id="manterDados-rbt-updt"></label>
     </div>
 
-    <button id="submitBtn" type="button" class="submit-btn" onclick="submitForm()">Atualizar</button>
+    <button id="submitBtn-rbt-updt" type="button" class="form-rbt-updt-group submit-rbt-updt-btn full-width" onclick="submitFormRobotUpdate()">Atualizar</button>
 </form>
 
 <script>
     (function(scope) {
-        function populateDropdowns(inputs) {
-            console.log('--- INPUTS', inputs);
-
+        function populateDropdownsRobotUpdate(inputs) {
             if (inputs.robots && inputs.robots.options) {
-                var dropdownRobots = document.getElementById("robotId");
+                var dropdownRobots = document.getElementById("robotId-rbt-updt");
                 dropdownRobots.innerHTML = '<option value="">Select a robot to update</option>';
                 inputs.robots.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -163,7 +210,7 @@
                 });
             }
             if (inputs.tradeMarkets && inputs.tradeMarkets.options) {
-                var dropdownTradeMarket = document.getElementById("tradeMarket");
+                var dropdownTradeMarket = document.getElementById("tradeMarket-rbt-updt");
                 dropdownTradeMarket.innerHTML = '<option value="">Select Trade market associated with the robot</option>';
                 inputs.tradeMarkets.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -174,7 +221,7 @@
                 if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;
             }
             if (inputs.brokers && inputs.brokers.options) {
-                var dropdownBrokers = document.getElementById("brokerId");
+                var dropdownBrokers = document.getElementById("brokerId-rbt-updt");
                 dropdownBrokers.innerHTML = '<option value="">Select the broker used by the robot.</option>';
                 inputs.brokers.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -185,7 +232,7 @@
                 if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;
             }
             if (inputs.tradeStrategies && inputs.tradeStrategies.options) {
-                var dropdownTradeStrategies = document.getElementById("tradeStrategyId");
+                var dropdownTradeStrategies = document.getElementById("tradeStrategyId-rbt-updt");
                 dropdownTradeStrategies.innerHTML = '';
                 inputs.tradeStrategies.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -201,7 +248,7 @@
                 }
             }
             if (inputs.currencySymbol && inputs.currencySymbol.options) {
-                var dropdownCurrencySymbol = document.getElementById("currencySymbol");
+                var dropdownCurrencySymbol = document.getElementById("currencySymbol-rbt-updt");
                 dropdownCurrencySymbol.innerHTML = '<option value="">Select the currency symbol used by the robot</option>';
                 inputs.currencySymbol.options.forEach((option) => {
                     var opt = document.createElement("option");
@@ -212,137 +259,97 @@
                 if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;
             }
         }
-
-        function populateForm(robot) {
-            console.log('Populando formulário com os dados do robô:', robot);
-
-            document.querySelector("#formulario_update #name").value = robot.name || '';
-            document.querySelector("#formulario_update #lifetime").value = robot.lifetime || '';
-            document.querySelector("#formulario_update #operationCycleTime").value = robot.operationCycleTime || '';
-            document.querySelector("#formulario_update #tradeMarket").value = robot.tradeMarket || '';
-            document.querySelector("#formulario_update #initialCapital").value = robot.initialCapital || '';
-            document.querySelector("#formulario_update #stopLoss").value = robot.stopLoss || '';
-            document.querySelector("#formulario_update #stopGain").value = robot.stopGain || '';
-            document.querySelector("#formulario_update #brokerId").value = robot.brokerId || '';
-            document.querySelector("#formulario_update #currencySymbol").value = robot.currencySymbol || '';
-            document.querySelector("#formulario_update #simulationMode").checked = robot.simulationMode || false;
-
-            // Popula os parâmetros adicionais
-            // var parameterContainer = document.getElementById("parameterContainer");
-            var parameterContainer =document.querySelector("#formulario_update #parameterContainer");
-            parameterContainer.innerHTML = '';
-            if (robot.otherParams) {
-                robot.otherParams.forEach(param => {
-                    var div = document.createElement("div");
-                    div.classList.add("parameter-item");
-
-                    div.innerHTML = `
-                        <input type="text" placeholder="Name" class="param-name" value="${param.name}" required>
-                        <input type="text" placeholder="Key" class="param-key" value="${param.key}" required>
-                        <select class="param-type">
-                            <option value="string" ${param.type === 'string' ? 'selected' : ''}>String</option>
-                            <option value="number" ${param.type === 'number' ? 'selected' : ''}>Number</option>
-                        </select>
-                        <input type="text" placeholder="Description (optional)" class="param-description" value="${param.description || ''}">
-                        <input type="text" placeholder="Value" class="param-value" value="${param.value}" required>
-                        <button type="button" class="remove-btn" onclick="removeParameter(this)">❌</button>
-                    `;
-
-                    parameterContainer.appendChild(div);
-                });
-            }
-        }
-
-        function getSelectedTradeStrategies() {
-            let selectedOptions = document.getElementById("tradeStrategyId").selectedOptions;
+        function getSelectedTradeStrategiesRobotUpdate() {
+            let selectedOptions = document.getElementById("tradeStrategyId-rbt-updt").selectedOptions;
             return Array.from(selectedOptions).map(option => option.value);
         }
-
-        function addParameter() {
-            var container = document.getElementById("parameterContainer");
+        function addParameterRobotUpdate() {
+            var container = document.getElementById("parameterContainer-rbt-updt");
 
             var div = document.createElement("div");
-            div.classList.add("parameter-item");
-
+            div.classList.add("parameter-rbt-updt-item");
+            
             div.innerHTML = `
-                <input type="text" placeholder="Name" class="param-name" required>
-                <input type="text" placeholder="Key" class="param-key" required>
-                <select class="param-type">
+                <input type="text" placeholder="Name" class="param-rbt-updt-name" required>
+                <input type="text" placeholder="Key" class="param-rbt-updt-key" required>
+                <select class="param-rbt-updt-type">
                     <option value="string">String</option>
                     <option value="number">Number</option>
                 </select>
-                <input type="text" placeholder="Description (optional)" class="param-description">
-                <input type="text" placeholder="Value" class="param-value" required>
-                <button type="button" class="remove-btn" onclick="removeParameter(this)">❌</button>
+                <input type="text" placeholder="Description (optional)" class="param-rbt-updt-description">
+                <input type="text" placeholder="Value" class="param-rbt-updt-value" required>
+                <button type="button" class="remove-rbt-updt-btn" onclick="removeParameterRobotUpdate(this)">❌</button>
             `;
-
             container.appendChild(div);
         }
-
-        function removeParameter(button) {
+        window.addParameterRobotUpdate = addParameterRobotUpdate;
+        function removeParameterRobotUpdate(button) {
             button.parentElement.remove();
         }
-
-        function getParameters() {
+        window.removeParameterRobotUpdate = removeParameterRobotUpdate;
+        function getParametersRobotUpdate() {
             var params = [];
-            document.querySelectorAll(".parameter-item").forEach(item => {
+            document.querySelectorAll(".parameter-rbt-updt-item").forEach(item => {
                 var param = {
-                    name: item.querySelector(".param-name").value,
-                    key: item.querySelector(".param-key").value,
-                    type: item.querySelector(".param-type").value,
-                    description: item.querySelector(".param-description").value || undefined,
-                    value: item.querySelector(".param-value").value
+                    name: item.querySelector(".param-rbt-updt-name").value,
+                    key: item.querySelector(".param-rbt-updt-key").value,
+                    type: item.querySelector(".param-rbt-updt-type").value,
+                    description: item.querySelector(".param-rbt-updt-description").value || undefined,
+                    value: item.querySelector(".param-rbt-updt-value").value
                 };
                 params.push(param);
             });
             return params;
         }
 
-        function submitForm() {
-            var form = document.getElementById("formulario_update");
-            var requiredFields = form.querySelectorAll("[required]");
-            var missingFields = [];
+        function populateForm(robot) {
+            document.getElementById("name-rbt-updt").value = robot.name || '';
+            document.getElementById("lifetime-rbt-updt").value = robot.lifetime || '';
+            document.getElementById("operationCycleTime-rbt-updt").value = robot.operationCycleTime || '';
+            document.getElementById("tradeMarket-rbt-updt").value = robot.tradeMarket || '';
+            document.getElementById("initialCapital-rbt-updt").value = robot.initialCapital || '';
+            document.getElementById("stopLoss-rbt-updt").value = robot.stopLoss || '';
+            document.getElementById("stopGain-rbt-updt").value = robot.stopGain || '';
+            document.getElementById("brokerId-rbt-updt").value = robot.brokerId || '';
+            document.getElementById("currencySymbol-rbt-updt").value = robot.currencySymbol || '';
+            document.getElementById("simulationMode-rbt-updt").checked = robot.simulationMode || false;
 
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
-                }
-            });
-
-            if (missingFields.length > 0) {
-                alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
-                return;
+            var parameterContainer = document.getElementById("parameterContainer-rbt-updt");
+            parameterContainer.innerHTML = '';
+            if (robot.otherParams) {
+                robot.otherParams.forEach(param => {
+                    var div = document.createElement("div");
+                    div.classList.add("parameter-rbt-updt-item");
+                    div.innerHTML = `
+                        <input type="text" placeholder="Name" class="param-rbt-updt-name" value="${param.name}" required>
+                        <input type="text" placeholder="Key" class="param-rbt-updt-key" value="${param.key}" required>
+                        <select class="param-rbt-updt-type">
+                            <option value="string" ${param.type === 'string' ? 'selected' : ''}>String</option>
+                            <option value="number" ${param.type === 'number' ? 'selected' : ''}>Number</option>
+                        </select>
+                        <input type="text" placeholder="Description (optional)" class="param-rbt-updt-description" value="${param.description || ''}">
+                        <input type="text" placeholder="Value" class="param-rbt-updt-value" value="${param.value}" required>
+                        <button type="button" class="remove-rbt-updt-btn" onclick="removeParameterRobotUpdate(this)">❌</button>
+                    `;
+                    parameterContainer.appendChild(div);
+                });
             }
-
-            var formData = {                
-                id: document.getElementById("robotId").value,
-                name: document.getElementById("name").value,
-                lifetime: document.getElementById("lifetime").value,
-                operationCycleTime: document.getElementById("operationCycleTime").value,
-                tradeMarket: document.getElementById("tradeMarket").value,
-                initialCapital: document.getElementById("initialCapital").value,
-                stopLoss: document.getElementById("stopLoss").value,
-                stopGain: document.getElementById("stopGain").value,
-                brokerId: document.getElementById("brokerId").value,
-                tradeStrategyId: getSelectedTradeStrategies(),
-                currencySymbol: document.getElementById("currencySymbol").value,
-                simulationMode: document.getElementById("simulationMode").checked ,
-                otherParams: getParameters()
-            };
-
-            scope.send({ payload: formData });
-
-            if (!document.getElementById("manterDados").checked) {
-                form.reset();
+            var dropdownTradeStrategies = document.getElementById("tradeStrategyId-rbt-updt");
+            dropdownTradeStrategies.querySelectorAll("option").forEach(option => option.selected = false);
+            if (robot.tradeStrategyId) {
+                robot.tradeStrategyId.forEach((strategy) => {
+                    let option = dropdownTradeStrategies.querySelector(`option[value="${strategy}"]`);
+                    if (option) option.selected = true;
+                });
             }
         }
 
-        document.getElementById("robotId").addEventListener("change", function() {
-            console.log('--- Robot ID:', this.value);
-            
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        document.getElementById("robotId-rbt-updt").addEventListener("change", function() {
             var robotId = this.value;
             if (robotId) {
-                var loadingElement = document.getElementById("loading");
+                var loadingElement = document.getElementById("loading-rbt-updt");
                 loadingElement.style.display = 'block';
                 fetch(`http://192.168.99.21:5000/robots/${robotId}`, {
                     method: 'GET',
@@ -354,6 +361,7 @@
                 .then(data => {
                     console.log('Dados recebidos do servidor:', data);
                     populateForm(data);
+                    scope.msg.payload.robot = data;
                     loadingElement.style.display = 'none';
                 })
                 .catch(error => {
@@ -366,10 +374,77 @@
             }
         });
 
-        scope.$watch('msg.payload', function(msg) {
-            populateDropdowns(msg);
-        });
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
 
-        document.getElementById("submitBtn").addEventListener("click", submitForm);
+        document.getElementById("submitBtn-rbt-updt").addEventListener("click", submitFormRobotUpdate);
+
+        function submitFormRobotUpdate() {
+            var form = document.getElementById("form-rbt-updt");
+            var requiredFields = form.querySelectorAll("[required]");
+            var missingFields = [];
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
+                }
+            });
+            if (missingFields.length > 0) {
+                alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+                return;
+            }            
+
+            var originalData = scope.msg.payload.robot || {}; // Dados originais do robô
+            var formData = {};
+            var fieldsToCheck = {
+                name: "name-rbt-updt",
+                lifetime: "lifetime-rbt-updt",
+                operationCycleTime: "operationCycleTime-rbt-updt",
+                tradeMarket: "tradeMarket-rbt-updt",
+                initialCapital: "initialCapital-rbt-updt",
+                stopLoss: "stopLoss-rbt-updt",
+                stopGain: "stopGain-rbt-updt",
+                brokerId: "brokerId-rbt-updt",
+                currencySymbol: "currencySymbol-rbt-updt",
+                simulationMode: "simulationMode-rbt-updt"
+            };
+
+            Object.keys(fieldsToCheck).forEach(key => {
+                var element = document.getElementById(fieldsToCheck[key]);
+                var value = element.type === "checkbox" ? element.checked : element.value;
+                if (value != originalData[key]) { // Comparar com os dados originais
+                    formData[key] = value;
+                }
+            });
+
+            var selectedTradeStrategies = getSelectedTradeStrategiesRobotUpdate();
+            if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeStrategyId || [])) {
+                formData.tradeStrategyId = selectedTradeStrategies;
+            }
+
+            var parameters = getParametersRobotUpdate();
+            if (!originalData.otherParams || parameters.length !== originalData.otherParams.length || 
+                parameters.some((param, index) => 
+                    param.name !== originalData.otherParams[index]?.name ||
+                    param.key !== originalData.otherParams[index]?.key ||
+                    param.type !== originalData.otherParams[index]?.type ||
+                    param.description !== originalData.otherParams[index]?.description ||
+                    param.value !== originalData.otherParams[index]?.value)) {
+                formData.otherParams = parameters;
+            }
+
+            if (Object.keys(formData).length === 0) {
+                alert("Nenhuma modificação foi detectada no formulário.");
+                return;
+            }
+
+            if (!document.getElementById("manterDados-rbt-updt").checked) {
+                form.reset();
+                document.getElementById("parameterContainer-rbt-updt").innerHTML = '';
+            }
+        }
+        
+        scope.$watch('msg.payload', function(msg) {
+            populateDropdownsRobotUpdate(msg);
+        });
     })(scope);
 </script>

@@ -47,14 +47,13 @@ GET {{baseUrl}}/{{path}}/67d0c54d895b4f4dfd995e6a
 Authorization: Bearer {{token}}
 
 ########## UPDATE
-PUT {{baseUrl}}/{{path}}/67bc8557e956e02e35f87249
+PUT {{baseUrl}}/{{path}}/67d9c9581fc3244c8c033a64
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
   "tradeStrategyId": [ 
-    "67bc8519e956e02e35f87240",
-    "67bcae581395f7776679b009"
+    "67cb05b4cfb092fc042de34d"
   ]
 }
 
