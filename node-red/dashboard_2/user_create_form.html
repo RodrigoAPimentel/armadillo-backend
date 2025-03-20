@@ -1,0 +1,150 @@
+<style>
+    .form-usr-crt-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-crt-group {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-crt-group.full-width {
+        grid-column: span 2;
+    }
+    .form-usr-crt-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .form-usr-crt-group input, 
+    .form-usr-crt-group select {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-usr-crt-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+    }
+    .form-usr-crt-group input[type="range"] {
+        width: 100%;
+    }
+    .form-usr-crt-group input[type="radio"] {
+        margin-right: 5px;
+    }
+    .submit-usr-crt-btn {
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-usr-crt-btn:hover {
+        background: #0056b3;
+    }
+</style>
+
+<form id="form-usr-crt" class="form-usr-crt-container">
+    <div class="form-usr-crt-group full-width">
+        <label>Name:</label>
+        <input type="text" id="name-usr-crt" placeholder="Name of the user" required>
+    </div>
+    <div class="form-usr-crt-group full-width">
+        <label>Email:</label>
+        <input type="email" id="email-usr-crt" placeholder="Email of the user" required>
+    </div>
+    <div class="form-usr-crt-group full-width">
+        <label>Role:</label>
+        <select id="role-usr-crt" required></select>
+    </div>    
+    <div class="form-usr-crt-group">
+        <label>Password:</label>
+        <input type="password" id="password-usr-crt" placeholder="Password of the user" required>
+    </div>
+    <div class="form-usr-crt-group">
+        <label>Confirm Password:</label>
+        <input type="password" id="confirm-password-usr-crt" placeholder="Password of the user" required>
+    </div>
+    <div class="form-usr-crt-group">
+        <label>Manter dados após envio: <input type="checkbox" id="manterDados-usr-crt"></label>
+    </div>
+
+    <button id="submitBtn-usr-crt" type="button" class="form-usr-crt-group submit-usr-crt-btn">Create</button>
+</form>
+
+<script>
+    const globalThisReference = this; 
+
+    function populateDropdownsUserCreate(inputs) {
+        if (inputs.userRoles && inputs.userRoles.options) {
+            var dropdownRole = document.getElementById("role-usr-crt");
+            dropdownRole.innerHTML = '<option value="">Select the Role</option>';
+            inputs.userRoles.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownRole.appendChild(opt);
+            });
+            if (inputs.userRoles.selected) dropdownRole.value = inputs.userRoles.selected;
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+
+    document.getElementById("submitBtn-usr-crt").addEventListener("click", submitFormUserCreate);
+
+    function submitFormUserCreate() {
+        var form = document.getElementById("form-usr-crt");
+        var requiredFields = form.querySelectorAll("[required]");
+        var missingFields = [];
+        var newPassword = document.getElementById("password-usr-crt").value;
+        var confirmNewPassword = document.getElementById("confirm-password-usr-crt").value;        
+
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
+            }
+        });
+        if (missingFields.length > 0) {
+            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+            return;
+        }
+
+        if (newPassword !== confirmNewPassword) {
+            alert("A senha e a confirmação da senha não coincidem. Por favor, verifique.");
+            return;
+        }
+
+        var formData = {
+            name: document.getElementById("name-usr-crt").value,
+            role: document.getElementById("role-usr-crt").value,
+            email: document.getElementById("email-usr-crt").value,
+            password: document.getElementById("password-usr-crt").value,
+        };
+        
+        globalThisReference.send({ payload: formData });
+
+        if (!document.getElementById("manterDados-usr-crt").checked) {
+            form.reset();
+        }
+    }
+    
+    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        if (msg.payload) {
+            populateDropdownsUserCreate(msg.payload);
+        }
+    });
+</script>

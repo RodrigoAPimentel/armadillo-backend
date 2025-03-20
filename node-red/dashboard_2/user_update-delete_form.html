@@ -1,0 +1,318 @@
+<style>
+    .form-usr-updt-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-updt-group {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-updt-group-destac {
+        background: rgb(233, 232, 232);
+        width: 93%;
+        margin: 0 auto;
+        display: block;
+        border: 2px solid #007bff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .form-usr-updt-group-destac-font {
+        font-style: italic;
+        font-weight: bold;
+    }
+    .form-usr-updt-group.full-width {
+        grid-column: span 2;
+    }
+    .form-usr-updt-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .form-usr-updt-group input, 
+    .form-usr-updt-group select {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-usr-updt-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+    }
+    .form-usr-updt-group input[type="range"] {
+        width: 100%;
+    }
+    .form-usr-updt-group input[type="radio"] {
+        margin-right: 5px;
+    }
+    .submit-usr-updt-btn {
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-usr-updt-btn:hover {
+        background: #0056b3;
+    }
+    .submit-usr-del-btn {
+        background: #fc2929;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-usr-del-btn:hover {
+        background:  #ff0000;
+    }
+
+    .loading {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: #007bff;
+    }
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        display: block;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div id="loading-usr-updt" class="loading">
+    <div class="spinner"></div>
+</div>
+
+<form id="form-usr-updt" class="form-usr-updt-container">
+    <div class="form-usr-updt-group form-usr-updt-group-destac full-width">
+        <label>Select User:</label>
+        <select id="select-usr-usr-updt" style="width: 100%; font-style: italic; font-weight: bold;" required></select>
+    </div>
+    <div class="form-usr-updt-group full-width">
+        <label>Name:</label>
+        <input type="text" id="name-usr-updt" placeholder="Name of the user" required>
+    </div>
+    <div class="form-usr-updt-group full-width">
+        <label>Email:</label>
+        <input type="email" id="email-usr-updt" placeholder="Email of the user" required disabled>
+    </div>
+    <div class="form-usr-updt-group full-width">
+        <label>Old Password:</label>
+        <input type="password" id="old-password-usr-updt" placeholder="Enter the old password" required>
+    </div>
+    <div class="form-usr-updt-group">
+        <label>New Password:</label>
+        <input type="password" id="new-password-usr-updt" placeholder="Enter the new password" required>
+    </div>
+    <div class="form-usr-updt-group">
+        <label>Confirm New Password:</label>
+        <input type="password" id="confirm-new-password-usr-updt" placeholder="Confirm the old password" required>
+    </div>
+    <div class="form-usr-updt-group">
+        <label>Role:</label>
+        <select id="role-usr-updt" required></select>
+    </div>
+    <div class="form-usr-updt-group">
+        <label>Active: <input type="checkbox" id="active-usr-updt"></label>
+    </div>
+
+    <button id="submitBtn-usr-del" type="button" class="form-usr-updt-group submit-usr-del-btn">Delete</button>
+    <button id="submitBtn-usr-updt" type="button" class="form-usr-updt-group submit-usr-updt-btn">Update</button>
+</form>
+
+<script>
+    const globalThisReference = this;
+    var scope = globalThisReference.scope || {}; // Garante que scope está definido no contexto do Node-RED Dashboard.
+
+    function populateDropdownsUserUpdate(inputs) {
+        if (inputs.users && inputs.users.options) {
+            var dropdownUsers = document.getElementById("select-usr-usr-updt");
+            dropdownUsers.innerHTML = '<option value="">Select a User to update</option>';
+            inputs.users.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownUsers.appendChild(opt);
+            });
+        }
+    }
+
+    function populateForm(robot) {
+        document.getElementById("name-usr-updt").value = user.name || '';
+        document.getElementById("role-usr-updt").value = user.role || '';
+        document.getElementById("email-usr-updt").value = user.email || '';
+        document.getElementById("active-usr-updt").checked = user.active || false;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    document.getElementById("select-usr-usr-updt").addEventListener("change", loadUsers);
+    
+    function loadUsers() {            
+        var userId = this.value;
+        if (userId) {
+            var loadingElement = document.getElementById("loading-usr-updt");
+            loadingElement.style.display = 'block';
+            fetch(`http://192.168.99.21:5000/users/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dados recebidos do servidor:', data);
+                populateForm(data);
+                scope.msg = scope.msg || {}; // Garante que scope.msg está definido.
+                scope.msg.payload = scope.msg.payload || {}; // Garante que scope.msg.payload está definido.
+                scope.msg.payload.robot = data;
+                loadingElement.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error fetching robot data:', error);
+                loadingElement.style.display = 'none';
+                if (error.message.includes('Failed to fetch')) {
+                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');
+                }
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadUsers.call(document.getElementById("select-usr-usr-updt"));
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
+
+    document.getElementById("submitBtn-usr-updt").addEventListener("click", submitFormUserUpdate);
+    
+    function submitFormUserUpdate() {
+        var form = document.getElementById("form-usr-updt");
+        var requiredFields = form.querySelectorAll("[required]");
+        var missingFields = [];
+        var newPassword = document.getElementById("new-password-usr-updt").value;
+        var confirmNewPassword = document.getElementById("confirm-new-password-usr-updt").value;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
+            }
+        });
+        if (missingFields.length > 0) {
+            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+            return;
+        }            
+
+        if (newPassword !== confirmNewPassword) {
+            alert("A nova senha e a confirmação da nova senha não coincidem. Por favor, verifique.");
+            return;
+        }
+
+        var originalData = scope.msg?.payload?.robot || {}; // Dados originais do robô
+        var formData = {};
+        var fieldsToCheck = {
+            name: "name-usr-updt",
+            role: "role-usr-updt",
+            email: "email-usr-updt",
+            active: "active-usr-updt",
+
+            oldPassword: "old-password-usr-updt",
+            newPassword: "new-password-usr-updt",
+            confirmNewPassword: "confirm-new-password-usr-updt"
+        };
+
+        Object.keys(fieldsToCheck).forEach(key => {
+            var element = document.getElementById(fieldsToCheck[key]);
+            var value = element.type === "checkbox" ? element.checked : element.value;
+            if (value != originalData[key]) { // Comparar com os dados originais
+                formData[key] = value;
+            }
+        });
+                
+        if (Object.keys(formData).length === 0) {
+            alert("Nenhuma modificação foi detectada no formulário.");
+            return;
+        }
+
+        
+                
+        globalThisReference.send({ 
+            user_id: originalData._id,
+            body: formData,
+            is_delete: false
+        });
+                
+        form.reset();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    document.getElementById("submitBtn-usr-del").addEventListener("click", submitFormUserDelete);
+    
+    function submitFormUserDelete() {
+        var form = document.getElementById("form-usr-updt");
+        var requiredFields = document.getElementById("select-usr-usr-updt");
+        var missingFields = [];
+
+        if (!requiredFields.value.trim()) {
+            missingFields.push(requiredFields.previousElementSibling?.textContent || "Campo obrigatório");
+        } 
+        if (missingFields.length > 0) {
+            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+            return;
+        }
+
+        if (!confirm(`Tem certeza de que deseja deletar o user "${scope.msg.payload.robot.name}"?`)) {
+            return;
+        }
+
+        globalThisReference.send({ 
+            user_id: scope.msg.payload.robot._id, 
+            is_delete: true 
+        });
+
+        var dropdownUsers = document.getElementById("select-usr-usr-updt");
+        var selectedOption = dropdownUsers.querySelector(`option[value="${scope.msg.payload.robot._id}"]`);
+        if (selectedOption) selectedOption.remove();
+
+        form.reset();
+    }
+    
+    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        if (msg.payload) {
+            populateDropdownsUserUpdate(msg.payload);
+        }
+    });
+</script>

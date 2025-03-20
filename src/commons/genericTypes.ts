@@ -14,3 +14,9 @@ export enum CurrencySymbol {
   USD = 'US$',
   BRL = 'R$',
 }
+
+export enum UserRoles {
+  ADMIN = 'Administration',
+  USER = 'User',
+  GUEST = 'Guest',
+}

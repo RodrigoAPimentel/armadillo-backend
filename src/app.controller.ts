@@ -7,6 +7,7 @@ import {
   CurrencySymbol,
   TradeMarket,
   TradeSignal,
+  UserRoles,
 } from 'src/commons/genericTypes';
 
 /**
@@ -50,6 +51,7 @@ export class AppController {
     currencySymbols: CurrencySymbol[];
     tradeSignals: TradeSignal[];
     tradeMarkets: TradeMarket[];
+    userRoles: UserRoles[];
   } {
     this.logger.functionCaller({}, 'info');
 
@@ -57,6 +59,7 @@ export class AppController {
       currencySymbols: Object.values(CurrencySymbol),
       tradeSignals: Object.values(TradeSignal),
       tradeMarkets: Object.values(TradeMarket),
+      userRoles: Object.values(UserRoles),
     };
 
     this.logger.functionResult(resp, 'info');
