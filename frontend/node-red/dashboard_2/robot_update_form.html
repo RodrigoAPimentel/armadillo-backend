@@ -68,19 +68,6 @@
     .submit-rbt-updt-btn:hover {
         background: #0056b3;
     }
-    .submit-rbt-del-btn {
-        background: #fc2929;
-        color: white;
-        font-size: 16px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-    .submit-rbt-del-btn:hover {
-        background:  #ff0000;
-    }
     .parameter-rbt-updt-item {
         display: flex;
         flex-direction: column;
@@ -206,13 +193,12 @@
         <label>Manter dados após envio: <input type="checkbox" id="manterDados-rbt-updt"></label>
     </div>
 
-    <button id="submitBtn-rbt-del" type="button" class="form-rbt-updt-group submit-rbt-del-btn">Delete</button>
-    <button id="submitBtn-rbt-updt" type="button" class="form-rbt-updt-group submit-rbt-updt-btn">Update</button>
+    <button id="submitBtn-rbt-updt" type="button" class="form-rbt-updt-group submit-rbt-updt-btn full-width">Update</button>
 </form>
 
 <script>
     const globalThisReference = this;
-    var scope = globalThisReference.scope || {}; // Garante que scope está definido no contexto do Node-RED Dashboard.
+    var scope = globalThisReference.scope || {};
 
     function populateDropdownsRobotUpdate(inputs) {
         if (inputs.robots && inputs.robots.options) {
@@ -379,8 +365,8 @@
             .then(data => {
                 console.log('Dados recebidos do servidor:', data);
                 populateForm(data);
-                scope.msg = scope.msg || {}; // Garante que scope.msg está definido.
-                scope.msg.payload = scope.msg.payload || {}; // Garante que scope.msg.payload está definido.
+                scope.msg = scope.msg || {};
+                scope.msg.payload = scope.msg.payload || {};
                 scope.msg.payload.robot = data;
                 loadingElement.style.display = 'none';
             })
@@ -417,7 +403,7 @@
             return;
         }            
 
-        var originalData = scope.msg?.payload?.robot || {}; // Dados originais do robô
+        var originalData = scope.msg?.payload?.robot || {};
         var formData = {};
         var fieldsToCheck = {
             name: "name-rbt-updt",
@@ -435,7 +421,7 @@
         Object.keys(fieldsToCheck).forEach(key => {
             var element = document.getElementById(fieldsToCheck[key]);
             var value = element.type === "checkbox" ? element.checked : element.value;
-            if (value != originalData[key]) { // Comparar com os dados originais
+            if (value != originalData[key]) {
                 formData[key] = value;
             }
         });
@@ -475,39 +461,8 @@
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    document.getElementById("submitBtn-rbt-del").addEventListener("click", submitFormRobotDelete);
-    
-    function submitFormRobotDelete() {
-        var form = document.getElementById("form-rbt-updt");
-        var requiredFields = document.getElementById("select-rbt-rbt-updt");
-        var missingFields = [];
-
-        if (!requiredFields.value.trim()) {
-            missingFields.push(requiredFields.previousElementSibling?.textContent || "Campo obrigatório");
-        } 
-        if (missingFields.length > 0) {
-            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
-            return;
-        }
-
-        if (!confirm(`Tem certeza de que deseja deletar o robô "${scope.msg.payload.robot.name}"?`)) {
-            return;
-        }
-
-        globalThisReference.send({ 
-            robot_id: scope.msg.payload.robot._id, 
-            is_delete: true 
-        });
-
-        var dropdownRobots = document.getElementById("select-rbt-rbt-updt");
-        var selectedOption = dropdownRobots.querySelector(`option[value="${scope.msg.payload.robot._id}"]`);
-        if (selectedOption) selectedOption.remove();
-
-        form.reset();
-        document.getElementById("parameterContainer-rbt-updt").innerHTML = '';
-    }
-    
     globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        console.log('[Robots - Update] Inputs:', msg.payload);
         if (msg.payload) {
             populateDropdownsRobotUpdate(msg.payload);
         }

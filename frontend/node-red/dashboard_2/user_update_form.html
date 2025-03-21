@@ -68,19 +68,6 @@
     .submit-usr-updt-btn:hover {
         background: #0056b3;
     }
-    .submit-usr-del-btn {
-        background: #fc2929;
-        color: white;
-        font-size: 16px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-    .submit-usr-del-btn:hover {
-        background:  #ff0000;
-    }
 
     .loading {
         display: none;
@@ -130,31 +117,34 @@
     </div>
     <div class="form-usr-updt-group full-width">
         <label>Old Password:</label>
-        <input type="password" id="old-password-usr-updt" placeholder="Enter the old password" required>
+        <input type="password" id="old-password-usr-updt" placeholder="Enter the old password">
     </div>
-    <div class="form-usr-updt-group">
-        <label>New Password:</label>
-        <input type="password" id="new-password-usr-updt" placeholder="Enter the new password" required>
+    <div class="form-usr-updt-group" id="new-password-group" style="display: none; background-color: rgb(255, 249, 240); width: 97%; margin: 0 auto">
+        <div class="form-usr-updt-group" style="background-color: rgb(255, 249, 240);">
+            <label>New Password:</label>
+            <input type="password" id="new-password-usr-updt" placeholder="Enter the new password" style="background-color: rgb(255, 249, 240);">
+        </div>
     </div>
-    <div class="form-usr-updt-group">
-        <label>Confirm New Password:</label>
-        <input type="password" id="confirm-new-password-usr-updt" placeholder="Confirm the old password" required>
+    <div class="form-usr-updt-group" id="confirm-new-password-group" style="display: none; background-color: rgb(255, 249, 240); width: 97%; margin: 0 auto">
+        <div class="form-usr-updt-group" style="background-color: rgb(255, 249, 240);">
+            <label>Confirm New Password:</label>
+            <input type="password" id="confirm-new-password-usr-updt" placeholder="Confirm the old password" style="background-color: rgb(255, 249, 240);">
+        </div>
     </div>
-    <div class="form-usr-updt-group">
+    <div class="form-usr-updt-group full-width">
         <label>Role:</label>
         <select id="role-usr-updt" required></select>
     </div>
-    <div class="form-usr-updt-group">
+    <div class="form-usr-updt-group full-width">
         <label>Active: <input type="checkbox" id="active-usr-updt"></label>
     </div>
 
-    <button id="submitBtn-usr-del" type="button" class="form-usr-updt-group submit-usr-del-btn">Delete</button>
-    <button id="submitBtn-usr-updt" type="button" class="form-usr-updt-group submit-usr-updt-btn">Update</button>
+    <button id="submitBtn-usr-updt" type="button" class="form-usr-updt-group submit-usr-updt-btn full-width">Update</button>
 </form>
 
 <script>
     const globalThisReference = this;
-    var scope = globalThisReference.scope || {}; // Garante que scope está definido no contexto do Node-RED Dashboard.
+    var scope = globalThisReference.scope || {};
 
     function populateDropdownsUserUpdate(inputs) {
         if (inputs.users && inputs.users.options) {
@@ -167,9 +157,20 @@
                 dropdownUsers.appendChild(opt);
             });
         }
+        if (inputs.userRoles && inputs.userRoles.options) {
+            var dropdownRole = document.getElementById("role-usr-updt");
+            dropdownRole.innerHTML = '<option value="">Select the Role</option>';
+            inputs.userRoles.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownRole.appendChild(opt);
+            });
+            if (inputs.userRoles.selected) dropdownRole.value = inputs.userRoles.selected;
+        }
     }
 
-    function populateForm(robot) {
+    function populateForm(user) {
         document.getElementById("name-usr-updt").value = user.name || '';
         document.getElementById("role-usr-updt").value = user.role || '';
         document.getElementById("email-usr-updt").value = user.email || '';
@@ -193,15 +194,14 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Dados recebidos do servidor:', data);
                 populateForm(data);
                 scope.msg = scope.msg || {}; // Garante que scope.msg está definido.
                 scope.msg.payload = scope.msg.payload || {}; // Garante que scope.msg.payload está definido.
-                scope.msg.payload.robot = data;
+                scope.msg.payload.users = data;
                 loadingElement.style.display = 'none';
             })
             .catch(error => {
-                console.error('Error fetching robot data:', error);
+                console.error('Error fetching users data:', error);
                 loadingElement.style.display = 'none';
                 if (error.message.includes('Failed to fetch')) {
                     alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');
@@ -222,9 +222,10 @@
         var form = document.getElementById("form-usr-updt");
         var requiredFields = form.querySelectorAll("[required]");
         var missingFields = [];
+        var oldPassword = document.getElementById("old-password-usr-updt").value;
         var newPassword = document.getElementById("new-password-usr-updt").value;
         var confirmNewPassword = document.getElementById("confirm-new-password-usr-updt").value;
-        
+
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
@@ -233,84 +234,70 @@
         if (missingFields.length > 0) {
             alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
             return;
-        }            
-
-        if (newPassword !== confirmNewPassword) {
-            alert("A nova senha e a confirmação da nova senha não coincidem. Por favor, verifique.");
-            return;
         }
 
-        var originalData = scope.msg?.payload?.robot || {}; // Dados originais do robô
+        if (oldPassword.trim()) {
+            if (newPassword !== confirmNewPassword) {
+                alert("A nova senha e a confirmação da nova senha não coincidem. Por favor, verifique.");
+                return;
+            }
+        }
+
+        var originalData = scope.msg?.payload?.users || {};
+
         var formData = {};
         var fieldsToCheck = {
             name: "name-usr-updt",
             role: "role-usr-updt",
             email: "email-usr-updt",
-            active: "active-usr-updt",
-
-            oldPassword: "old-password-usr-updt",
-            newPassword: "new-password-usr-updt",
-            confirmNewPassword: "confirm-new-password-usr-updt"
+            active: "active-usr-updt"
         };
 
         Object.keys(fieldsToCheck).forEach(key => {
             var element = document.getElementById(fieldsToCheck[key]);
             var value = element.type === "checkbox" ? element.checked : element.value;
-            if (value != originalData[key]) { // Comparar com os dados originais
+            if (value != originalData[key]) {
                 formData[key] = value;
             }
         });
-                
+
+        if (oldPassword.trim()) {
+            formData.password = oldPassword;
+            formData.newPassword = newPassword;
+        }
+
         if (Object.keys(formData).length === 0) {
             alert("Nenhuma modificação foi detectada no formulário.");
             return;
         }
 
-        
-                
         globalThisReference.send({ 
             user_id: originalData._id,
             body: formData,
             is_delete: false
         });
-                
+
         form.reset();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    document.getElementById("submitBtn-usr-del").addEventListener("click", submitFormUserDelete);
-    
-    function submitFormUserDelete() {
-        var form = document.getElementById("form-usr-updt");
-        var requiredFields = document.getElementById("select-usr-usr-updt");
-        var missingFields = [];
-
-        if (!requiredFields.value.trim()) {
-            missingFields.push(requiredFields.previousElementSibling?.textContent || "Campo obrigatório");
-        } 
-        if (missingFields.length > 0) {
-            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
-            return;
+    document.getElementById("old-password-usr-updt").addEventListener("input", function () {
+        var newPasswordGroup = document.getElementById("new-password-group");
+        var confirmNewPasswordGroup = document.getElementById("confirm-new-password-group");
+        if (this.value.trim()) {
+            newPasswordGroup.style.display = "block";
+            confirmNewPasswordGroup.style.display = "block";
+        } else {
+            newPasswordGroup.style.display = "none";
+            confirmNewPasswordGroup.style.display = "none";
+            document.getElementById("new-password-usr-updt").value = "";
+            document.getElementById("confirm-new-password-usr-updt").value = "";
         }
+    });
 
-        if (!confirm(`Tem certeza de que deseja deletar o user "${scope.msg.payload.robot.name}"?`)) {
-            return;
-        }
-
-        globalThisReference.send({ 
-            user_id: scope.msg.payload.robot._id, 
-            is_delete: true 
-        });
-
-        var dropdownUsers = document.getElementById("select-usr-usr-updt");
-        var selectedOption = dropdownUsers.querySelector(`option[value="${scope.msg.payload.robot._id}"]`);
-        if (selectedOption) selectedOption.remove();
-
-        form.reset();
-    }
-    
     globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        console.log('[Users - Update] Inputs:', msg.payload);
         if (msg.payload) {
             populateDropdownsUserUpdate(msg.payload);
         }

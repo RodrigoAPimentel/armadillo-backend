@@ -1,0 +1,235 @@
+<style>
+    .form-usr-del-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-del-group {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .form-usr-del-group-destac {
+        background: rgb(233, 232, 232);
+        width: 93%;
+        margin: 0 auto;
+        display: block;
+        border: 2px solid #007bff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .form-usr-del-group-destac-font {
+        font-style: italic;
+        font-weight: bold;
+    }
+    .form-usr-del-group.full-width {
+        grid-column: span 2;
+    }
+    .form-usr-del-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .form-usr-del-group input, 
+    .form-usr-del-group select {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-usr-del-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+    }
+    .form-usr-del-group input[type="range"] {
+        width: 100%;
+    }
+    .form-usr-del-group input[type="radio"] {
+        margin-right: 5px;
+    }
+    .submit-usr-del-btn {
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-usr-del-btn:hover {
+        background: #0056b3;
+    }
+    .submit-usr-del-btn {
+        background: #fc2929;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-usr-del-btn:hover {
+        background:  #ff0000;
+    }
+
+    .loading {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: #007bff;
+    }
+    .spinner {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        display: block;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div id="loading-usr-del" class="loading">
+    <div class="spinner"></div>
+</div>
+
+<form id="form-usr-del" class="form-usr-del-container">
+    <div class="form-usr-del-group form-usr-del-group-destac full-width">
+        <label>Select User:</label>
+        <select id="select-usr-usr-del" style="width: 100%; font-style: italic; font-weight: bold;" required></select>
+    </div>
+    <div class="form-usr-del-group full-width">
+        <label>Name:</label>
+        <input type="text" id="name-usr-del" placeholder="Name of the user" required disabled>
+    </div>
+    <div class="form-usr-del-group full-width">
+        <label>Email:</label>
+        <input type="email" id="email-usr-del" placeholder="Email of the user" required disabled>
+    </div>
+
+    <button id="submitBtn-usr-del" type="button" class="form-usr-del-group submit-usr-del-btn full-width">Delete</button>
+</form>
+
+<script>
+    const globalThisReference = this;
+    var scope = globalThisReference.scope || {};
+
+    function populateDropdownsUserDelete(inputs) {
+        if (inputs.users && inputs.users.options) {
+            var dropdownUsers = document.getElementById("select-usr-usr-del");
+            dropdownUsers.innerHTML = '<option value="">Select a User to update</option>';
+            inputs.users.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownUsers.appendChild(opt);
+            });
+        }
+    }
+
+    function populateForm(user) {
+        document.getElementById("name-usr-del").value = user.name || '';
+        document.getElementById("email-usr-del").value = user.email || '';
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    document.getElementById("select-usr-usr-del").addEventListener("change", loadUsers);
+    
+    function loadUsers() {            
+        var userId = this.value;
+        if (userId) {
+            var loadingElement = document.getElementById("loading-usr-del");
+            loadingElement.style.display = 'block';
+            fetch(`http://192.168.99.21:5000/users/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                populateForm(data);
+                scope.msg = scope.msg || {};
+                scope.msg.payload = scope.msg.payload || {};
+                scope.msg.payload.users = data;
+                loadingElement.style.display = 'none';
+            })
+            .catch(error => {
+                console.error('Error fetching users data:', error);
+                loadingElement.style.display = 'none';
+                if (error.message.includes('Failed to fetch')) {
+                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');
+                }
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        loadUsers.call(document.getElementById("select-usr-usr-del"));
+    });
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    document.getElementById("submitBtn-usr-del").addEventListener("click", submitFormUserDelete);
+    
+    function submitFormUserDelete() {
+        console.log('[Users - Delete] Submitting form...');
+        
+        var form = document.getElementById("form-usr-del");
+        var requiredFields = document.getElementById("select-usr-usr-del");
+        var missingFields = [];
+
+        if (!requiredFields.value.trim()) {
+            missingFields.push(requiredFields.previousElementSibling?.textContent || "Campo obrigatório");
+        } 
+        if (missingFields.length > 0) {
+            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+            return;
+        }
+
+        if (!confirm(`Tem certeza de que deseja deletar o User "${scope.msg.payload.users.name}"?`)) {
+            return;
+        }
+
+        globalThisReference.send({ 
+            user_id: scope.msg.payload.users._id, 
+            is_delete: true 
+        });
+
+        var dropdownUsers = document.getElementById("select-usr-usr-del");
+        var selectedOption = dropdownUsers.querySelector(`option[value="${scope.msg.payload.users._id}"]`);
+        if (selectedOption) selectedOption.remove();
+
+        form.reset();
+    }
+
+    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        console.log('[Users - Delete] Inputs:', msg.payload);
+        if (msg.payload) {
+            populateDropdownsUserDelete(msg.payload);
+        }
+    });
+</script>
