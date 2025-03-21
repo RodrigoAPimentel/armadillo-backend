@@ -24,6 +24,22 @@
         "env": []
     },
     {
+        "id": "05d4cbefa7b42b24",
+        "type": "tab",
+        "label": "Trade Strategies",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2e53b826e21201c6",
+        "type": "tab",
+        "label": "Broker",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "b79e2d000ad57cc5",
         "type": "global-config",
         "name": "global-config",
@@ -209,8 +225,8 @@
         ],
         "order": 3,
         "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "visible": true,
+        "disabled": false
     },
     {
         "id": "0c2412a339952ee8",
@@ -273,8 +289,8 @@
         ],
         "order": 2,
         "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "visible": true,
+        "disabled": false
     },
     {
         "id": "0e710d4f062136e2",
@@ -309,7 +325,7 @@
         "type": "ui-page",
         "name": "Dashboard",
         "ui": "ac3809d36e164af0",
-        "path": "/dash",
+        "path": "/dashboard",
         "icon": "view-dashboard-outline",
         "layout": "notebook",
         "theme": "7677d91e1bab03cd",
@@ -376,6 +392,134 @@
         "width": 6,
         "height": 1,
         "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "83d1ffeab83d6c85",
+        "type": "ui-page",
+        "name": "Trade Strategies",
+        "ui": "ac3809d36e164af0",
+        "path": "/tradeStrategies",
+        "icon": "strategy",
+        "layout": "tabs",
+        "theme": "7677d91e1bab03cd",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 4,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "c96ed8a65337ca11",
+        "type": "ui-group",
+        "name": "Create",
+        "page": "83d1ffeab83d6c85",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "8f7ac4bb7811b50f",
+        "type": "ui-group",
+        "name": "Update",
+        "page": "83d1ffeab83d6c85",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "5d2d53db1c2f542b",
+        "type": "ui-group",
+        "name": "Delete",
+        "page": "83d1ffeab83d6c85",
+        "width": 6,
+        "height": 1,
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "13c3466f82036a3b",
+        "type": "ui-page",
+        "name": "Brokers",
+        "ui": "ac3809d36e164af0",
+        "path": "/brokers",
+        "icon": "bank-transfer",
+        "layout": "tabs",
+        "theme": "7677d91e1bab03cd",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 5,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "c7c5e2b6090ae201",
+        "type": "ui-group",
+        "name": "Create",
+        "page": "13c3466f82036a3b",
+        "width": 6,
+        "height": 1,
+        "order": 1,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -610,7 +754,7 @@
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "localhost:5000/users",
+        "url": "localhost:5000/tradeStrategies",
         "tls": "",
         "persist": true,
         "proxy": "",
@@ -1608,6 +1752,957 @@
         "statusType": "auto",
         "x": 620,
         "y": 340,
+        "wires": []
+    },
+    {
+        "id": "488aa0b5080841f5",
+        "type": "ui-template",
+        "z": "05d4cbefa7b42b24",
+        "group": "c96ed8a65337ca11",
+        "page": "",
+        "ui": "",
+        "name": "Create Form",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-trs-crt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-crt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-crt-group.full-width {\n        grid-column: span 2;\n    }\n    .form-trs-crt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-trs-crt-group input, \n    .form-trs-crt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-trs-crt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-trs-crt-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-trs-crt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-trs-crt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-crt-btn:hover {\n        background: #0056b3;\n    }\n    .parameter-trs-crt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n    .parameter-trs-crt-item input, .parameter-trs-crt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .remove-trs-crt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n    .add-btn-trs-crt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n</style>\n\n<form id=\"form-trs-crt\" class=\"form-trs-crt-container\">\n    <div class=\"form-trs-crt-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-trs-crt\" placeholder=\"Name of the Trade Strategy\" required>\n    </div>\n    <div class=\"form-trs-crt-group full-width\">\n        <label>Acronym:</label>\n        <input type=\"text\" id=\"acronym-trs-crt\" placeholder=\"Acronym of the Trade Strategy\" required>\n    </div>\n    <div class=\"form-trs-crt-group full-width\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-trs-crt\" size=\"3\" multiple required></select>\n    </div>\n    <div class=\"form-trs-crt-group full-width full-width\">\n        <label>Description:</label>\n        <textarea id=\"description-trs-crt\" placeholder=\"Description of the Trade Strategy\" rows=\"3\" style=\"padding: 15px; border: 1px solid #ccc; border-radius: 5px;\"></textarea>\n    </div>\n    <div class=\"form-trs-crt-group full-width\">\n        <label>Parameters:</label>\n        <div id=\"parameterContainer-trs-crt\"></div>\n        <button type=\"button\" class=\"add-btn-trs-crt\" onclick=\"addParameterTradeMarketsCreate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-trs-crt-group\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-trs-crt\"></label>\n    </div>\n\n    <button id=\"submitBtn-trs-crt\" type=\"button\" class=\"form-trs-crt-group submit-trs-crt-btn full-width\">Create</button>\n</form>\n\n<script>\n    const globalThisReference = this; \n\n    function populateDropdownsTradeStrategiesCreate(inputs) {\n        if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n            var dropdownTradeMarket = document.getElementById(\"tradeMarket-trs-crt\");\n            dropdownTradeMarket.innerHTML = '';\n            inputs.tradeMarkets.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarket.appendChild(opt);\n            });\n            if (inputs.tradeMarkets.selected) {\n                inputs.tradeMarkets.selected.forEach(selectedValue => {\n                    let option = dropdownTradeMarket.querySelector(`option[value=\"${selectedValue}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n    }\n    function getSelectedTradeMarketsTradeStrategiesCreate() {\n        let selectedOptions = document.getElementById(\"tradeMarket-trs-crt\").selectedOptions;\n        return Array.from(selectedOptions).map(option => option.value);\n    }\n    function addParameterTradeMarketsCreate() {\n        var container = document.getElementById(\"parameterContainer-trs-crt\");\n\n        var div = document.createElement(\"div\");\n        div.classList.add(\"parameter-trs-crt-item\");\n        \n        div.innerHTML = `\n            <input type=\"text\" placeholder=\"Name\" class=\"param-trs-crt-name\" required>\n            <input type=\"text\" placeholder=\"Key\" class=\"param-trs-crt-key\" required>\n            <select class=\"param-trs-crt-type\">\n                <option value=\"string\">String</option>\n                <option value=\"number\">Number</option>\n            </select>\n            <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-trs-crt-description\">\n            <input type=\"text\" placeholder=\"Value\" class=\"param-trs-crt-value\" required>\n            <button type=\"button\" class=\"remove-trs-crt-btn\" onclick=\"removeParameterTradeStrategiesCreate(this)\">❌</button>\n        `;\n        container.appendChild(div);\n    }\n    window.addParameterTradeMarketsCreate = addParameterTradeMarketsCreate;\n    function removeParameterTradeStrategiesCreate(button) {\n        button.parentElement.remove();\n    }\n    window.removeParameterTradeStrategiesCreate = removeParameterTradeStrategiesCreate;\n    function getParametersTradeStrategiesCreate() {\n        var params = [];\n        document.querySelectorAll(\".parameter-trs-crt-item\").forEach(item => {\n            var param = {\n                name: item.querySelector(\".param-trs-crt-name\").value,\n                key: item.querySelector(\".param-trs-crt-key\").value,\n                type: item.querySelector(\".param-trs-crt-type\").value,\n                description: item.querySelector(\".param-trs-crt-description\").value || undefined,\n                value: item.querySelector(\".param-trs-crt-value\").value\n            };\n            params.push(param);\n        });\n        return params;\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n    document.getElementById(\"submitBtn-trs-crt\").addEventListener(\"click\", submitFormTradeStrategiesCreate);\n\n    function submitFormTradeStrategiesCreate() {\n        var form = document.getElementById(\"form-trs-crt\");\n        var requiredFields = form.querySelectorAll(\"[required]\");\n        var missingFields = [];\n\n        requiredFields.forEach(field => {\n            if (!field.value.trim()) {\n                missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n            }\n        });\n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }\n\n        var formData = {\n            name: document.getElementById(\"name-trs-crt\").value,\n            acronym: document.getElementById(\"acronym-trs-crt\").value,\n            tradeMarket: getSelectedTradeMarketsTradeStrategiesCreate(),\n            description: document.getElementById(\"description-trs-crt\").value,\n            parameters: getParametersTradeStrategiesCreate()\n        };\n        \n        globalThisReference.send({ payload: formData });\n\n        if (!document.getElementById(\"manterDados-trs-crt\").checked) {\n            form.reset();\n            document.getElementById(\"parameterContainer-trs-crt\").innerHTML = '';\n        }\n    }\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        if (msg.payload) {\n            populateDropdownsTradeStrategiesCreate(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 650,
+        "y": 100,
+        "wires": [
+            [
+                "8a802305f2720cb9",
+                "1ab8e10980d7dff8"
+            ]
+        ]
+    },
+    {
+        "id": "8a802305f2720cb9",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "strategy",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "9f7c6960ad56eb51",
+        "type": "http request",
+        "z": "05d4cbefa7b42b24",
+        "name": "GET tradeMarkets",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/types",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "d0af3fad19ed6ccf"
+            ]
+        ]
+    },
+    {
+        "id": "d0af3fad19ed6ccf",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "tradeMarkets",
+        "func": "msg.payload = {\n    tradeMarkets: {\n        options: msg.payload.tradeMarkets.map(entry => ({ label: entry, value: entry })),\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "488aa0b5080841f5",
+                "ca830238d1f398e6"
+            ]
+        ]
+    },
+    {
+        "id": "1ab8e10980d7dff8",
+        "type": "http request",
+        "z": "05d4cbefa7b42b24",
+        "name": "POST strategy",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/tradeStrategies",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 900,
+        "y": 100,
+        "wires": [
+            [
+                "192a8dced19ef071",
+                "786f0c7f499d78f2"
+            ]
+        ]
+    },
+    {
+        "id": "192a8dced19ef071",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "strategy resp",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "786f0c7f499d78f2",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "Process Response",
+        "func": "msg.topic = 'Trade Strategy Create'\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = 'Trade Strategy Create successfully!'\n} else {\n    msg.payload = 'Failed to create Trade Strategy: ' + msg.payload.message\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 100,
+        "wires": [
+            [
+                "8e486847e55a2e94"
+            ]
+        ]
+    },
+    {
+        "id": "8e486847e55a2e94",
+        "type": "ui-notification",
+        "z": "05d4cbefa7b42b24",
+        "ui": "ac3809d36e164af0",
+        "position": "bottom right",
+        "colorDefault": true,
+        "color": "#001ae0",
+        "displayTime": "8",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": false,
+        "dismissText": "Close",
+        "allowConfirm": true,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "Tool Tip",
+        "x": 1640,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca830238d1f398e6",
+        "type": "ui-template",
+        "z": "05d4cbefa7b42b24",
+        "group": "8f7ac4bb7811b50f",
+        "page": "",
+        "ui": "",
+        "name": "Update Form",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-trs-updt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-updt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-updt-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n    .form-trs-updt-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n    .form-trs-updt-group.full-width {\n        grid-column: span 2;\n    }\n    .form-trs-updt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-trs-updt-group input, \n    .form-trs-updt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-trs-updt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-trs-updt-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-trs-updt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-trs-updt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-updt-btn:hover {\n        background: #0056b3;\n    }\n    .parameter-trs-updt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n    .parameter-trs-updt-item input, .parameter-trs-updt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .remove-trs-updt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n    .add-btn-trs-updt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-trs-updt\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-trs-updt\" class=\"form-trs-updt-container\">\n    <div class=\"form-trs-updt-group form-trs-updt-group-destac full-width\">\n        <label>Select Trade Strategy:</label>\n        <select id=\"select-trs-trs-updt\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-trs-updt\" placeholder=\"Name of the tradeStrategy\" required>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Acronym:</label>\n        <input type=\"text\" id=\"acronym-trs-updt\" placeholder=\"Acronym of the Trade Strategy\" required disabled>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-trs-updt\" size=\"3\" multiple required></select>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Description:</label>\n        <textarea id=\"description-trs-updt\" placeholder=\"Description of the Trade Strategy\" rows=\"3\" style=\"padding: 15px; border: 1px solid #ccc; border-radius: 5px;\"></textarea>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Parameters:</label>\n        <div id=\"parameterContainer-trs-updt\"></div>\n        <button type=\"button\" class=\"add-btn-trs-updt\" onclick=\"addParameterTradeStrategiesUpdate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Active: <input type=\"checkbox\" id=\"active-trs-updt\"></label>\n    </div>\n\n    <button id=\"submitBtn-trs-updt\" type=\"button\" class=\"form-trs-updt-group submit-trs-updt-btn full-width\">Update</button>\n</form>\n\n<script>\n    const globalThisReference = this;\n    var scope = globalThisReference.scope || {};\n\n    function populateDropdownsTradeStrategiesUpdate(inputs) {\n        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n            var dropdownTradeMarkets = document.getElementById(\"select-trs-trs-updt\");\n            dropdownTradeMarkets.innerHTML = '<option value=\"\">Select a Trade Strategy to update</option>';\n            inputs.tradeStrategies.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarkets.appendChild(opt);\n            });\n        }\n        if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n            var dropdownTradeMarket = document.getElementById(\"tradeMarket-trs-updt\");\n            dropdownTradeMarket.innerHTML = '';\n            inputs.tradeMarkets.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarket.appendChild(opt);\n            });\n            if (inputs.tradeMarkets.selected) {\n                inputs.tradeMarkets.selected.forEach(selectedValue => {\n                    let option = dropdownTradeMarket.querySelector(`option[value=\"${selectedValue}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n    }\n    function getSelectedTradeStrategiesUpdate() {\n        let selectedOptions = document.getElementById(\"tradeMarket-trs-updt\").selectedOptions;\n        return Array.from(selectedOptions).map(option => option.value);\n    }\n    function addParameterTradeStrategiesUpdate() {\n        var container = document.getElementById(\"parameterContainer-trs-updt\");\n\n        var div = document.createElement(\"div\");\n        div.classList.add(\"parameter-trs-updt-item\");\n        \n        div.innerHTML = `\n            <input type=\"text\" placeholder=\"Name\" class=\"param-trs-updt-name\" required>\n            <input type=\"text\" placeholder=\"Key\" class=\"param-trs-updt-key\" required>\n            <select class=\"param-trs-updt-type\">\n                <option value=\"string\">String</option>\n                <option value=\"number\">Number</option>\n            </select>\n            <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-trs-updt-description\">\n            <input type=\"text\" placeholder=\"Value\" class=\"param-trs-updt-value\" required>\n            <button type=\"button\" class=\"remove-trs-updt-btn\" onclick=\"removeParameterTradeStrategiesUpdate(this)\">❌</button>\n        `;\n        container.appendChild(div);\n    }\n    window.addParameterTradeStrategiesUpdate = addParameterTradeStrategiesUpdate;\n    function removeParameterTradeStrategiesUpdate(button) {\n        button.parentElement.remove();\n    }\n    window.removeParameterTradeStrategiesUpdate = removeParameterTradeStrategiesUpdate;\n    function getParametersTradeStrategiesUpdate() {\n        var params = [];\n        document.querySelectorAll(\".parameter-trs-updt-item\").forEach(item => {\n            var param = {\n                name: item.querySelector(\".param-trs-updt-name\").value,\n                key: item.querySelector(\".param-trs-updt-key\").value,\n                type: item.querySelector(\".param-trs-updt-type\").value,\n                description: item.querySelector(\".param-trs-updt-description\").value || undefined,\n                value: item.querySelector(\".param-trs-updt-value\").value\n            };\n            params.push(param);\n        });\n        return params;\n    }\n\n    function populateForm(tradeStrategy) {\n        document.getElementById(\"name-trs-updt\").value = tradeStrategy.name || '';\n        document.getElementById(\"acronym-trs-updt\").value = tradeStrategy.acronym || '';\n        document.getElementById(\"description-trs-updt\").value = tradeStrategy.description || '';\n        document.getElementById(\"active-trs-updt\").checked = tradeStrategy.active || '';\n\n        var parameterContainer = document.getElementById(\"parameterContainer-trs-updt\");\n        parameterContainer.innerHTML = '';\n        if (tradeStrategy.parameters) {\n            tradeStrategy.parameters.forEach(param => {\n                var div = document.createElement(\"div\");\n                div.classList.add(\"parameter-trs-updt-item\");\n                div.innerHTML = `\n                    <input type=\"text\" placeholder=\"Name\" class=\"param-trs-updt-name\" value=\"${param.name}\" required>\n                    <input type=\"text\" placeholder=\"Key\" class=\"param-trs-updt-key\" value=\"${param.key}\" required>\n                    <select class=\"param-trs-updt-type\">\n                        <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                        <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                    </select>\n                    <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-trs-updt-description\" value=\"${param.description || ''}\">\n                    <input type=\"text\" placeholder=\"Value\" class=\"param-trs-updt-value\" value=\"${param.value}\" required>\n                    <button type=\"button\" class=\"remove-trs-updt-btn\" onclick=\"removeParameterTradeStrategiesUpdate(this)\">❌</button>\n                `;\n                parameterContainer.appendChild(div);\n            });\n        }\n        var dropdownTradeMarkets = document.getElementById(\"tradeMarket-trs-updt\");\n        dropdownTradeMarkets.querySelectorAll(\"option\").forEach(option => option.selected = false);\n        if (tradeStrategy.tradeMarket) {\n            tradeStrategy.tradeMarket.forEach((strategy) => {\n                let option = dropdownTradeMarkets.querySelector(`option[value=\"${strategy}\"]`);\n                if (option) option.selected = true;\n            });\n        }\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"select-trs-trs-updt\").addEventListener(\"change\", loadTradeStrategies);\n    \n    function loadTradeStrategies() {\n        var strategyId = this.value;\n        if (strategyId) {\n            var loadingElement = document.getElementById(\"loading-trs-updt\");\n            loadingElement.style.display = 'block';\n            fetch(`http://192.168.99.21:5000/tradeStrategies/${strategyId}`, {\n                method: 'GET',\n                headers: {\n                    'Authorization': 'Bearer ' + localStorage.getItem('token')\n                }\n            })\n            .then(response => response.json())\n            .then(data => {\n                console.log('Dados recebidos do servidor:', data);\n                populateForm(data);\n                scope.msg = scope.msg || {};\n                scope.msg.payload = scope.msg.payload || {};\n                scope.msg.payload.tradeStrategy = data;\n                loadingElement.style.display = 'none';\n            })\n            .catch(error => {\n                console.error('Error fetching tradeStrategy data:', error);\n                loadingElement.style.display = 'none';\n                if (error.message.includes('Failed to fetch')) {\n                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                }\n            });\n        }\n    }\n\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        loadTradeStrategies.call(document.getElementById(\"select-trs-trs-updt\"));\n    });\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                \n\n    document.getElementById(\"submitBtn-trs-updt\").addEventListener(\"click\", submitFormTradeStrategiesUpdate);\n    \n    function submitFormTradeStrategiesUpdate() {\n        var form = document.getElementById(\"form-trs-updt\");\n        var requiredFields = form.querySelectorAll(\"[required]\");\n        var missingFields = [];\n        \n        requiredFields.forEach(field => {\n            if (!field.value.trim()) {\n                missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n            }\n        });\n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }            \n\n        var originalData = scope.msg?.payload?.tradeStrategy || {};\n        var formData = {};\n        var fieldsToCheck = {\n            name: \"name-trs-updt\",\n            acronym: \"acronym-trs-updt\",\n            description: \"description-trs-updt\",\n            active: \"active-trs-updt\"\n        };\n\n        Object.keys(fieldsToCheck).forEach(key => {\n            var element = document.getElementById(fieldsToCheck[key]);\n            var value = element.type === \"checkbox\" ? element.checked : element.value;\n            if (value != originalData[key]) {\n                formData[key] = value;\n            }\n        });\n        \n        var selectedTradeStrategies = getSelectedTradeStrategiesUpdate();\n        if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeMarket || [])) {\n            formData.tradeMarket = selectedTradeStrategies;\n        }\n\n        var parameters = getParametersTradeStrategiesUpdate();\n        if (!originalData.parameters || parameters.length !== originalData.parameters.length || \n            parameters.some((param, index) => \n                param.name !== originalData.parameters[index]?.name ||\n                param.key !== originalData.parameters[index]?.key ||\n                param.type !== originalData.parameters[index]?.type ||\n                param.description !== originalData.parameters[index]?.description ||\n                param.value !== originalData.parameters[index]?.value)) {\n                    formData.parameters = parameters;\n                }\n                \n        if (Object.keys(formData).length === 0) {\n            alert(\"Nenhuma modificação foi detectada no formulário.\");\n            return;\n        }\n                \n        globalThisReference.send({ \n            tradeStrategy_id: originalData._id,\n            body: formData,\n            is_delete: false\n        });\n                \n        form.reset();\n        document.getElementById(\"parameterContainer-trs-updt\").innerHTML = '';\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        console.log('[Trade Strategies - Update] Inputs:', msg.payload);\n        if (msg.payload) {\n            populateDropdownsTradeStrategiesUpdate(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 650,
+        "y": 180,
+        "wires": [
+            [
+                "11482dd370ff811b",
+                "c020b08bdc2c5cbf"
+            ]
+        ]
+    },
+    {
+        "id": "34d72f84d80d68a7",
+        "type": "http request",
+        "z": "05d4cbefa7b42b24",
+        "name": "GET trade strategies",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/tradeStrategies",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "f9c43919ba74605b"
+            ]
+        ]
+    },
+    {
+        "id": "f9c43919ba74605b",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "Updt trade strategies",
+        "func": "msg.payload = {\n    tradeStrategies: {\n        options: msg.payload.map(entry => ({ label: entry.acronym, value: entry._id })),\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 300,
+        "wires": [
+            [
+                "ca830238d1f398e6",
+                "8ed09eee76165c7a"
+            ]
+        ]
+    },
+    {
+        "id": "11482dd370ff811b",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "user updt",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "69aebe670020f9ef",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "Loading data strategies",
+        "func": "msg.payload = \"loadingTradeStrategies\"; \nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "9f7c6960ad56eb51",
+                "34d72f84d80d68a7"
+            ]
+        ]
+    },
+    {
+        "id": "1270897db023fabf",
+        "type": "ui-control",
+        "z": "05d4cbefa7b42b24",
+        "name": "events triggers strategies",
+        "ui": "ac3809d36e164af0",
+        "events": "all",
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "69aebe670020f9ef",
+                "c43d5c9afdaa5fc9"
+            ]
+        ]
+    },
+    {
+        "id": "c43d5c9afdaa5fc9",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "trigger strategies",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 150,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "baa980bc7ebb7949",
+        "type": "http request",
+        "z": "05d4cbefa7b42b24",
+        "name": "DELETE tradeStrategies/id",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "localhost:5000/tradeStrategies/{{{tradeStrategy_id}}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 940,
+        "y": 300,
+        "wires": [
+            [
+                "c871e822e685d092"
+            ]
+        ]
+    },
+    {
+        "id": "c020b08bdc2c5cbf",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "format update request",
+        "func": "msg.payload = msg.body\nmsg.tradeStrategy_id = msg.tradeStrategy_id;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 180,
+        "wires": [
+            [
+                "5ee717fa6f8ee25b"
+            ]
+        ]
+    },
+    {
+        "id": "5ee717fa6f8ee25b",
+        "type": "http request",
+        "z": "05d4cbefa7b42b24",
+        "name": "PUT tradeStrategy/id",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "localhost:5000/tradeStrategies/{{{tradeStrategy_id}}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1180,
+        "y": 180,
+        "wires": [
+            [
+                "dd7408a1dd70df3c",
+                "c871e822e685d092"
+            ]
+        ]
+    },
+    {
+        "id": "dd7408a1dd70df3c",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "PUT Response",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c871e822e685d092",
+        "type": "function",
+        "z": "05d4cbefa7b42b24",
+        "name": "Process Response 2",
+        "func": "if (msg.is_delete) {\n    msg.topic = 'Trade Strategy Delete'\n} else {\n    msg.topic = 'Trade Strategy Update'\n}\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = msg.topic + ' successfully!'\n} else {\n    msg.payload = 'Failed to ' + msg.topic + ' the Trade Strategy: ' + msg.payload.message\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 240,
+        "wires": [
+            [
+                "8e486847e55a2e94"
+            ]
+        ]
+    },
+    {
+        "id": "8ed09eee76165c7a",
+        "type": "ui-template",
+        "z": "05d4cbefa7b42b24",
+        "group": "5d2d53db1c2f542b",
+        "page": "",
+        "ui": "",
+        "name": "Delete Form",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-trs-del-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-del-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-del-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n    .form-trs-del-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n    .form-trs-del-group.full-width {\n        grid-column: span 2;\n    }\n    .form-trs-del-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-trs-del-group input, \n    .form-trs-del-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-trs-del-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-trs-del-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-trs-del-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-trs-del-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-del-btn:hover {\n        background: #0056b3;\n    }\n    .submit-trs-del-btn {\n        background: #fc2929;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-del-btn:hover {\n        background:  #ff0000;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-trs-del\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-trs-del\" class=\"form-trs-del-container\">\n    <div class=\"form-trs-del-group form-trs-del-group-destac full-width\">\n        <label>Select Trade Strategy:</label>\n        <select id=\"select-trs-trs-del\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-trs-del-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-trs-del\" placeholder=\"Name of the tradeStrategy\" required disabled>\n    </div>\n    <div class=\"form-trs-del-group full-width\">\n        <label>Acronym:</label>\n        <input type=\"text\" id=\"acronym-trs-del\" placeholder=\"Acronym of the Trade Strategy\" required disabled>\n    </div>\n\n    <button id=\"submitBtn-trs-del\" type=\"button\" class=\"form-trs-del-group submit-trs-del-btn full-width\">Delete</button>\n</form>\n\n<script>\n    const globalThisReference = this;\n    var scope = globalThisReference.scope || {};\n\n    function populateDropdownsTradeStrategiesDelete(inputs) {\n        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n            var dropdownTradeStrategies = document.getElementById(\"select-trs-trs-del\");\n            dropdownTradeStrategies.innerHTML = '<option value=\"\">Select a Trade Strategy to update</option>';\n            inputs.tradeStrategies.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeStrategies.appendChild(opt);\n            });\n        }\n    }\n\n    function populateForm(tradeStrategy) {\n        document.getElementById(\"name-trs-del\").value = tradeStrategy.name || '';\n        document.getElementById(\"acronym-trs-del\").value = tradeStrategy.acronym || '';\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"select-trs-trs-del\").addEventListener(\"change\", loadTradeStrategies);\n    \n    function loadTradeStrategies() {            \n        var tradeStrategiesId = this.value;\n        if (tradeStrategiesId) {\n            var loadingElement = document.getElementById(\"loading-trs-del\");\n            loadingElement.style.display = 'block';\n            fetch(`http://192.168.99.21:5000/tradeStrategies/${tradeStrategiesId}`, {\n                method: 'GET',\n                headers: {\n                    'Authorization': 'Bearer ' + localStorage.getItem('token')\n                }\n            })\n            .then(response => response.json())\n            .then(data => {\n                console.log('Dados recebidos do servidor:', data);\n                populateForm(data);\n                scope.msg = scope.msg || {}; // Garante que scope.msg está definido.\n                scope.msg.payload = scope.msg.payload || {}; // Garante que scope.msg.payload está definido.\n                scope.msg.payload.tradeStrategy = data;\n                loadingElement.style.display = 'none';\n            })\n            .catch(error => {\n                console.error('Error fetching tradeStrategy data:', error);\n                loadingElement.style.display = 'none';\n                if (error.message.includes('Failed to fetch')) {\n                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                }\n            });\n        }\n    }\n\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        loadTradeStrategies.call(document.getElementById(\"select-trs-trs-del\"));\n    });\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"submitBtn-trs-del\").addEventListener(\"click\", submitFormTradeStrategyDelete);\n    \n    function submitFormTradeStrategyDelete() {\n        var form = document.getElementById(\"form-trs-del\");\n        var requiredFields = document.getElementById(\"select-trs-trs-del\");\n        var missingFields = [];\n\n        if (!requiredFields.value.trim()) {\n            missingFields.push(requiredFields.previousElementSibling?.textContent || \"Campo obrigatório\");\n        } \n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }\n\n        if (!confirm(`Tem certeza de que deseja deletar a Trade Strategy \"${scope.msg.payload.tradeStrategy.acronym}\"?`)) {\n            return;\n        }\n\n        globalThisReference.send({ \n            tradeStrategy_id: scope.msg.payload.tradeStrategy._id, \n            is_delete: true \n        });\n\n        var dropdownTradeStrategies = document.getElementById(\"select-trs-trs-del\");\n        var selectedOption = dropdownTradeStrategies.querySelector(`option[value=\"${scope.msg.payload.tradeStrategy._id}\"]`);\n        if (selectedOption) selectedOption.remove();\n\n        form.reset();\n    }\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        console.log('[Trade Strategies - Delete] Inputs:', msg.payload);\n        if (msg.payload) {\n            populateDropdownsTradeStrategiesDelete(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 650,
+        "y": 300,
+        "wires": [
+            [
+                "55a91707ece31bc3",
+                "baa980bc7ebb7949"
+            ]
+        ]
+    },
+    {
+        "id": "55a91707ece31bc3",
+        "type": "debug",
+        "z": "05d4cbefa7b42b24",
+        "name": "trade strategy del",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "370e2b25e2cc99db",
+        "type": "ui-template",
+        "z": "2e53b826e21201c6",
+        "group": "c7c5e2b6090ae201",
+        "page": "",
+        "ui": "",
+        "name": "Create Form",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-brk-crt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-brk-crt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-brk-crt-group-destac {\n        width: 98%;\n        margin: 0 auto;\n        display: block;\n        padding: 10px;\n\n        border: 1px solid #ccc;\n        border-radius: 5px;\n    }\n    .form-brk-crt-group.full-width {\n        grid-column: span 2;\n    }\n    .form-brk-crt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-brk-crt-group input, \n    .form-brk-crt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-brk-crt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-brk-crt-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-brk-crt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-brk-crt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-brk-crt-btn:hover {\n        background: #0056b3;\n    }\n    .add-endpoint-brk-crt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n    .add-endpoint-brk-crt-item input, .add-endpoint-brk-crt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .remove-brk-crt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n    .add-btn-brk-crt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n</style>\n\n<form id=\"form-brk-crt\" class=\"form-brk-crt-container\">\n    <div class=\"form-brk-crt-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-brk-crt\" placeholder=\"Name of the Broker\" required>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Broker Name:</label>\n        <input type=\"text\" id=\"brokerName-brk-crt\" placeholder=\"Name of the broker's platform or service\" required>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Brokerage Fee:</label>\n        <input type=\"number\" id=\"brokerageFee-brk-crt\" placeholder=\"Brokerage fee charged by the broker\" required>\n    </div>\n    <div class=\"form-brk-crt-group full-width\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-brk-crt\"></select>\n    </div>\n    <div class=\"form-brk-crt-group full-width\">\n        <label>API Base Url:</label>\n        <div class=\"form-brk-crt-group form-brk-crt-group-destac\">\n            <label>Main:</label>\n            <input type=\"text\" id=\"apiBaseUrl-main-brk-crt\" placeholder=\"Main API base URL\" style=\"width: 100%;\" required>\n        </div>\n        <div class=\"form-brk-crt-group form-brk-crt-group-destac\" style=\"margin-top: 10px;\">\n            <label>Simulation:</label>\n            <input type=\"text\" id=\"apiBaseUrl-simulation-brk-crt\" placeholder=\"Simulation API base URL\" style=\"width: 100%;\">\n        </div>\n    </div>\n\n    <div class=\"form-brk-crt-group full-width\">\n        <label>API Endpoints:</label>\n        <div id=\"add-endpoints-brk-crt\"></div>\n        <button type=\"button\" class=\"add-btn-brk-crt\" onclick=\"addEndpoints()\">+ Add Endpoints</button>\n    </div>\n    \n    \n\n\n\n\n    <!-- <div class=\"form-brk-crt-group\">\n        <label>Lifetime:</label>\n        <input type=\"number\" id=\"lifetime-brk-crt\" min=\"0\" placeholder=\"Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime\" required>\n    </div>    \n    <div class=\"form-brk-crt-group\">\n        <label>Operation Cycle Time:</label>\n        <input type=\"number\" id=\"operationCycleTime-brk-crt\" min=\"0\" placeholder=\"Operation cycle time of the robot in milliseconds\" required>\n    </div>    \n    <div class=\"form-brk-crt-group\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-brk-crt\"></select>\n    </div>    \n    <div class=\"form-brk-crt-group\">\n        <label>Initial Capital:</label>\n        <input type=\"number\" id=\"initialCapital-brk-crt\" min=\"0\" placeholder=\"Initial capital allocated to the robot\" required>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Stop Loss:</label>\n        <input type=\"number\" id=\"stopLoss-brk-crt\" min=\"0\" placeholder=\"Stop loss threshold for the robot. A value 0 indicates no stop loss\" required>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Stop Gain:</label>\n        <input type=\"number\" id=\"stopGain-brk-crt\" min=\"0\" placeholder=\"Stop gain threshold for the robot. A value 0 indicates no stop loss.\" required>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Broker:</label>\n        <select id=\"brokerId-brk-crt\" required></select>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Trade Strategies:</label>\n        <select id=\"tradeStrategyId-brk-crt\" size=\"2\" multiple required></select>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Currency Symbol:</label>\n        <select id=\"currencySymbol-brk-crt\" required></select>\n    </div>\n    <div class=\"form-brk-crt-group full-width\">\n        <label>Additional Parameters:</label>\n        <div id=\"add-endpoints-brk-crt\"></div>\n        <button type=\"button\" class=\"add-btn-brk-crt\" onclick=\"addEndpoints()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-brk-crt-group\">\n        <label>Simulation Mode: <input type=\"checkbox\" id=\"simulationMode-brk-crt\"></label>        \n    </div> -->\n    <div class=\"form-brk-crt-group full-width\">\n        <label>Manter dados após envio: <input type=\"checkbox\" id=\"manterDados-brk-crt\"></label>\n    </div>\n\n    <button id=\"submitBtn-brk-crt\" type=\"button\" class=\"form-brk-crt-group submit-brk-crt-btn full-width\">Create</button>\n</form>\n\n<script>\n    const globalThisReference = this; \n\n    function populateDropdownsRobotCreate(inputs) {\n        if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n            var dropdownTradeMarket = document.getElementById(\"tradeMarket-brk-crt\");\n            dropdownTradeMarket.innerHTML = '<option value=\"\">Select Trade market associated with the robot</option>';\n            inputs.tradeMarkets.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarket.appendChild(opt);\n            });\n            if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;\n        }\n        if (inputs.brokers && inputs.brokers.options) {\n            var dropdownBrokers = document.getElementById(\"brokerId-brk-crt\");\n            dropdownBrokers.innerHTML = '<option value=\"\">Select the broker used by the robot.</option>';\n            inputs.brokers.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownBrokers.appendChild(opt);\n            });\n            if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;\n        }\n        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n            var dropdownTradeStrategies = document.getElementById(\"tradeStrategyId-brk-crt\");\n            dropdownTradeStrategies.innerHTML = '';\n            inputs.tradeStrategies.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeStrategies.appendChild(opt);\n            });\n            if (inputs.tradeStrategies.selected) {\n                inputs.tradeStrategies.selected.forEach(selectedValue => {\n                    let option = dropdownTradeStrategies.querySelector(`option[value=\"${selectedValue}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n        if (inputs.currencySymbol && inputs.currencySymbol.options) {\n            var dropdownCurrencySymbol = document.getElementById(\"currencySymbol-brk-crt\");\n            dropdownCurrencySymbol.innerHTML = '<option value=\"\">Select the currency symbol used by the robot</option>';\n            inputs.currencySymbol.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownCurrencySymbol.appendChild(opt);\n            });\n            if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;\n        }\n    }\n    function getSelectedTradeStrategiesRobotCreate() {\n        let selectedOptions = document.getElementById(\"tradeStrategyId-brk-crt\").selectedOptions;\n        return Array.from(selectedOptions).map(option => option.value);\n    }\n    function addEndpoints() {\n        var container = document.getElementById(\"add-endpoints-brk-crt\");\n\n        var div = document.createElement(\"div\");\n        div.classList.add(\"add-endpoint-brk-crt-item\");\n        \n        div.innerHTML = `\n            <input type=\"text\" placeholder=\"Name\" class=\"param-brk-crt-name\" required>\n            <input type=\"text\" placeholder=\"Key\" class=\"param-brk-crt-key\" required>\n            <select class=\"param-brk-crt-type\">\n                <option value=\"string\">String</option>\n                <option value=\"number\">Number</option>\n            </select>\n            <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-brk-crt-description\">\n            <input type=\"text\" placeholder=\"Value\" class=\"param-brk-crt-value\" required>\n            <button type=\"button\" class=\"remove-brk-crt-btn\" onclick=\"removeParameterRobotCreate(this)\">❌</button>\n        `;\n        container.appendChild(div);\n    }\n    window.addEndpoints = addEndpoints;\n    function removeParameterRobotCreate(button) {\n        button.parentElement.remove();\n    }\n    window.removeParameterRobotCreate = removeParameterRobotCreate;\n    function getParametersRobotCreate() {\n        var params = [];\n        document.querySelectorAll(\".add-endpoint-brk-crt-item\").forEach(item => {\n            var param = {\n                name: item.querySelector(\".param-brk-crt-name\").value,\n                key: item.querySelector(\".param-brk-crt-key\").value,\n                type: item.querySelector(\".param-brk-crt-type\").value,\n                description: item.querySelector(\".param-brk-crt-description\").value || undefined,\n                value: item.querySelector(\".param-brk-crt-value\").value\n            };\n            params.push(param);\n        });\n        return params;\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        \n\n    document.getElementById(\"submitBtn-brk-crt\").addEventListener(\"click\", submitFormRobotCreate);\n\n    function submitFormRobotCreate() {\n        var form = document.getElementById(\"form-brk-crt\");\n        var requiredFields = form.querySelectorAll(\"[required]\");\n        var missingFields = [];\n\n        requiredFields.forEach(field => {\n            if (!field.value.trim()) {\n                missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n            }\n        });\n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }\n\n        var formData = {\n            name: document.getElementById(\"name-brk-crt\").value,\n            lifetime: document.getElementById(\"lifetime-brk-crt\").value,\n            operationCycleTime: document.getElementById(\"operationCycleTime-brk-crt\").value,\n            tradeMarket: document.getElementById(\"tradeMarket-brk-crt\").value,\n            initialCapital: document.getElementById(\"initialCapital-brk-crt\").value,\n            stopLoss: document.getElementById(\"stopLoss-brk-crt\").value,\n            stopGain: document.getElementById(\"stopGain-brk-crt\").value,\n            brokerId: document.getElementById(\"brokerId-brk-crt\").value,\n            tradeStrategyId: getSelectedTradeStrategiesRobotCreate(),\n            currencySymbol: document.getElementById(\"currencySymbol-brk-crt\").value,\n            simulationMode: document.getElementById(\"simulationMode-brk-crt\").checked ,\n            otherParams: getParametersRobotCreate()\n        };\n        \n        globalThisReference.send({ payload: formData });\n\n        if (!document.getElementById(\"manterDados-brk-crt\").checked) {\n            form.reset();\n            document.getElementById(\"add-endpoints-brk-crt\").innerHTML = '';\n        }\n    }\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        if (msg.payload) {\n            populateDropdownsRobotCreate(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 670,
+        "y": 80,
+        "wires": [
+            [
+                "fb31efd350ce186e",
+                "3929cef033950ad1"
+            ]
+        ]
+    },
+    {
+        "id": "fb31efd350ce186e",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "name": "broker",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "2369d734026378bd",
+        "type": "http request",
+        "z": "2e53b826e21201c6",
+        "name": "GET tradeMarkets",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/types",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "07ef4edb990cdd7f"
+            ]
+        ]
+    },
+    {
+        "id": "07ef4edb990cdd7f",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "name": "tradeMarkets",
+        "func": "msg.payload = {\n    tradeMarkets: {\n        options: msg.payload.tradeMarkets.map(entry => ({ label: entry, value: entry })),\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "370e2b25e2cc99db",
+                "55ec7257dcfa61d6"
+            ]
+        ]
+    },
+    {
+        "id": "3929cef033950ad1",
+        "type": "http request",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "POST strategy",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/tradeStrategies",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 920,
+        "y": 80,
+        "wires": [
+            [
+                "dd6dee4b765feec9",
+                "75db280bd3d0910d"
+            ]
+        ]
+    },
+    {
+        "id": "dd6dee4b765feec9",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "strategy resp",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "75db280bd3d0910d",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "Process Response",
+        "func": "msg.topic = 'Trade Strategy Create'\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = 'Trade Strategy Create successfully!'\n} else {\n    msg.payload = 'Failed to create Trade Strategy: ' + msg.payload.message\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1190,
+        "y": 80,
+        "wires": [
+            [
+                "4fc99886c3de0d2f"
+            ]
+        ]
+    },
+    {
+        "id": "4fc99886c3de0d2f",
+        "type": "ui-notification",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "ui": "ac3809d36e164af0",
+        "position": "bottom right",
+        "colorDefault": true,
+        "color": "#001ae0",
+        "displayTime": "8",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": false,
+        "dismissText": "Close",
+        "allowConfirm": true,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "Tool Tip",
+        "x": 1660,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "55ec7257dcfa61d6",
+        "type": "ui-template",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "group": "8f7ac4bb7811b50f",
+        "page": "",
+        "ui": "",
+        "name": "Update Form",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-trs-updt-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-updt-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-updt-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n    .form-trs-updt-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n    .form-trs-updt-group.full-width {\n        grid-column: span 2;\n    }\n    .form-trs-updt-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-trs-updt-group input, \n    .form-trs-updt-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-trs-updt-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-trs-updt-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-trs-updt-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-trs-updt-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-updt-btn:hover {\n        background: #0056b3;\n    }\n    .parameter-trs-updt-item {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        margin-bottom: 8px;\n    }\n    .parameter-trs-updt-item input, .parameter-trs-updt-item select {\n        padding: 5px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .remove-trs-updt-btn {\n        background: rgba(255, 91, 91, 0.637);\n        color: white;\n        border: none;\n        cursor: pointer;\n        padding: 5px;\n        border-radius: 4px;\n        width: 50%;\n        margin: 0 auto;\n        display: block;\n    }\n    .add-btn-trs-updt {\n        background: #61b6d8;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-trs-updt\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-trs-updt\" class=\"form-trs-updt-container\">\n    <div class=\"form-trs-updt-group form-trs-updt-group-destac full-width\">\n        <label>Select Trade Strategy:</label>\n        <select id=\"select-trs-trs-updt\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-trs-updt\" placeholder=\"Name of the tradeStrategy\" required>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Acronym:</label>\n        <input type=\"text\" id=\"acronym-trs-updt\" placeholder=\"Acronym of the Trade Strategy\" required disabled>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Trade Market:</label>\n        <select id=\"tradeMarket-trs-updt\" size=\"3\" multiple required></select>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Description:</label>\n        <textarea id=\"description-trs-updt\" placeholder=\"Description of the Trade Strategy\" rows=\"3\" style=\"padding: 15px; border: 1px solid #ccc; border-radius: 5px;\"></textarea>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Parameters:</label>\n        <div id=\"parameterContainer-trs-updt\"></div>\n        <button type=\"button\" class=\"add-btn-trs-updt\" onclick=\"addParameterTradeStrategiesUpdate()\">+ Add Parameter</button>\n    </div>\n    <div class=\"form-trs-updt-group full-width\">\n        <label>Active: <input type=\"checkbox\" id=\"active-trs-updt\"></label>\n    </div>\n\n    <button id=\"submitBtn-trs-updt\" type=\"button\" class=\"form-trs-updt-group submit-trs-updt-btn full-width\">Update</button>\n</form>\n\n<script>\n    const globalThisReference = this;\n    var scope = globalThisReference.scope || {};\n\n    function populateDropdownsTradeStrategiesUpdate(inputs) {\n        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n            var dropdownTradeMarkets = document.getElementById(\"select-trs-trs-updt\");\n            dropdownTradeMarkets.innerHTML = '<option value=\"\">Select a Trade Strategy to update</option>';\n            inputs.tradeStrategies.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarkets.appendChild(opt);\n            });\n        }\n        if (inputs.tradeMarkets && inputs.tradeMarkets.options) {\n            var dropdownTradeMarket = document.getElementById(\"tradeMarket-trs-updt\");\n            dropdownTradeMarket.innerHTML = '';\n            inputs.tradeMarkets.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeMarket.appendChild(opt);\n            });\n            if (inputs.tradeMarkets.selected) {\n                inputs.tradeMarkets.selected.forEach(selectedValue => {\n                    let option = dropdownTradeMarket.querySelector(`option[value=\"${selectedValue}\"]`);\n                    if (option) option.selected = true;\n                });\n            }\n        }\n    }\n    function getSelectedTradeStrategiesUpdate() {\n        let selectedOptions = document.getElementById(\"tradeMarket-trs-updt\").selectedOptions;\n        return Array.from(selectedOptions).map(option => option.value);\n    }\n    function addParameterTradeStrategiesUpdate() {\n        var container = document.getElementById(\"parameterContainer-trs-updt\");\n\n        var div = document.createElement(\"div\");\n        div.classList.add(\"parameter-trs-updt-item\");\n        \n        div.innerHTML = `\n            <input type=\"text\" placeholder=\"Name\" class=\"param-trs-updt-name\" required>\n            <input type=\"text\" placeholder=\"Key\" class=\"param-trs-updt-key\" required>\n            <select class=\"param-trs-updt-type\">\n                <option value=\"string\">String</option>\n                <option value=\"number\">Number</option>\n            </select>\n            <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-trs-updt-description\">\n            <input type=\"text\" placeholder=\"Value\" class=\"param-trs-updt-value\" required>\n            <button type=\"button\" class=\"remove-trs-updt-btn\" onclick=\"removeParameterTradeStrategiesUpdate(this)\">❌</button>\n        `;\n        container.appendChild(div);\n    }\n    window.addParameterTradeStrategiesUpdate = addParameterTradeStrategiesUpdate;\n    function removeParameterTradeStrategiesUpdate(button) {\n        button.parentElement.remove();\n    }\n    window.removeParameterTradeStrategiesUpdate = removeParameterTradeStrategiesUpdate;\n    function getParametersTradeStrategiesUpdate() {\n        var params = [];\n        document.querySelectorAll(\".parameter-trs-updt-item\").forEach(item => {\n            var param = {\n                name: item.querySelector(\".param-trs-updt-name\").value,\n                key: item.querySelector(\".param-trs-updt-key\").value,\n                type: item.querySelector(\".param-trs-updt-type\").value,\n                description: item.querySelector(\".param-trs-updt-description\").value || undefined,\n                value: item.querySelector(\".param-trs-updt-value\").value\n            };\n            params.push(param);\n        });\n        return params;\n    }\n\n    function populateForm(tradeStrategy) {\n        document.getElementById(\"name-trs-updt\").value = tradeStrategy.name || '';\n        document.getElementById(\"acronym-trs-updt\").value = tradeStrategy.acronym || '';\n        document.getElementById(\"description-trs-updt\").value = tradeStrategy.description || '';\n        document.getElementById(\"active-trs-updt\").checked = tradeStrategy.active || '';\n\n        var parameterContainer = document.getElementById(\"parameterContainer-trs-updt\");\n        parameterContainer.innerHTML = '';\n        if (tradeStrategy.parameters) {\n            tradeStrategy.parameters.forEach(param => {\n                var div = document.createElement(\"div\");\n                div.classList.add(\"parameter-trs-updt-item\");\n                div.innerHTML = `\n                    <input type=\"text\" placeholder=\"Name\" class=\"param-trs-updt-name\" value=\"${param.name}\" required>\n                    <input type=\"text\" placeholder=\"Key\" class=\"param-trs-updt-key\" value=\"${param.key}\" required>\n                    <select class=\"param-trs-updt-type\">\n                        <option value=\"string\" ${param.type === 'string' ? 'selected' : ''}>String</option>\n                        <option value=\"number\" ${param.type === 'number' ? 'selected' : ''}>Number</option>\n                    </select>\n                    <input type=\"text\" placeholder=\"Description (optional)\" class=\"param-trs-updt-description\" value=\"${param.description || ''}\">\n                    <input type=\"text\" placeholder=\"Value\" class=\"param-trs-updt-value\" value=\"${param.value}\" required>\n                    <button type=\"button\" class=\"remove-trs-updt-btn\" onclick=\"removeParameterTradeStrategiesUpdate(this)\">❌</button>\n                `;\n                parameterContainer.appendChild(div);\n            });\n        }\n        var dropdownTradeMarkets = document.getElementById(\"tradeMarket-trs-updt\");\n        dropdownTradeMarkets.querySelectorAll(\"option\").forEach(option => option.selected = false);\n        if (tradeStrategy.tradeMarket) {\n            tradeStrategy.tradeMarket.forEach((strategy) => {\n                let option = dropdownTradeMarkets.querySelector(`option[value=\"${strategy}\"]`);\n                if (option) option.selected = true;\n            });\n        }\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"select-trs-trs-updt\").addEventListener(\"change\", loadTradeStrategies);\n    \n    function loadTradeStrategies() {\n        var strategyId = this.value;\n        if (strategyId) {\n            var loadingElement = document.getElementById(\"loading-trs-updt\");\n            loadingElement.style.display = 'block';\n            fetch(`http://192.168.99.21:5000/tradeStrategies/${strategyId}`, {\n                method: 'GET',\n                headers: {\n                    'Authorization': 'Bearer ' + localStorage.getItem('token')\n                }\n            })\n            .then(response => response.json())\n            .then(data => {\n                console.log('Dados recebidos do servidor:', data);\n                populateForm(data);\n                scope.msg = scope.msg || {};\n                scope.msg.payload = scope.msg.payload || {};\n                scope.msg.payload.tradeStrategy = data;\n                loadingElement.style.display = 'none';\n            })\n            .catch(error => {\n                console.error('Error fetching tradeStrategy data:', error);\n                loadingElement.style.display = 'none';\n                if (error.message.includes('Failed to fetch')) {\n                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                }\n            });\n        }\n    }\n\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        loadTradeStrategies.call(document.getElementById(\"select-trs-trs-updt\"));\n    });\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                \n\n    document.getElementById(\"submitBtn-trs-updt\").addEventListener(\"click\", submitFormTradeStrategiesUpdate);\n    \n    function submitFormTradeStrategiesUpdate() {\n        var form = document.getElementById(\"form-trs-updt\");\n        var requiredFields = form.querySelectorAll(\"[required]\");\n        var missingFields = [];\n        \n        requiredFields.forEach(field => {\n            if (!field.value.trim()) {\n                missingFields.push(field.previousElementSibling?.textContent || \"Campo obrigatório\");\n            }\n        });\n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }            \n\n        var originalData = scope.msg?.payload?.tradeStrategy || {};\n        var formData = {};\n        var fieldsToCheck = {\n            name: \"name-trs-updt\",\n            acronym: \"acronym-trs-updt\",\n            description: \"description-trs-updt\",\n            active: \"active-trs-updt\"\n        };\n\n        Object.keys(fieldsToCheck).forEach(key => {\n            var element = document.getElementById(fieldsToCheck[key]);\n            var value = element.type === \"checkbox\" ? element.checked : element.value;\n            if (value != originalData[key]) {\n                formData[key] = value;\n            }\n        });\n        \n        var selectedTradeStrategies = getSelectedTradeStrategiesUpdate();\n        if (JSON.stringify(selectedTradeStrategies) !== JSON.stringify(originalData.tradeMarket || [])) {\n            formData.tradeMarket = selectedTradeStrategies;\n        }\n\n        var parameters = getParametersTradeStrategiesUpdate();\n        if (!originalData.parameters || parameters.length !== originalData.parameters.length || \n            parameters.some((param, index) => \n                param.name !== originalData.parameters[index]?.name ||\n                param.key !== originalData.parameters[index]?.key ||\n                param.type !== originalData.parameters[index]?.type ||\n                param.description !== originalData.parameters[index]?.description ||\n                param.value !== originalData.parameters[index]?.value)) {\n                    formData.parameters = parameters;\n                }\n                \n        if (Object.keys(formData).length === 0) {\n            alert(\"Nenhuma modificação foi detectada no formulário.\");\n            return;\n        }\n                \n        globalThisReference.send({ \n            tradeStrategy_id: originalData._id,\n            body: formData,\n            is_delete: false\n        });\n                \n        form.reset();\n        document.getElementById(\"parameterContainer-trs-updt\").innerHTML = '';\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        console.log('[Trade Strategies - Update] Inputs:', msg.payload);\n        if (msg.payload) {\n            populateDropdownsTradeStrategiesUpdate(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 670,
+        "y": 160,
+        "wires": [
+            [
+                "d98fda0a4e0b47e9",
+                "5e713a98b4f0d86b"
+            ]
+        ]
+    },
+    {
+        "id": "f5556e2711d32e3e",
+        "type": "http request",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "GET trade strategies",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "localhost:5000/tradeStrategies",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "1819519dec783240"
+            ]
+        ]
+    },
+    {
+        "id": "1819519dec783240",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "Updt trade strategies",
+        "func": "msg.payload = {\n    tradeStrategies: {\n        options: msg.payload.map(entry => ({ label: entry.acronym, value: entry._id })),\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "55ec7257dcfa61d6",
+                "b36822e8a33d483c"
+            ]
+        ]
+    },
+    {
+        "id": "d98fda0a4e0b47e9",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "user updt",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "95106d214beb6b6f",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "name": "Loading data brokers",
+        "func": "msg.payload = \"loadingBrokers\"; \nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "2369d734026378bd",
+                "f5556e2711d32e3e"
+            ]
+        ]
+    },
+    {
+        "id": "e545d5bc13b24c3a",
+        "type": "ui-control",
+        "z": "2e53b826e21201c6",
+        "name": "events triggers brokers",
+        "ui": "ac3809d36e164af0",
+        "events": "all",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "95106d214beb6b6f",
+                "a7744f6e5f7dd1c4"
+            ]
+        ]
+    },
+    {
+        "id": "a7744f6e5f7dd1c4",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "name": "trigger brokers",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8babe9a17dbe759b",
+        "type": "http request",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "DELETE tradeStrategies/id",
+        "method": "DELETE",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "localhost:5000/tradeStrategies/{{{tradeStrategy_id}}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 960,
+        "y": 280,
+        "wires": [
+            [
+                "79346883a958dd1d"
+            ]
+        ]
+    },
+    {
+        "id": "5e713a98b4f0d86b",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "format update request",
+        "func": "msg.payload = msg.body\nmsg.tradeStrategy_id = msg.tradeStrategy_id;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 160,
+        "wires": [
+            [
+                "e7bb3a9d87a78531"
+            ]
+        ]
+    },
+    {
+        "id": "e7bb3a9d87a78531",
+        "type": "http request",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "PUT tradeStrategy/id",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "localhost:5000/tradeStrategies/{{{tradeStrategy_id}}}",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "bearer",
+        "senderr": false,
+        "headers": [],
+        "x": 1200,
+        "y": 160,
+        "wires": [
+            [
+                "f7419abfef713c2f",
+                "79346883a958dd1d"
+            ]
+        ]
+    },
+    {
+        "id": "f7419abfef713c2f",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "PUT Response",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "79346883a958dd1d",
+        "type": "function",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "Process Response 2",
+        "func": "if (msg.is_delete) {\n    msg.topic = 'Trade Strategy Delete'\n} else {\n    msg.topic = 'Trade Strategy Update'\n}\n\nif (msg.statusCode === 200 || msg.statusCode === 201) {\n    msg.payload = msg.topic + ' successfully!'\n} else {\n    msg.payload = 'Failed to ' + msg.topic + ' the Trade Strategy: ' + msg.payload.message\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1380,
+        "y": 220,
+        "wires": [
+            [
+                "4fc99886c3de0d2f"
+            ]
+        ]
+    },
+    {
+        "id": "b36822e8a33d483c",
+        "type": "ui-template",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "group": "5d2d53db1c2f542b",
+        "page": "",
+        "ui": "",
+        "name": "Delete Form",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<style>\n    .form-trs-del-container {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        gap: 12px;\n        background: #f4f4f4;\n        padding: 15px;\n        border-radius: 8px;\n        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-del-group {\n        display: flex;\n        flex-direction: column;\n        background: white;\n        padding: 10px;\n        border-radius: 5px;\n        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);\n    }\n    .form-trs-del-group-destac {\n        background: rgb(233, 232, 232);\n        width: 93%;\n        margin: 0 auto;\n        display: block;\n        border: 2px solid #007bff;\n        padding: 10px;\n        border-radius: 5px;\n    }\n    .form-trs-del-group-destac-font {\n        font-style: italic;\n        font-weight: bold;\n    }\n    .form-trs-del-group.full-width {\n        grid-column: span 2;\n    }\n    .form-trs-del-group label {\n        font-weight: bold;\n        margin-bottom: 5px;\n        font-size: 14px;\n    }\n    .form-trs-del-group input, \n    .form-trs-del-group select {\n        padding: 8px;\n        font-size: 14px;\n        border: 1px solid #ccc;\n        border-radius: 4px;\n    }\n    .form-trs-del-group input[type=\"checkbox\"] {\n        width: 16px;\n        height: 16px;\n        margin-top: 5px;\n    }\n    .form-trs-del-group input[type=\"range\"] {\n        width: 100%;\n    }\n    .form-trs-del-group input[type=\"radio\"] {\n        margin-right: 5px;\n    }\n    .submit-trs-del-btn {\n        background: #007bff;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-del-btn:hover {\n        background: #0056b3;\n    }\n    .submit-trs-del-btn {\n        background: #fc2929;\n        color: white;\n        font-size: 16px;\n        padding: 10px;\n        border: none;\n        border-radius: 5px;\n        cursor: pointer;\n        transition: background 0.3s ease;\n    }\n    .submit-trs-del-btn:hover {\n        background:  #ff0000;\n    }\n\n    .loading {\n        display: none;\n        position: fixed;\n        top: 50%;\n        left: 50%;\n        transform: translate(-50%, -50%);\n        font-size: 24px;\n        color: #007bff;\n    }\n    .spinner {\n        border: 4px solid #f3f3f3;\n        border-top: 4px solid #007bff;\n        border-radius: 50%;\n        width: 100px;\n        height: 100px;\n        animation: spin 1s linear infinite;\n        margin: 0 auto;\n        display: block;\n    }\n    @keyframes spin {\n        0% {\n            transform: rotate(0deg);\n        }\n        100% {\n            transform: rotate(360deg);\n        }\n    }\n</style>\n\n<div id=\"loading-trs-del\" class=\"loading\">\n    <div class=\"spinner\"></div>\n</div>\n\n<form id=\"form-trs-del\" class=\"form-trs-del-container\">\n    <div class=\"form-trs-del-group form-trs-del-group-destac full-width\">\n        <label>Select Trade Strategy:</label>\n        <select id=\"select-trs-trs-del\" style=\"width: 100%; font-style: italic; font-weight: bold;\" required></select>\n    </div>\n    <hr style=\"grid-column: span 2; border: 1.5px solid #ccc; margin: 5px 0;\">\n    <div class=\"form-trs-del-group full-width\">\n        <label>Name:</label>\n        <input type=\"text\" id=\"name-trs-del\" placeholder=\"Name of the tradeStrategy\" required disabled>\n    </div>\n    <div class=\"form-trs-del-group full-width\">\n        <label>Acronym:</label>\n        <input type=\"text\" id=\"acronym-trs-del\" placeholder=\"Acronym of the Trade Strategy\" required disabled>\n    </div>\n\n    <button id=\"submitBtn-trs-del\" type=\"button\" class=\"form-trs-del-group submit-trs-del-btn full-width\">Delete</button>\n</form>\n\n<script>\n    const globalThisReference = this;\n    var scope = globalThisReference.scope || {};\n\n    function populateDropdownsTradeStrategiesDelete(inputs) {\n        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {\n            var dropdownTradeStrategies = document.getElementById(\"select-trs-trs-del\");\n            dropdownTradeStrategies.innerHTML = '<option value=\"\">Select a Trade Strategy to update</option>';\n            inputs.tradeStrategies.options.forEach((option) => {\n                var opt = document.createElement(\"option\");\n                opt.value = option.value;\n                opt.textContent = option.label;\n                dropdownTradeStrategies.appendChild(opt);\n            });\n        }\n    }\n\n    function populateForm(tradeStrategy) {\n        document.getElementById(\"name-trs-del\").value = tradeStrategy.name || '';\n        document.getElementById(\"acronym-trs-del\").value = tradeStrategy.acronym || '';\n    }\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"select-trs-trs-del\").addEventListener(\"change\", loadTradeStrategies);\n    \n    function loadTradeStrategies() {            \n        var tradeStrategiesId = this.value;\n        if (tradeStrategiesId) {\n            var loadingElement = document.getElementById(\"loading-trs-del\");\n            loadingElement.style.display = 'block';\n            fetch(`http://192.168.99.21:5000/tradeStrategies/${tradeStrategiesId}`, {\n                method: 'GET',\n                headers: {\n                    'Authorization': 'Bearer ' + localStorage.getItem('token')\n                }\n            })\n            .then(response => response.json())\n            .then(data => {\n                console.log('Dados recebidos do servidor:', data);\n                populateForm(data);\n                scope.msg = scope.msg || {}; // Garante que scope.msg está definido.\n                scope.msg.payload = scope.msg.payload || {}; // Garante que scope.msg.payload está definido.\n                scope.msg.payload.tradeStrategy = data;\n                loadingElement.style.display = 'none';\n            })\n            .catch(error => {\n                console.error('Error fetching tradeStrategy data:', error);\n                loadingElement.style.display = 'none';\n                if (error.message.includes('Failed to fetch')) {\n                    alert('Erro ao conectar ao servidor. Por favor, verifique se o servidor está em execução.');\n                }\n            });\n        }\n    }\n\n    document.addEventListener(\"DOMContentLoaded\", function() {\n        loadTradeStrategies.call(document.getElementById(\"select-trs-trs-del\"));\n    });\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    \n    document.getElementById(\"submitBtn-trs-del\").addEventListener(\"click\", submitFormTradeStrategyDelete);\n    \n    function submitFormTradeStrategyDelete() {\n        var form = document.getElementById(\"form-trs-del\");\n        var requiredFields = document.getElementById(\"select-trs-trs-del\");\n        var missingFields = [];\n\n        if (!requiredFields.value.trim()) {\n            missingFields.push(requiredFields.previousElementSibling?.textContent || \"Campo obrigatório\");\n        } \n        if (missingFields.length > 0) {\n            alert(\"Por favor, preencha os seguintes campos obrigatórios:\\n- \" + missingFields.join(\"\\n- \"));\n            return;\n        }\n\n        if (!confirm(`Tem certeza de que deseja deletar a Trade Strategy \"${scope.msg.payload.tradeStrategy.acronym}\"?`)) {\n            return;\n        }\n\n        globalThisReference.send({ \n            tradeStrategy_id: scope.msg.payload.tradeStrategy._id, \n            is_delete: true \n        });\n\n        var dropdownTradeStrategies = document.getElementById(\"select-trs-trs-del\");\n        var selectedOption = dropdownTradeStrategies.querySelector(`option[value=\"${scope.msg.payload.tradeStrategy._id}\"]`);\n        if (selectedOption) selectedOption.remove();\n\n        form.reset();\n    }\n    \n    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {\n        console.log('[Trade Strategies - Delete] Inputs:', msg.payload);\n        if (msg.payload) {\n            populateDropdownsTradeStrategiesDelete(msg.payload);\n        }\n    });\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 670,
+        "y": 280,
+        "wires": [
+            [
+                "402080a48e1e149d",
+                "8babe9a17dbe759b"
+            ]
+        ]
+    },
+    {
+        "id": "402080a48e1e149d",
+        "type": "debug",
+        "z": "2e53b826e21201c6",
+        "d": true,
+        "name": "trade strategy del",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 320,
         "wires": []
     }
 ]

@@ -36,14 +36,17 @@ export default class Utils {
   encrypt(text: string): string {
     this.logger.functionCaller({}, 'info');
 
-    const ivLength = parseInt(process.env.ENCRYPTION_IV_LENGTH || '0', 10);
+    const ivLength = parseInt(
+      process.env.PROJECT_ENCRYPTION_IV_LENGTH || '0',
+      10,
+    );
     if (isNaN(ivLength) || ivLength <= 0) {
       throw new Error('Invalid ENCRYPTION_IV_LENGTH');
     }
     const iv = crypto.randomBytes(ivLength);
     const cipher = crypto.createCipheriv(
       'aes-256-cbc',
-      Buffer.from(process.env.ENCRYPTION_KEY || ''),
+      Buffer.from(process.env.PROJECT_ENCRYPTION_KEY || ''),
       iv,
     );
     let encrypted = cipher.update(text);
@@ -77,7 +80,7 @@ export default class Utils {
     const encryptedText = Buffer.from(textParts.join(':'), 'hex');
     const decipher = crypto.createDecipheriv(
       'aes-256-cbc',
-      Buffer.from(process.env.ENCRYPTION_KEY || ''),
+      Buffer.from(process.env.PROJECT_ENCRYPTION_KEY || ''),
       iv,
     );
     let decrypted = decipher.update(encryptedText);
@@ -88,6 +91,21 @@ export default class Utils {
 
     this.logger.functionResult(response, 'info');
     return response;
+  }
+
+  /**
+   * Compares a plain text with an encrypted text to check if they are equivalent.
+   *
+   * @param plainText - The plain text to compare.
+   * @param encryptedText - The encrypted text to compare against.
+   * @returns A boolean indicating whether the plain text matches the encrypted text.
+   */
+  compareEncryptText(plainText: string, encryptedText: string): boolean {
+    this.logger.functionCaller({}, 'info');
+    const decryptedText = this.decrypt(encryptedText);
+    const isMatch = plainText === decryptedText;
+    this.logger.functionResult(isMatch, 'info');
+    return isMatch;
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

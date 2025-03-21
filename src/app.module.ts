@@ -7,11 +7,14 @@ import { WinstonModule } from 'nest-winston';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 
 import Logger from './logger/Logger';
+
 import { GlobalInterceptor } from './interceptors/global.interceptor';
 import { winstonConfig } from './logger/winston.config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { RobotsModule } from './robots/robots.module';
+import { TradeStrategiesModule } from './tradeStrategies/tradeStrategies.module';
+import { BrokersModule } from './brokers/brokers.module';
 
 @Module({
   imports: [
@@ -24,6 +27,8 @@ import { RobotsModule } from './robots/robots.module';
     AuthModule,
     UsersModule,
     RobotsModule,
+    TradeStrategiesModule,
+    BrokersModule,
   ],
   controllers: [AppController],
   providers: [

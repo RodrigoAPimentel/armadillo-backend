@@ -1,0 +1,337 @@
+<style>
+    .form-brk-crt-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .form-brk-crt-group {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .form-brk-crt-group-destac {
+        width: 98%;
+        margin: 0 auto;
+        display: block;
+        padding: 10px;
+
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-brk-crt-group.full-width {
+        grid-column: span 2;
+    }
+    .form-brk-crt-group label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+    .form-brk-crt-group input, 
+    .form-brk-crt-group select {
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-brk-crt-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 5px;
+    }
+    .form-brk-crt-group input[type="range"] {
+        width: 100%;
+    }
+    .form-brk-crt-group input[type="radio"] {
+        margin-right: 5px;
+    }
+    .submit-brk-crt-btn {
+        background: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    .submit-brk-crt-btn:hover {
+        background: #0056b3;
+    }
+    .add-endpoint-brk-crt-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .add-endpoint-brk-crt-item input, .add-endpoint-brk-crt-item select {
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .remove-brk-crt-btn {
+        background: rgba(255, 91, 91, 0.637);
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+    }
+    .add-btn-brk-crt {
+        background: #61b6d8;
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+</style>
+
+<form id="form-brk-crt" class="form-brk-crt-container">
+    <div class="form-brk-crt-group full-width">
+        <label>Name:</label>
+        <input type="text" id="name-brk-crt" placeholder="Name of the Broker" required>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Broker Name:</label>
+        <input type="text" id="brokerName-brk-crt" placeholder="Name of the broker's platform or service" required>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Brokerage Fee:</label>
+        <input type="number" id="brokerageFee-brk-crt" placeholder="Brokerage fee charged by the broker" required>
+    </div>
+    <div class="form-brk-crt-group full-width">
+        <label>Trade Market:</label>
+        <select id="tradeMarket-brk-crt"></select>
+    </div>
+    <div class="form-brk-crt-group full-width">
+        <label>API Base Url:</label>
+        <div class="form-brk-crt-group form-brk-crt-group-destac">
+            <label>Main:</label>
+            <input type="text" id="apiBaseUrl-main-brk-crt" placeholder="Main API base URL" style="width: 100%;" required>
+        </div>
+        <div class="form-brk-crt-group form-brk-crt-group-destac" style="margin-top: 10px;">
+            <label>Simulation:</label>
+            <input type="text" id="apiBaseUrl-simulation-brk-crt" placeholder="Simulation API base URL" style="width: 100%;">
+        </div>
+    </div>
+
+    <div class="form-brk-crt-group full-width">
+        <label>API Endpoints:</label>
+        <div id="add-endpoints-brk-crt"></div>
+        <button type="button" class="add-btn-brk-crt" onclick="addEndpoints()">+ Add Endpoints</button>
+    </div>
+    
+    
+
+
+
+
+    <!-- <div class="form-brk-crt-group">
+        <label>Lifetime:</label>
+        <input type="number" id="lifetime-brk-crt" min="0" placeholder="Lifetime of the robot in milliseconds. A value of 0 indicates an indefinite lifetime" required>
+    </div>    
+    <div class="form-brk-crt-group">
+        <label>Operation Cycle Time:</label>
+        <input type="number" id="operationCycleTime-brk-crt" min="0" placeholder="Operation cycle time of the robot in milliseconds" required>
+    </div>    
+    <div class="form-brk-crt-group">
+        <label>Trade Market:</label>
+        <select id="tradeMarket-brk-crt"></select>
+    </div>    
+    <div class="form-brk-crt-group">
+        <label>Initial Capital:</label>
+        <input type="number" id="initialCapital-brk-crt" min="0" placeholder="Initial capital allocated to the robot" required>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Stop Loss:</label>
+        <input type="number" id="stopLoss-brk-crt" min="0" placeholder="Stop loss threshold for the robot. A value 0 indicates no stop loss" required>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Stop Gain:</label>
+        <input type="number" id="stopGain-brk-crt" min="0" placeholder="Stop gain threshold for the robot. A value 0 indicates no stop loss." required>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Broker:</label>
+        <select id="brokerId-brk-crt" required></select>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Trade Strategies:</label>
+        <select id="tradeStrategyId-brk-crt" size="2" multiple required></select>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Currency Symbol:</label>
+        <select id="currencySymbol-brk-crt" required></select>
+    </div>
+    <div class="form-brk-crt-group full-width">
+        <label>Additional Parameters:</label>
+        <div id="add-endpoints-brk-crt"></div>
+        <button type="button" class="add-btn-brk-crt" onclick="addEndpoints()">+ Add Parameter</button>
+    </div>
+    <div class="form-brk-crt-group">
+        <label>Simulation Mode: <input type="checkbox" id="simulationMode-brk-crt"></label>        
+    </div> -->
+    <div class="form-brk-crt-group full-width">
+        <label>Manter dados após envio: <input type="checkbox" id="manterDados-brk-crt"></label>
+    </div>
+
+    <button id="submitBtn-brk-crt" type="button" class="form-brk-crt-group submit-brk-crt-btn full-width">Create</button>
+</form>
+
+<script>
+    const globalThisReference = this; 
+
+    function populateDropdownsRobotCreate(inputs) {
+        if (inputs.tradeMarkets && inputs.tradeMarkets.options) {
+            var dropdownTradeMarket = document.getElementById("tradeMarket-brk-crt");
+            dropdownTradeMarket.innerHTML = '<option value="">Select Trade market associated with the robot</option>';
+            inputs.tradeMarkets.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownTradeMarket.appendChild(opt);
+            });
+            if (inputs.tradeMarkets.selected) dropdownTradeMarket.value = inputs.tradeMarkets.selected;
+        }
+        if (inputs.brokers && inputs.brokers.options) {
+            var dropdownBrokers = document.getElementById("brokerId-brk-crt");
+            dropdownBrokers.innerHTML = '<option value="">Select the broker used by the robot.</option>';
+            inputs.brokers.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownBrokers.appendChild(opt);
+            });
+            if (inputs.brokers.selected) dropdownBrokers.value = inputs.brokers.selected;
+        }
+        if (inputs.tradeStrategies && inputs.tradeStrategies.options) {
+            var dropdownTradeStrategies = document.getElementById("tradeStrategyId-brk-crt");
+            dropdownTradeStrategies.innerHTML = '';
+            inputs.tradeStrategies.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownTradeStrategies.appendChild(opt);
+            });
+            if (inputs.tradeStrategies.selected) {
+                inputs.tradeStrategies.selected.forEach(selectedValue => {
+                    let option = dropdownTradeStrategies.querySelector(`option[value="${selectedValue}"]`);
+                    if (option) option.selected = true;
+                });
+            }
+        }
+        if (inputs.currencySymbol && inputs.currencySymbol.options) {
+            var dropdownCurrencySymbol = document.getElementById("currencySymbol-brk-crt");
+            dropdownCurrencySymbol.innerHTML = '<option value="">Select the currency symbol used by the robot</option>';
+            inputs.currencySymbol.options.forEach((option) => {
+                var opt = document.createElement("option");
+                opt.value = option.value;
+                opt.textContent = option.label;
+                dropdownCurrencySymbol.appendChild(opt);
+            });
+            if (inputs.currencySymbol.selected) dropdownCurrencySymbol.value = inputs.currencySymbol.selected;
+        }
+    }
+    function getSelectedTradeStrategiesRobotCreate() {
+        let selectedOptions = document.getElementById("tradeStrategyId-brk-crt").selectedOptions;
+        return Array.from(selectedOptions).map(option => option.value);
+    }
+    function addEndpoints() {
+        var container = document.getElementById("add-endpoints-brk-crt");
+
+        var div = document.createElement("div");
+        div.classList.add("add-endpoint-brk-crt-item");
+        
+        div.innerHTML = `
+            <input type="text" placeholder="Name" class="param-brk-crt-name" required>
+            <input type="text" placeholder="Key" class="param-brk-crt-key" required>
+            <select class="param-brk-crt-type">
+                <option value="string">String</option>
+                <option value="number">Number</option>
+            </select>
+            <input type="text" placeholder="Description (optional)" class="param-brk-crt-description">
+            <input type="text" placeholder="Value" class="param-brk-crt-value" required>
+            <button type="button" class="remove-brk-crt-btn" onclick="removeParameterRobotCreate(this)">❌</button>
+        `;
+        container.appendChild(div);
+    }
+    window.addEndpoints = addEndpoints;
+    function removeParameterRobotCreate(button) {
+        button.parentElement.remove();
+    }
+    window.removeParameterRobotCreate = removeParameterRobotCreate;
+    function getParametersRobotCreate() {
+        var params = [];
+        document.querySelectorAll(".add-endpoint-brk-crt-item").forEach(item => {
+            var param = {
+                name: item.querySelector(".param-brk-crt-name").value,
+                key: item.querySelector(".param-brk-crt-key").value,
+                type: item.querySelector(".param-brk-crt-type").value,
+                description: item.querySelector(".param-brk-crt-description").value || undefined,
+                value: item.querySelector(".param-brk-crt-value").value
+            };
+            params.push(param);
+        });
+        return params;
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+
+    document.getElementById("submitBtn-brk-crt").addEventListener("click", submitFormRobotCreate);
+
+    function submitFormRobotCreate() {
+        var form = document.getElementById("form-brk-crt");
+        var requiredFields = form.querySelectorAll("[required]");
+        var missingFields = [];
+
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                missingFields.push(field.previousElementSibling?.textContent || "Campo obrigatório");
+            }
+        });
+        if (missingFields.length > 0) {
+            alert("Por favor, preencha os seguintes campos obrigatórios:\n- " + missingFields.join("\n- "));
+            return;
+        }
+
+        var formData = {
+            name: document.getElementById("name-brk-crt").value,
+            lifetime: document.getElementById("lifetime-brk-crt").value,
+            operationCycleTime: document.getElementById("operationCycleTime-brk-crt").value,
+            tradeMarket: document.getElementById("tradeMarket-brk-crt").value,
+            initialCapital: document.getElementById("initialCapital-brk-crt").value,
+            stopLoss: document.getElementById("stopLoss-brk-crt").value,
+            stopGain: document.getElementById("stopGain-brk-crt").value,
+            brokerId: document.getElementById("brokerId-brk-crt").value,
+            tradeStrategyId: getSelectedTradeStrategiesRobotCreate(),
+            currencySymbol: document.getElementById("currencySymbol-brk-crt").value,
+            simulationMode: document.getElementById("simulationMode-brk-crt").checked ,
+            otherParams: getParametersRobotCreate()
+        };
+        
+        globalThisReference.send({ payload: formData });
+
+        if (!document.getElementById("manterDados-brk-crt").checked) {
+            form.reset();
+            document.getElementById("add-endpoints-brk-crt").innerHTML = '';
+        }
+    }
+    
+    globalThisReference.$socket.on('msg-input:' + globalThisReference.id, (msg) => {
+        if (msg.payload) {
+            populateDropdownsRobotCreate(msg.payload);
+        }
+    });
+</script>

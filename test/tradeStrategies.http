@@ -1,0 +1,73 @@
+@path = tradeStrategies
+
+########## CREATE
+POST {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Índice de Força Relativa",
+  "acronym": "RSI2",
+  "tradeMarket": [
+    "cryptocurrencies"
+  ],
+  "description": "O RSI, ou Índice de Força Relativa, é um indicador técnico usado para analisar o movimento de preços de ativos. Ele é uma ferramenta popular para traders e investidores que desejam identificar oportunidades de compra e venda em ativos financeiros.",
+  "parameters": [
+    {
+      "name": "Low Level",
+      "key": "lowLevel",
+      "type": "string",
+      "description": "",
+      "value": 30
+    },
+    {
+      "name": "High Level",
+      "key": "highLevel",
+      "type": "string",
+      "description": "",
+      "value": 70
+    },
+    {
+      "name": "Período",
+      "key": "period",
+      "type": "number",
+      "description": "O período é o número de candles que o indicador irá considerar para calcular o RSI.",
+      "value": "14"
+    },
+    {
+      "name": "Limite de Compra",
+      "key": "buyLimit",
+      "type": "number",
+      "description": "O limite de compra é o valor do RSI que indica que o ativo está sobrecomprado.",
+      "value": "70"
+    },
+    {
+      "name": "Limite de Venda",
+      "key": "sellLimit",
+      "type": "number",
+      "description": "O limite de venda é o valor do RSI que indica que o ativo está sobrevendido.",
+      "value": "30"
+    }
+  ]
+}
+
+########## GET ALL
+GET {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+
+########## GET BY ID
+GET {{baseUrl}}/{{path}}/67ddac5b5f935328253f0b3d
+Authorization: Bearer {{token}}
+
+########## UPDATE
+PUT {{baseUrl}}/{{path}}/67ddac5b5f935328253f0b3d
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Índice de Força Relativa 22"
+}
+
+########## DELETE
+DELETE {{baseUrl}}/{{path}}/67ddac5b5f935328253f0b3d
+Authorization: Bearer {{token}}

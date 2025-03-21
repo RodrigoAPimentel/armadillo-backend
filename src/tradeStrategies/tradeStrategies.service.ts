@@ -5,46 +5,31 @@ import { NotFound } from 'src/commons/errorTypes';
 import Logger from 'src/logger/Logger';
 import Utils from '../commons/Utils';
 
-import { Interface as IRobot } from './robots';
+import { Interface as ITradeStrategies } from './tradeStrategies';
 
 @Injectable()
-export class RobotsService {
+export class TradeStrategiesService {
   constructor(
-    @InjectModel('Robots') private readonly model: Model<IRobot>,
+    @InjectModel('TradeStrategies')
+    private readonly model: Model<ITradeStrategies>,
     private logger: Logger,
     private utils: Utils,
   ) {}
 
   ///// CRUD /////////////////////////////////////////////////////////////////
 
-  async create(newEntity: IRobot): Promise<IRobot> {
+  async create(newEntity: ITradeStrategies): Promise<ITradeStrategies> {
     this.logger.functionCaller({ newEntity });
     await this.utils.checksDuplicity(
       newEntity,
-      { name: newEntity.name },
+      { acronym: newEntity.acronym },
       this.model,
     );
 
     newEntity = {
       ...newEntity,
       ...{
-        isOpened: {
-          opened: false,
-          lastUpdate: '-',
-          orderId: '-',
-        },
-        isRunning: {
-          running: false,
-          started: '-',
-          ended: '-',
-        },
-        stopRobot: false,
         active: true,
-        otherParams: Array.isArray(newEntity.otherParams)
-          ? newEntity.otherParams
-          : typeof newEntity.otherParams === 'string'
-            ? JSON.parse(newEntity.otherParams)
-            : [],
       },
     };
 
@@ -54,14 +39,14 @@ export class RobotsService {
     return response;
   }
 
-  async getAll(): Promise<IRobot[]> {
+  async getAll(): Promise<ITradeStrategies[]> {
     this.logger.functionCaller({});
     const all = await this.model.find().exec();
     this.logger.functionResult(all);
     return all;
   }
 
-  async getById(id: string): Promise<IRobot> {
+  async getById(id: string): Promise<ITradeStrategies> {
     this.logger.functionCaller({ id });
     const entity = await this.model.findById(id).exec();
     if (!entity) {
@@ -72,9 +57,16 @@ export class RobotsService {
     return entity;
   }
 
-  async update(id: string, entity: IRobot): Promise<IRobot> {
+  async update(
+    id: string,
+    entity: ITradeStrategies,
+  ): Promise<ITradeStrategies> {
     this.logger.functionCaller({ id, entity });
-    await this.utils.checksDuplicity(entity, { name: entity.name }, this.model);
+    await this.utils.checksDuplicity(
+      entity,
+      { acronym: entity.acronym },
+      this.model,
+    );
     await this.model.updateOne({ _id: id }, entity).exec();
     const updatedEntity = await this.getById(id);
     this.logger.functionResult(updatedEntity);

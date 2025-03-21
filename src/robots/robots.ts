@@ -115,7 +115,7 @@ export const EntitySchema = new Schema<Interface>({
         type: String,
       },
       value: {
-        type: String,
+        type: Schema.Types.Mixed,
       },
     },
   ],

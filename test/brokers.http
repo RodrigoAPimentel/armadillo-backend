@@ -1,0 +1,66 @@
+@path = brokers
+
+########## CREATE
+POST {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Broker 1",
+  "tradeMarket": "cryptocurrencies",
+  "brokerName": "Binance 2",
+  "brokerageFee": 0.01,
+  "apiBaseUrl": {
+    "main": "https://api.binance.com",
+    "simulation": "https://testnet.binance.vision"
+  },
+  "apiEndpoints": [
+    {
+      "name": "Name 1",
+      "httpMethod": "get",
+      "endpoint": "/api/v3/klines",
+      "function": "Kline/Candlestick data",
+      "description": "Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.",
+      "observation": "",
+      "params": [
+        {
+          "name": "pN1",
+          "key": "pK1",
+          "description": "pD1",
+          "value": "pV1"
+        }
+      ]
+    }
+  ],
+  "apiKey": "w3mHMMwvQI3L0KsSEKtzObGu0JfPN64EjDYv1a086s1IT42rpQqMyJ4WUiHy8Xfu",
+  "secretKey": "O3pXP0op9lh3l5EbWPXnmsGIOmLb772VGdnXTK4s9y7b4CFIEkNu09CoBFK5qvcV",
+  "others": [
+    {
+      "name": "otherN1",
+      "key": "otherK1",
+      "description": "otherD1",
+      "value": "otherV1"
+    }
+  ]
+}
+
+########## GET ALL
+GET {{baseUrl}}/{{path}}
+Authorization: Bearer {{token}}
+
+########## GET BY ID
+GET {{baseUrl}}/{{path}}/67dddfc503f63decd413edeb
+Authorization: Bearer {{token}}
+
+########## UPDATE
+PUT {{baseUrl}}/{{path}}/67dddfc503f63decd413edeb
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Broker 2"
+}
+
+########## DELETE
+DELETE {{baseUrl}}/{{path}}/67dddfc503f63decd413edeb
+Authorization: Bearer {{token}}
